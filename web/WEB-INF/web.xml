@@ -8,6 +8,18 @@
         <servlet-name>ServletOne</servlet-name>
         <url-pattern>/ServletOne</url-pattern>
     </servlet-mapping>
+    <context-param>
+        <param-name>dbName</param-name>
+        <param-value>XYZ</param-value>
+    </context-param>
+    <context-param>
+        <param-name>dbUser</param-name>
+        <param-value>user</param-value>
+    </context-param>
+    <context-param>
+        <param-name>dbPassword</param-name>
+        <param-value>password</param-value>
+    </context-param>
     <session-config>
         <session-timeout>
             30
