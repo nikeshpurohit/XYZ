@@ -48,8 +48,8 @@
             <label for="passwordInput">Password</label>
             <input class="u-full-width" type="password" placeholder=" " id="passwordInput">
 
-            <input class="button-primary" type="submit" value="Login">
-            <input class="button" type="submit" value="Sign up">
+            <form method="GET" action="ServletOne"><input class="button-primary" type="submit" value="Login" name="loginButton">
+            <input class="button" type="submit" value="Sign up"></form>
             <p> The current date over there is: <%= new java.util.Date() %> </p>
         </div>
     </div>
