@@ -35,14 +35,16 @@
     <div class="row">
         <div class="one-half column" style="margin-top: 25%">
             <h4>XYZ Driver Association</h4>
-            <label for="usernameInput">Username</label>
-            <input class="u-full-width" type="text" placeholder=" " id="usernameInput">
+            <form method="post" action="Login">
+                <label for="usernameInput">Username</label>
+                <input class="u-full-width" type="text" placeholder=" " id="usernameInput">
 
-            <label for="passwordInput">Password</label>
-            <input class="u-full-width" type="password" placeholder=" " id="passwordInput">
+                <label for="passwordInput">Password</label>
+                <input class="u-full-width" type="password" placeholder=" " id="passwordInput">
 
-            <input class="button-primary" type="submit" value="Login">
-            <input class="button" type="submit" value="Sign up">
+                <input class="button-primary" type="submit" value="Login">
+                <input class="button" type="submit" value="Sign up">
+            </form>
             <p>The current date over there is: </p> <%= new java.util.Date %>
         </div>
     </div>
