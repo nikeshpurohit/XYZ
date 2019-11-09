@@ -1,4 +1,11 @@
-﻿<!DOCTYPE html>
+<%-- 
+    Document   : LoginJSP
+    Created on : 08-Nov-2019, 17:32:05
+    Author     : nik_3
+--%>
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 
@@ -43,7 +50,7 @@
 
             <input class="button-primary" type="submit" value="Login">
             <input class="button" type="submit" value="Sign up">
-            <p>The current date over there is: </p> <%= new java.util.Date %>
+            <p> The current date over there is: <%= new java.util.Date() %> </p>
         </div>
     </div>
   </div>
