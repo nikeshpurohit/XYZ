@@ -13,6 +13,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import Classes.User;
+
 /**
  *
  * @author tobys
@@ -30,13 +32,18 @@ public class LoginServlet extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     
-    
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
         String username = request.getParameter("usernameInput");
         String password = request.getParameter("passwordInput");
+        User user = new User();
+        user.setUsername(username);
+        user.setPassword(password);
         
+        //if (user.getUsername().equals() && user.getPassword().equals()){
+          //  response.sendRedirect("dashboard.jsp");
+        //}
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
