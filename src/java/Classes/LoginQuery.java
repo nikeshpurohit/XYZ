@@ -5,10 +5,10 @@
  */
 package Classes;
 
-/**
- *
- * @author tobys
- */
+import java.sql.Connection;
 public class LoginQuery {
+
+    static Connection con;
+
     
 }
