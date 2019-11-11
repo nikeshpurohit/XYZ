@@ -57,6 +57,7 @@ public class ServletOne extends HttpServlet {
                 else if (user.getUsername().equals(username) && user.getPassword().equals(password)) {
                     //HttpSession session = request.getSession();
                     session.setAttribute("username", username);
+                    request.getSession().setAttribute("LoginError", "none");
                     out.println("the logged in username is " + user.getUsername());
                 } 
                 else {
