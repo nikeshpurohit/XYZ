@@ -5,17 +5,19 @@ package Servlets;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -37,26 +39,40 @@ public class ServletOne extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-            ResultSet res = Objects.DBConnectionProvider.executeQuery("SELECT * FROM XYZ.\"Users\"");
-            
-            while (res.next()){
-                out.println(res.getString("id"));
+
+            String username = request.getParameter("usernameInput");
+            String password = request.getParameter("passwordInput");
+            //out.println(username);
+            //out.println(password);
+            Classes.User user;
+            HttpSession session = request.getSession();
+            try {
+                user = DAO.UsersDAOImpl.findByUsername(username);
+                
+              
+                if (user == null){
+                    request.getSession().setAttribute("LoginError", "user");
+                    response.sendRedirect(request.getContextPath() + "/Login.jsp");
+                }
+                else if (user.getUsername().equals(username) && user.getPassword().equals(password)) {
+                    //HttpSession session = request.getSession();
+                    session.setAttribute("username", username);
+                    out.println("the logged in username is " + user.getUsername());
+                } 
+                else {
+                    out.println("incorrect password");
+                    //HttpSession session = request.getSession();
+                    request.getSession().setAttribute("LoginError", "password");
+                    response.sendRedirect(request.getContextPath() + "/Login.jsp");
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(ServletOne.class.getName()).log(Level.SEVERE, null, ex);
+                out.println(ex);
             }
-            
-           
-            
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Logon servlet</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet ServletOne at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
-        } catch (SQLException ex) {
-            Logger.getLogger(ServletOne.class.getName()).log(Level.SEVERE, null, ex);
+
+            //Objects.DBConnectionProvider.executeQuery("SELECT * from Users")
         }
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

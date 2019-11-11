@@ -27,6 +27,7 @@ public class XYZServletListener implements ServletContextListener {
         String dbName = sc.getInitParameter("dbName");
         String dbUser = sc.getInitParameter("dbUser");
         String dbPassword = sc.getInitParameter("dbPassword");
+        System.out.println("Servlet listener started");
         
         try{
             Class.forName("org.apache.derby.jdbc.ClientDriver");
@@ -34,9 +35,9 @@ public class XYZServletListener implements ServletContextListener {
         } catch(ClassNotFoundException | SQLException e){
             sc.setAttribute("error", e);
         }
-        sc.setAttribute("connection", con);   
+        sc.setAttribute("connection", con);
     }
-
+    
     @Override
     public void contextDestroyed(ServletContextEvent sce) {
         try{ con.close(); } catch(SQLException e){}

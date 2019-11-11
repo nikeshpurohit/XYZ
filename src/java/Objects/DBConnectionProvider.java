@@ -17,7 +17,8 @@ import javax.servlet.ServletContext;
  *
  * @author nik_3
  */
-public class DBConnectionProvider {   
+public class DBConnectionProvider {
+    Connection con = null;
 
     private static ResultSet rs;
     public static ResultSet executeQuery(String query){
@@ -33,5 +34,7 @@ public class DBConnectionProvider {
         System.out.println(rs);
         return rs;
     }
+    
+    public Connection getConnection() {return this.con;}
     
 }
