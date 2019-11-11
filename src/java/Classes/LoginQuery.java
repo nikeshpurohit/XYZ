@@ -6,13 +6,9 @@
 package Classes;
 
 import java.sql.Connection;
-
-/**
- *
- * @author tobys
- */
 public class LoginQuery {
+
     static Connection con;
-            
+
     
 }
