@@ -38,6 +38,7 @@
   </div>
   <div class="container">
     <div class="row">
+
         <input type="button" value="Go to login" onclick="window.location.href = '/XYZ/Login.jsp';"/>
     </div>
   </div>
