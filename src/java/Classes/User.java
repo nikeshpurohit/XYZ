@@ -44,30 +44,4 @@ public class User {
     public void setPassword(String password){this.username = password;}
     
     public void setStatus(String username){this.username = status;}
-    
-=======
-
-/**
- *
- * @author tobys
- */
-public class User {
-    
-    private String username;
-    private String password;
-    
-    public String getUsername(){
-        return username;
-    }
-    
-    public void setUsername(String username){
-        this.username = username;
-    }
-    
-    public String getPassword(){
-        return password;
-    }
-    
-    public void setPassword(String password){
-        this.password = password;
-    }
+}
