@@ -49,7 +49,7 @@
                         <% }else if(errString.equals("password")){ %>
                         <div style="color : red">The password you have entered in incorrect.</div>
                         <% } %>
-                    <form method="POST" action="ServletOne">
+                    <form method="POST" action="Login">
                         <label for="usernameInput">Username</label>
                         <input class="u-full-width" type="text" placeholder=" " name="usernameInput" required>
 

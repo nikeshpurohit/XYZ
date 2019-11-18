@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package DAO;
+package dao;
 
-import Objects.DBConnectionProvider;
+import model.DBConnectionProvider;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
@@ -15,18 +15,18 @@ import java.sql.SQLException;
  */
 public class UsersDAOImpl {
 
-    public static Classes.User findByUsername(String username) throws SQLException {
-        Classes.User entity = null;
+    public static model.User findByUsername(String username) throws SQLException {
+        model.User entity = null;
         String query = ("SELECT * FROM XYZ.\"Users\" WHERE XYZ.\"Users\".\"id\" = " + "'" + username + "'");
         //System.out.println(query);
-        ResultSet rs = Objects.DBConnectionProvider.executeQuery(query);
+        ResultSet rs = model.DBConnectionProvider.executeQuery(query);
 
         if (rs.next() == false) {
             entity = null;
         } else {
 
             do {
-                entity = new Classes.User(rs.getString("id"), rs.getString("password"), rs.getString("status"));
+                entity = new model.User(rs.getString("id"), rs.getString("password"), rs.getString("status"));
             } while (rs.next());
         }
 
