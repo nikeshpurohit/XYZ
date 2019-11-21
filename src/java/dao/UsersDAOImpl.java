@@ -8,6 +8,7 @@ package dao;
 import model.DBConnectionProvider;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 /**
  *
@@ -42,6 +43,24 @@ public class UsersDAOImpl {
             entity = new Classes.User(rs.getString("id"), rs.getString("password"), rs.getString("status"));
             //System.out.println(entity.getUsername() + entity.getPassword() + entity.getStatus());
         }*/
+    }
+    
+    public static ArrayList listAllUsers(){
+        ArrayList<model.User> users = new ArrayList<model.User>();
+        String query = "SELECT XYZ.\"Users\".\"id\" FROM XYZ.\"Users\";";
+        try {
+            ResultSet rs = model.DBConnectionProvider.executeQuery(query);
+
+            while (rs.next()){
+                model.User u = new model.User();
+                u.setUsername(rs.getString("id"));
+                users.add(u);
+            }  
+        } catch(SQLException e){
+            e.printStackTrace();
+        }
+         
+        return users;
     }
 
 }

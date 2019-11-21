@@ -31,7 +31,7 @@ public class XYZServletListener implements ServletContextListener {
         
         try{
             Class.forName("org.apache.derby.jdbc.ClientDriver");
-            con = DriverManager.getConnection("jdbc:derby://localhost:1527/"+dbName.trim(), dbUser, dbPassword);
+            con = DriverManager.getConnection(dbName.trim(), dbUser, dbPassword);
         } catch(ClassNotFoundException | SQLException e){
             sc.setAttribute("error", e);
         }
