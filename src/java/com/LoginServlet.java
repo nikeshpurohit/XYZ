@@ -46,10 +46,10 @@ public class LoginServlet extends HttpServlet {
             //out.println(password);
             model.User user;
             HttpSession session = request.getSession();
+            System.out.println("ebuvbebruebueb");
             
-            String button = request.getParameter("buttonPressed");
             
-            if(button.equalsIgnoreCase("Login")){
+            if(request.getParameter("loginButton") != null){
                 try {
                     user = dao.UsersDAOImpl.findByUsername(username);
 
