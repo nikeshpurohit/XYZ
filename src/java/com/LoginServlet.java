@@ -46,31 +46,40 @@ public class LoginServlet extends HttpServlet {
             //out.println(password);
             model.User user;
             HttpSession session = request.getSession();
-            try {
-                user = dao.UsersDAOImpl.findByUsername(username);
-                
-              
-                if (user == null){
-                    request.getSession().setAttribute("LoginError", "user");
-                    response.sendRedirect(request.getContextPath() + "/Login.jsp");
+            System.out.println("ebuvbebruebueb");
+            
+            
+            if(request.getParameter("loginButton") != null){
+                try {
+                    user = dao.UsersDAOImpl.findByUsername(username);
+
+
+                    if (user == null){
+                        request.getSession().setAttribute("LoginError", "user");
+                        response.sendRedirect(request.getContextPath() + "/Login.jsp");
+                    }
+                    else if (user.getUsername().equals(username) && user.getPassword().equals(password)) {
+                        //HttpSession session = request.getSession();
+                        session.setAttribute("username", username);
+                        request.getSession().setAttribute("LoginError", "none");
+                        request.getRequestDispatcher("Dashboard.jsp").forward(request, response);
+                        out.println("the logged in username is " + user.getUsername());
+                    } 
+                    else {
+                        out.println("incorrect password");
+                        //HttpSession session = request.getSession();
+                        request.getSession().setAttribute("LoginError", "password");
+                        response.sendRedirect(request.getContextPath() + "/Login.jsp");
+                    }
+                } catch (SQLException ex) {
+                    Logger.getLogger(LoginServlet.class.getName()).log(Level.SEVERE, null, ex);
+                    out.println(ex);
+                } }
+            
+                else if (request.getParameter("registerButton")!= null){
+                    response.sendRedirect(request.getContextPath() + "/Register.jsp");
                 }
-                else if (user.getUsername().equals(username) && user.getPassword().equals(password)) {
-                    //HttpSession session = request.getSession();
-                    session.setAttribute("username", username);
-                    request.getSession().setAttribute("LoginError", "none");
-                    request.getRequestDispatcher("Dashboard.jsp").forward(request, response);
-                    out.println("the logged in username is " + user.getUsername());
-                } 
-                else {
-                    out.println("incorrect password");
-                    //HttpSession session = request.getSession();
-                    request.getSession().setAttribute("LoginError", "password");
-                    response.sendRedirect(request.getContextPath() + "/Login.jsp");
-                }
-            } catch (SQLException ex) {
-                Logger.getLogger(LoginServlet.class.getName()).log(Level.SEVERE, null, ex);
-                out.println(ex);
-            }
+            
 
             //Objects.DBConnectionProvider.executeQuery("SELECT * from Users")
 
