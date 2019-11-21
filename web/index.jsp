@@ -9,6 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
+	<meta http-equiv = "refresh" content = "2; url = /XYZ/Login.jsp" />
     <!-- Mobile Specific Metas
     –––––––––––––––––––––––––––––––––––––––––––––––––– -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -33,13 +34,14 @@
   <!-- Primary Page Layout
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
   <% request.getSession().setAttribute("LoginError", "none"); %>
-  <div class="header">
+  <!--<div class="header">
     <h1 id="logo-text">XYZ</h1>
-  </div>
+  </div>--->
   <div class="container">
     <div class="row">
 
-        <input type="button" value="Go to login" onclick="window.location.href = '/XYZ/Login.jsp';"/>
+        <!--<input type="button" value="Go to login" onclick="window.location.href = '/XYZ/Login.jsp';"/>-->
+		<h1>XYZ Drivers Association</h1>
     </div>
   </div>
 

@@ -5,12 +5,12 @@
         <listener-class>com.XYZServletListener</listener-class>
     </listener>
     <servlet>
-        <servlet-name>Login</servlet-name>
+        <servlet-name>LoginServ</servlet-name>
         <servlet-class>com.LoginServlet</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>Login</servlet-name>
-        <url-pattern>/Login</url-pattern>
+        <servlet-name>LoginServ</servlet-name>
+        <url-pattern>/LoginDo</url-pattern>
     </servlet-mapping>
     <context-param>
         <param-name>dbName</param-name>
@@ -24,6 +24,14 @@
         <param-name>dbPassword</param-name>
         <param-value>password</param-value>
     </context-param>
+    <servlet>
+     <servlet-name>Login</servlet-name>
+     <jsp-file>Login.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+     <servlet-name>Login</servlet-name>
+     <url-pattern>/Login</url-pattern>
+    </servlet-mapping>
     <session-config>
         <session-timeout>20</session-timeout>
     </session-config>

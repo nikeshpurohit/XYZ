@@ -12,7 +12,7 @@
         <!-- Basic Page Needs
         –––––––––––––––––––––––––––––––––––––––––––––––––– -->
         <meta charset="utf-8">
-        <title>XYZ Login</title>
+        <title>XYZ Register</title>
         <meta name="description" content="">
         <meta name="author" content="">
 
@@ -50,14 +50,17 @@
                         <div style="color : red">The password you have entered in incorrect.</div>
                         <% } %>
                     <form method="POST" action="Login">
-                        <label for="usernameInput">Username</label>
-                        <input class="u-full-width" type="text" placeholder=" " name="usernameInput" required>
+                        <label for="rUsernameInput">Username</label>
+                        <input class="u-full-width" type="text" placeholder=" " name="rUsernameInput" required>
 
-                        <label for="passwordInput">Password</label>
-                        <input class="u-full-width" type="password" placeholder=" " name="passwordInput" required>
+                        <label for="rPasswordInput">Password</label>
+                        <input class="u-full-width" type="password" placeholder=" " name="rPasswordInput" required>
 
-                        <input class="button-primary" type="submit" value="Login" name="loginButton">
-                        <input class="button" type="submit" value="Sign up" name="registerButton"></form>
+						<label for="rPpasswordInput2">Re-Enter Password</label>
+                        <input class="u-full-width" type="password" placeholder=" " name="rPasswordInput" required>
+
+                        <input class="button-primary" type="submit" value="Register" name="registerButton">
+                        </form>
                     <p> The current date over there is: <%= new java.util.Date()%> </p>
                 </div>
             </div>
