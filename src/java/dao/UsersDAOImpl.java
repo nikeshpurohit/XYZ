@@ -47,7 +47,7 @@ public class UsersDAOImpl {
     
     public static ArrayList listAllUsers(){
         ArrayList<model.User> users = new ArrayList<model.User>();
-        String query = "SELECT XYZ.\"Users\".\"id\" FROM XYZ.\"Users\";";
+        String query = "SELECT XYZ.\"Users\".\"id\" FROM XYZ.\"Users\"";
         try {
             ResultSet rs = model.DBConnectionProvider.executeQuery(query);
 
