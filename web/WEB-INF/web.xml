@@ -44,6 +44,13 @@
         <servlet-name>TestServlet</servlet-name>
         <url-pattern>/TestServlet</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>ListClaims</servlet-name>
+        <servlet-class>com.ListClaimsServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ListClaims</servlet-name>
+        <url-pattern>/ListClaims</url-pattern>
     <servlet-mapping>
         <servlet-name>ListPaymentsServlet</servlet-name>
         <url-pattern>/ListPaymentsServlet</url-pattern>

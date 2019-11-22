@@ -40,7 +40,12 @@ public class ListClaimsServlet extends HttpServlet {
             String username = (String)session.getAttribute("username");
             ArrayList<model.Claims> claims = new ArrayList<model.Claims>();
             claims = ClaimsDAOImpl.listAllClaimsForUser(username);
-            request.setAttribute("listOfUserClaims", claims);
+            session.setAttribute("listOfUserClaims", claims);
+            
+            for(int i = 0; i < claims.size(); i++) {
+                out.println("Claim: " + claims.get(i).getRationale());
+            }
+            
             
         }
     }
