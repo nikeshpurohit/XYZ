@@ -36,13 +36,12 @@ public class LogoutServlet extends HttpServlet {
 
         if (session != null)
         {
-            if (session.getAttribute("user") != null)
-            {
-                session.invalidate();
-                request.setAttribute("LoginError", "none");
-                request.getRequestDispatcher("/XYZ/index.jsp").forward(request, response);
-            }
-            else {response.sendRedirect("/XYZ/index.jsp");}
+            session.invalidate();
+            request.setAttribute("LoginError", "none");
+            request.setAttribute("login_session", null);
+            request.getRequestDispatcher("/XYZ/index.jsp").forward(request, response);
+            
+            
         }
         else {response.sendRedirect("/XYZ/index.jsp");}
     }
