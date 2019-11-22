@@ -40,6 +40,14 @@
         <servlet-name>TestServlet</servlet-name>
         <url-pattern>/TestServlet</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>ListClaims</servlet-name>
+        <servlet-class>com.ListClaimsServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ListClaims</servlet-name>
+        <url-pattern>/ListClaims</url-pattern>
+    </servlet-mapping>
     <session-config>
         <session-timeout>20</session-timeout>
     </session-config>
