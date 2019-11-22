@@ -8,6 +8,10 @@
         <servlet-name>LoginServ</servlet-name>
         <servlet-class>com.LoginServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>TestServlet</servlet-name>
+        <servlet-class>com.TestServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoginServ</servlet-name>
         <url-pattern>/Login.do</url-pattern>
@@ -25,12 +29,16 @@
         <param-value>password</param-value>
     </context-param>
     <servlet>
-     <servlet-name>Login</servlet-name>
-     <jsp-file>Login.jsp</jsp-file>
+        <servlet-name>Login</servlet-name>
+        <jsp-file>Login.jsp</jsp-file>
     </servlet>
     <servlet-mapping>
-     <servlet-name>Login</servlet-name>
-     <url-pattern>/Login</url-pattern>
+        <servlet-name>Login</servlet-name>
+        <url-pattern>/Login</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>TestServlet</servlet-name>
+        <url-pattern>/TestServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>20</session-timeout>
