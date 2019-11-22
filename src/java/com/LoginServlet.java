@@ -46,8 +46,6 @@ public class LoginServlet extends HttpServlet {
             //out.println(password);
             model.User user;
             HttpSession session = request.getSession();
-            System.out.println("ebuvbebruebueb");
-            
             
             if(request.getParameter("loginButton") != null){
                 try {
@@ -62,8 +60,11 @@ public class LoginServlet extends HttpServlet {
                         //HttpSession session = request.getSession();
                         session.setAttribute("username", username);
                         request.getSession().setAttribute("LoginError", "none");
-                        request.getRequestDispatcher("Dashboard.jsp").forward(request, response);
-                        out.println("the logged in username is " + user.getUsername());
+                        model.LoginSession login_session = new model.LoginSession(user, session, response);
+                        request.setAttribute("login_session", login_session);
+                        if (login_session.validateUser(username, password));{request.getRequestDispatcher("Dashboard.jsp");}
+                        
+                        
                     } 
                     else {
                         out.println("incorrect password");
@@ -77,6 +78,7 @@ public class LoginServlet extends HttpServlet {
                 } }
             
                 else if (request.getParameter("registerButton")!= null){
+                    request.getSession().setAttribute("LoginError", "none");
                     response.sendRedirect(request.getContextPath() + "/Register.jsp");
                 }
             

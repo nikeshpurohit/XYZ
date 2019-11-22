@@ -37,13 +37,11 @@
   <!--<div class="header">
     <h1 id="logo-text">XYZ</h1>
   </div>--->
-  <div class="container">
-    <div class="row">
-
-        <!--<input type="button" value="Go to login" onclick="window.location.href = '/XYZ/Login.jsp';"/>-->
-		<h1>XYZ Drivers Association</h1>
-    </div>
-  </div>
+  <center><div class="container">
+	<div class="row">
+		<h1 align="center"	>XYZ Drivers Association</h1>
+		</div>
+  </div></center>
 
 <!-- End Document
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
