@@ -12,6 +12,10 @@
         <servlet-name>TestServlet</servlet-name>
         <servlet-class>com.TestServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ListPaymentsServlet</servlet-name>
+        <servlet-class>com.ListPaymentsServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoginServ</servlet-name>
         <url-pattern>/Login.do</url-pattern>
@@ -47,6 +51,9 @@
     <servlet-mapping>
         <servlet-name>ListClaims</servlet-name>
         <url-pattern>/ListClaims</url-pattern>
+    <servlet-mapping>
+        <servlet-name>ListPaymentsServlet</servlet-name>
+        <url-pattern>/ListPaymentsServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>20</session-timeout>
