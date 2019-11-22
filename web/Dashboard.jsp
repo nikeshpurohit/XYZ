@@ -49,7 +49,7 @@
         
         <div>
 }  </div>
-        <input type="button" value="Go back to login" onclick="window.location.href = '/XYZ/Login.jsp';"/>
+        <form action="Logout.do" method="POST"><input type="submit" value="Logout"/></form>
         <form action="ListClaims" method="GET"><input type="submit" value="List claims"/></form>
     </div>
   </div>
