@@ -47,14 +47,8 @@ public class LoginSession {
         return valid;
     }
 
-    public String getUsername()
-    {
-        return user.getUsername();
-    }
+    public String getUsername(){return user.getUsername();}
 
-    public String getPassword()
-    {
-        return user.getPassword();
-    }
+    public String getPassword(){return user.getPassword();}
     
 }
