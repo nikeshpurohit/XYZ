@@ -49,15 +49,15 @@
                         <% }else if(errString.equals("password")){ %>
                         <div style="color : red">The password you have entered in incorrect.</div>
                         <% } %>
-                    <form method="POST" action="Login">
+                    <form method="POST">
                         <label for="rUsernameInput">Username</label>
                         <input class="u-full-width" type="text" placeholder=" " name="rUsernameInput" required>
 
                         <label for="rPasswordInput">Password</label>
                         <input class="u-full-width" type="password" placeholder=" " name="rPasswordInput" required>
 
-						<label for="rPpasswordInput2">Re-Enter Password</label>
-                        <input class="u-full-width" type="password" placeholder=" " name="rPasswordInput" required>
+			<label for="rPpasswordInput2">Re-Enter Password</label>
+                        <input class="u-full-width" type="password" placeholder=" " name="rPasswordInput2" required>
 
                         <input class="button-primary" type="submit" value="Register" name="registerButton">
                         </form>

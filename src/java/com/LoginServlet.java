@@ -46,8 +46,6 @@ public class LoginServlet extends HttpServlet {
             //out.println(password);
             model.User user;
             HttpSession session = request.getSession();
-            System.out.println("ebuvbebruebueb");
-            
             
             if(request.getParameter("loginButton") != null){
                 try {
@@ -77,6 +75,7 @@ public class LoginServlet extends HttpServlet {
                 } }
             
                 else if (request.getParameter("registerButton")!= null){
+                    request.getSession().setAttribute("LoginError", "none");
                     response.sendRedirect(request.getContextPath() + "/Register.jsp");
                 }
             

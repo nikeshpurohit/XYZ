@@ -51,10 +51,10 @@
                         <% } %>
                     <form method="POST" action="Login.do">
                         <label for="usernameInput">Username</label>
-                        <input class="u-full-width" type="text" placeholder=" " name="usernameInput" required>
+                        <input class="u-full-width" type="text" placeholder=" " name="usernameInput">
 
                         <label for="passwordInput">Password</label>
-                        <input class="u-full-width" type="password" placeholder=" " name="passwordInput" required>
+                        <input class="u-full-width" type="password" placeholder=" " name="passwordInput">
 
                         <input class="button-primary" type="submit" value="Login" name="loginButton">
                         <input class="button" type="submit" value="Sign up" name="registerButton"></form>
