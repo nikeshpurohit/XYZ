@@ -51,6 +51,7 @@
     <servlet-mapping>
         <servlet-name>ListClaims</servlet-name>
         <url-pattern>/ListClaims</url-pattern>
+    </servlet-mapping>
     <servlet-mapping>
         <servlet-name>ListPaymentsServlet</servlet-name>
         <url-pattern>/ListPaymentsServlet</url-pattern>
