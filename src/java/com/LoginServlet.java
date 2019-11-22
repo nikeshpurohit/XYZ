@@ -60,8 +60,11 @@ public class LoginServlet extends HttpServlet {
                         //HttpSession session = request.getSession();
                         session.setAttribute("username", username);
                         request.getSession().setAttribute("LoginError", "none");
-                        request.getRequestDispatcher("Dashboard.jsp").forward(request, response);
-                        out.println("the logged in username is " + user.getUsername());
+                        model.LoginSession login_session = new model.LoginSession(user, session, response);
+                        request.setAttribute("login_session", login_session);
+                        if (login_session.validateUser(username, password));{request.getRequestDispatcher("Dashboard.jsp");}
+                        
+                        
                     } 
                     else {
                         out.println("incorrect password");
