@@ -15,9 +15,29 @@ import java.util.ArrayList;
  */
 public class ClaimsDAOImpl {
     
-    public static ArrayList listAllClaims(String username){
+    public static ArrayList listAllClaimsForUser(String username){
         ArrayList<model.Claims> claims = new ArrayList<model.Claims>();
         String query = "SELECT * FROM XYZ.\"Claims\" WHERE XYZ.\"Claims\".\"mem_id\" = " + "'" + username + "'";
+        try{
+            ResultSet rs = model.DBConnectionProvider.executeQuery(query);
+            
+            while (rs.next()){
+                model.Claims c = new model.Claims();
+                c.setAmount(rs.getInt("amount"));
+                c.setRationale(rs.getString("rationale"));
+                c.setStatus(rs.getString("status"));
+                c.setDate(rs.getDate("date"));
+                
+                claims.add(c);
+            }
+        } catch(SQLException e){;}
+        
+        return claims;
+    }
+    
+    public static ArrayList listAllClaims(){
+        ArrayList<model.Claims> claims = new ArrayList<model.Claims>();
+        String query = "SELECT * FROM XYZ.\"Claims\"";
         try{
             ResultSet rs = model.DBConnectionProvider.executeQuery(query);
             
