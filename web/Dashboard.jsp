@@ -28,16 +28,19 @@
     <link rel="icon" type="image/png" href="images/favicon.png">
 
 </head>
-<body>
+
 
   <!-- Primary Page Layout
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
   <% request.getSession().setAttribute("LoginError", "none"); %>
+  <% model.LoginSession login_session = (model.LoginSession)request.getSession().getAttribute("login_session"); %>
+  <% String uname = login_session.getUsername();%>
   <div class="header">
     <h1 id="logo-text">XYZ</h1>
   </div>
   <div class="container">
       <h1>Welcome to the dashboard!</h1>
+      <h2><% out.print(uname);%></h2>
     <div class="row">
 
         <input type="button" value="Go back to login" onclick="window.location.href = '/XYZ/Login.jsp';"/>
@@ -46,5 +49,5 @@
 
 <!-- End Document
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-</body>
+
 </html>
