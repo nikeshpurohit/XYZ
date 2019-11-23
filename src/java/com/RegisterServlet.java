@@ -54,19 +54,19 @@ public class RegisterServlet extends HttpServlet {
                     if (RUserName.isEmpty()|| RPassword.isEmpty() || RPassword2.isEmpty()){
                         out.println("All fields are empty!");
                         session.setAttribute("RegisterError", "REmpty");
-                        //response.sendRedirect(request.getContextPath() + "/Register.jsp");
+                        response.sendRedirect(request.getContextPath() + "/Register.jsp");
                     }
                     
                     else if (user != null){
                         out.println("Username Already Exsits");
                         session.setAttribute("RegisterError", "user");
-                        //response.sendRedirect(request.getContextPath() + "/Register.jsp");
+                        response.sendRedirect(request.getContextPath() + "/Register.jsp");
                     }
    
                     else if (!RPassword.equals(RPassword2)) {
                         out.println("your pssswords does not match");
                         session.setAttribute("RegisterError", "RPassword");
-                        //response.sendRedirect(request.getContextPath() + "/Register.jsp");
+                        response.sendRedirect(request.getContextPath() + "/Register.jsp");
                     }
                             
                     else if (user == null && RPassword.equals(RPassword2))
