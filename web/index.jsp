@@ -34,6 +34,7 @@
   <!-- Primary Page Layout
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
   <% request.getSession().setAttribute("LoginError", "none"); %>
+  <% request.getSession().setAttribute("RegisterError", "none"); %>
   <!--<div class="header">
     <h1 id="logo-text">XYZ</h1>
   </div>--->
