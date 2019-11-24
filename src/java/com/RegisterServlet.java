@@ -73,15 +73,22 @@ public class RegisterServlet extends HttpServlet {
                     {
                         out.println("username and password is added to the database and direct you to the members dashboard");
                         request.getSession().setAttribute("RegisterError", "none");
-                        
                         request.getRequestDispatcher("/XYZ/Login.jsp").forward(request, response);
                         
+                        
+                        
+                        model.LoginSession login_session = new model.LoginSession(user, session, response);
+
+                        session.setAttribute("login_session", login_session);
+
+                        if (login_session.validateUser(RUserName, RPassword));{request.getRequestDispatcher("Dashboard.jsp");} 
+                    } 
                     }
                     /*else {
                         out.println("theres a problem with your validation....");
                     }*/
                         
-                    }
+                    
                     catch (SQLException ex) {
                         Logger.getLogger(LoginServlet.class.getName()).log(Level.SEVERE, null, ex);
                         out.println(ex);
