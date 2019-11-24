@@ -64,7 +64,7 @@ public class LoginServlet extends HttpServlet {
 
                         session.setAttribute("login_session", login_session);
 
-                        if (login_session.validateUser(username, password));{request.getRequestDispatcher("Dashboard.jsp");}
+                        if (login_session.validateUser(username, password));{request.getRequestDispatcher("UserDashServlet");}
                         
                         
                     } 
