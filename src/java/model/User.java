@@ -10,7 +10,7 @@ import javax.persistence.Table;
  *
  * @author nik_3
  */
-@Table(name = "users")
+@Table(name = "Users")
 
 public class User {
     private int id;
