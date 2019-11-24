@@ -76,7 +76,7 @@ public class UsersDAOImpl {
 
         //DB Query
         String query = "INSERT INTO XYZ.\"Users\" (\"id\",\"password\",\"status\") VALUES ('" + id + "', '" + password + "', '" + status + "')" ;
-        System.out.println(query);
+        model.DBConnectionProvider.commitQuery(query);
         
                 
     }
