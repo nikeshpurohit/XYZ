@@ -25,10 +25,6 @@
         <servlet-class>com.UserDashServlet</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>UserDashServlet</servlet-name>
-        <url-pattern>/UserDashboard.goto</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
         <servlet-name>LogoutServ</servlet-name>
         <url-pattern>/Logout.do</url-pattern>
     </servlet-mapping>
@@ -98,7 +94,7 @@
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>AdminDashServlet</servlet-name>
-        <url-pattern>/AdminDashboard.goto</url-pattern>
+        <url-pattern>/AdminDashServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>20</session-timeout>

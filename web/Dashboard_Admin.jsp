@@ -46,7 +46,7 @@
         <h1>Welcome to the dashboard!</h1>
 
         <div class="row">
-            <h2>You are a Admin and your username is: <% out.print(uname);%></h2>
+            <h2>You are an admin and your username is: <%out.print(uname);%></h2>
         </div>
         <div>
             <form action="Logout.do" method="POST"><input type="submit" value="Logout"/></form>

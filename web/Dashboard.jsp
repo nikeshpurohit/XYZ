@@ -38,6 +38,7 @@
     <% request.getSession().setAttribute("LoginError", "none"); %>
     <% model.LoginSession login_session = (model.LoginSession) request.getSession().getAttribute("login_session"); %>
     <% String uname = login_session.getUsername();%>
+    <% request.getAttribute("listOfUserClaims");%>
 
     <div class="header">
         <h1 id="logo-text">XYZ</h1>
@@ -56,7 +57,9 @@
                 <thead>
                 <tr>
                     <th>Claim ID</th>
+                    <th>Date Created</th>
                     <th>Description</th>
+                    <th>Amount</th>
                     <th>Status</th>
                 </tr>
                 </thead>
@@ -65,7 +68,9 @@
                     
                     <tr>
                         <td>#</td>
+                        <td>${item.date}</td>
                         <td>${item.rationale}</td>
+                        <td>${item.amount}</td>
                         <td>${item.status}</td>
                     </tr>
                     
