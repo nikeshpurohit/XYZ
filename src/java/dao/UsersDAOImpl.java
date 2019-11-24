@@ -75,7 +75,7 @@ public class UsersDAOImpl {
         String status = user.getStatus();
 
         //DB Query
-        String query = "INSERT INTO XYZ.\"Users\" (\"id\",\"password\",\"status\") VALUES (\"" + id + "\", \"" + password + "\", \"" + status + "\")" ;
+        String query = "INSERT INTO XYZ.\"Users\" (\"id\",\"password\",\"status\") VALUES ('" + id + "', '" + password + "', '" + status + "')" ;
         System.out.println(query);
         
                 
