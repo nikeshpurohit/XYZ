@@ -47,5 +47,14 @@ public class DBConnectionProvider {
         catch (Exception e) {System.out.println(e);
         return null;}
     }
+    
+    public static void commitQuery(String query) {
+        try {
+             Connection con = DriverManager.getConnection("jdbc:derby://localhost:1527/XYZ", dbUser, dbPassword);
+             Statement stmt = con.createStatement();
+             stmt.executeUpdate(query);
+        
+        } catch (Exception e) {System.out.println(e);}
+    }
 
 }
