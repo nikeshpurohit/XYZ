@@ -8,14 +8,14 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import javax.annotation.Resource;
-import javax.enterprise.inject.Produces;
+//import javax.enterprise.inject.Produces;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.PersistenceContextType;
 
 @SuppressWarnings("unused")
 public abstract class GenericDAOImpl<T, Id extends Serializable> implements GenericDAO<T, Id> {
-	@Produces
+	//@Produces
 	@PersistenceContext(unitName = "XYZ-PU")
 	protected EntityManager entityManager;
 
