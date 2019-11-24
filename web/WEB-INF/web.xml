@@ -76,7 +76,24 @@
         <servlet-name>UserDashServlet</servlet-name>
         <url-pattern>/UserDashServlet</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>RegisterServ</servlet-name>
+        <servlet-class>com.RegisterServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>RegisterServ</servlet-name>
+        <url-pattern>/Register.do</url-pattern>
+    </servlet-mapping>  
+    <servlet>
+        <servlet-name>Register</servlet-name>
+        <jsp-file>/Register.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Register</servlet-name>
+        <url-pattern>/Register</url-pattern>
+    </servlet-mapping>
     <session-config>
+        
         <session-timeout>20</session-timeout>
     </session-config>
 </web-app>

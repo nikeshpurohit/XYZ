@@ -42,7 +42,7 @@
             <div class="row">
                 <div class="one-half column" style="margin-top: 25%">
                     <h4>XYZ Driver Association</h4>
-                        <%! String errString = ""; %>
+                        <%! String errString = ""; %> 
                         <% errString  = (String) session.getAttribute("LoginError");%>
                         <% if(errString.equals("user")){ %>
                         <div style="color : red">A user with this username does not exist. Did you type it correctly?</div>

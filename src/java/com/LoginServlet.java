@@ -65,8 +65,7 @@ public class LoginServlet extends HttpServlet {
                         session.setAttribute("login_session", login_session);
 
                         if (login_session.validateUser(username, password));{request.getRequestDispatcher("UserDashServlet");}
-                        
-                        
+  
                     } 
                     else {
                         out.println("incorrect password");
@@ -83,6 +82,7 @@ public class LoginServlet extends HttpServlet {
                     request.getSession().setAttribute("LoginError", "none");
                     response.sendRedirect(request.getContextPath() + "/Register.jsp");
                 }
+        
             
 
             //Objects.DBConnectionProvider.executeQuery("SELECT * from Users")
