@@ -15,8 +15,8 @@ public class Claims {
     private int amount;
     private Date date = new Date();
     private String username;
-    private String rationale;
-    private String status;
+    public String rationale;
+    public String status;
     
     public Claims(){}
     
