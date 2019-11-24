@@ -36,10 +36,10 @@ public class UsersDAOImpl {
         }
 
         /*if(rs.isBeforeFirst()){return null;}
-        
+
         //rs.beforeFirst();
-        
-        while (rs.next()) { 
+
+        while (rs.next()) {
             entity = new Classes.User(rs.getString("id"), rs.getString("password"), rs.getString("status"));
         } */
         return entity;
@@ -48,7 +48,7 @@ public class UsersDAOImpl {
             //System.out.println(entity.getUsername() + entity.getPassword() + entity.getStatus());
         }*/
     }
-    
+
     public static ArrayList listAllUsers(){
         ArrayList<model.User> users = new ArrayList<model.User>();
         String query = "SELECT XYZ.\"Users\".\"id\" FROM XYZ.\"Users\"";
@@ -59,11 +59,22 @@ public class UsersDAOImpl {
                 model.User u = new model.User();
                 u.setUsername(rs.getString("id"));
                 users.add(u);
-            }  
+            }
         } catch(SQLException e){
             e.printStackTrace();
         }
-         
+
         return users;
     }
+
+    public static void createNewUser(model.User user){
+        //Attributes of the new user
+        String id = user.getUsername();
+        String password = user.getPassword();
+        String status = user.getStatus();
+
+        //DB Query
+        //String query = "INSERT INTO XYZ.\"Users\"";
+    }
+
 }
