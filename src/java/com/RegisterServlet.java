@@ -77,7 +77,7 @@ public class RegisterServlet extends HttpServlet {
                         model.User AddUser = new model.User(RUserName, RPassword, Status);
                         dao.UsersDAOImpl.createNewUser(AddUser);
                         request.getRequestDispatcher("/XYZ/Login.jsp").forward(request, response);  
-                       
+                        
 
                     } 
                     }
