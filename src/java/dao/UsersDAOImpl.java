@@ -62,5 +62,15 @@ public class UsersDAOImpl {
          
         return users;
     }
+    
+    public static void createNewUser(model.User user){
+        //Attributes of the new user
+        String id = user.getUsername();
+        String password = user.getPassword();
+        String status = user.getStatus();
+        
+        //DB Query
+        //String query = "INSERT INTO XYZ.\"Users\"";
+    }
 
 }
