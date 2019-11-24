@@ -64,7 +64,7 @@
                 <c:forEach items="${listOfUserClaims}" var="item">
                     
                     <tr>
-                        <td>#<td>
+                        <td>#</td>
                         <td>${item.rationale}</td>
                         <td>${item.status}</td>
                     </tr>
