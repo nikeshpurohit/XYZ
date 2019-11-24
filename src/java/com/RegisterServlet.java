@@ -59,7 +59,7 @@ public class RegisterServlet extends HttpServlet {
                     
                     else if (user != null){
                         out.println("Username Already Exsits");
-                        session.setAttribute("RegisterError", "user");
+                        session.setAttribute("RegisterError", "RUser");
                         response.sendRedirect(request.getContextPath() + "/Register.jsp");
                     }
    
@@ -81,7 +81,7 @@ public class RegisterServlet extends HttpServlet {
 
                         session.setAttribute("login_session", login_session);
 
-                        if (login_session.validateUser(RUserName, RPassword));{request.getRequestDispatcher("Dashboard.jsp");} 
+                        if (login_session.validateUser(RUserName, RPassword));{request.getRequestDispatcher("UserDashServlet");} 
                     } 
                     }
                     /*else {
