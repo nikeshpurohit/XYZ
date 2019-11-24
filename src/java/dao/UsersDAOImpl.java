@@ -5,6 +5,7 @@
  */
 package dao;
 
+import java.sql.Connection;
 import model.DBConnectionProvider;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -70,7 +71,10 @@ public class UsersDAOImpl {
         String status = user.getStatus();
         
         //DB Query
-        //String query = "INSERT INTO XYZ.\"Users\"";
+        String query = "INSERT INTO XYZ.\"Users\" (\"id\",\"password\",\"status\") VALUES (\"" + id + "\", \"" + password + "\", \"" + status + "\")" ;
+        System.out.println(query);
+        
+                
     }
 
 }
