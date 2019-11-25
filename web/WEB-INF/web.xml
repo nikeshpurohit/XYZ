@@ -20,6 +20,10 @@
         <servlet-name>LogoutServ</servlet-name>
         <servlet-class>com.LogoutServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ListAllClaims</servlet-name>
+        <servlet-class>com.ListAllClaims</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LogoutServ</servlet-name>
         <url-pattern>/Logout.do</url-pattern>
@@ -72,7 +76,6 @@
         <servlet-name>RegisterServ</servlet-name>
         <url-pattern>/Register.do</url-pattern>
     </servlet-mapping>
-    
     <servlet>
         <servlet-name>Register</servlet-name>
         <jsp-file>/Register.jsp</jsp-file>
@@ -81,8 +84,11 @@
         <servlet-name>Register</servlet-name>
         <url-pattern>/Register</url-pattern>
     </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ListAllClaims</servlet-name>
+        <url-pattern>/ListAllClaims</url-pattern>
+    </servlet-mapping>
     <session-config>
-        
         <session-timeout>20</session-timeout>
     </session-config>
 </web-app>
