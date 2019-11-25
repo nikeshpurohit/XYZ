@@ -16,17 +16,17 @@ import javax.servlet.http.HttpSession;
  * @author nik_3
  */
 public class LoginSession {
-    
+
     private model.User user;
 
     public LoginSession(model.User user, HttpSession session, HttpServletResponse response)
     {
         this.user = user;
-        
+
         session.setAttribute("user",user);
         session.setAttribute("userStatus",user.getStatus());
     }
-    
+
     public boolean validateUser(String username, String password)
     {
         boolean valid = false;
@@ -45,5 +45,5 @@ public class LoginSession {
     public String getUsername(){return user.getUsername();}
 
     public String getPassword(){return user.getPassword();}
-    
+
 }
