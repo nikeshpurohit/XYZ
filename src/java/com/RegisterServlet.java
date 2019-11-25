@@ -74,9 +74,10 @@ public class RegisterServlet extends HttpServlet {
                     {
                         out.println("username and password is added to the database and direct you to the members dashboard");
                         request.getSession().setAttribute("RegisterError", "none");
+                        request.getSession().setAttribute("LoginError", "RSuccess");
                         model.User AddUser = new model.User(RUserName, RPassword, Status);
                         dao.UsersDAOImpl.createNewUser(AddUser);
-                        request.getRequestDispatcher("/XYZ/Login.jsp").forward(request, response);  
+                        request.getRequestDispatcher("/Login.jsp").forward(request, response);  
                        
 
                     } 
