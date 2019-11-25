@@ -41,8 +41,13 @@ public class AdminDashServlet extends HttpServlet {
             claims = dao.ClaimsDAOImpl.listAllClaims();
             //model.Claims[] claimsArray = claims.toArray(new model.Claims[claims.size()]);
             session.setAttribute("listOfAllClaims", claims);
-            request.getRequestDispatcher("Dashboard_Admin.jsp").forward(request, response);
             
+            //=================Get list of users================================
+            ArrayList<model.User> users = new ArrayList<model.User>();
+            users = dao.UsersDAOImpl.listAllUsers(); 
+            request.setAttribute("listOfAllUsers", users);
+            
+            request.getRequestDispatcher("Dashboard_Admin.jsp").forward(request, response);
         }
     }
 

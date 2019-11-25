@@ -79,6 +79,25 @@
                 </c:forEach>
                 </tbody>
             </table>
+            
+            <table>
+                <thead>
+                <tr>
+                    <th>User ID</th>
+                    <th>Status</th>
+                </tr>
+                </thead>
+                <tbody>
+                <c:forEach items="${listOfAllUsers}" var="user">
+                    
+                    <tr>
+                        <td>${user.username}</td>
+                        <td>${user.status}</td>
+                    </tr>
+                    
+                </c:forEach>
+                </tbody>
+            </table>
         </div>
     </div>
 

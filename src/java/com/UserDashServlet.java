@@ -48,6 +48,7 @@ public class UserDashServlet extends HttpServlet {
             payments = dao.PaymentsDAOImpl.listAllPaymentsMadeForUser(username);
             request.setAttribute("listOfUserPayments", payments);
             
+            
             request.getRequestDispatcher("Dashboard.jsp").forward(request, response);
             
         }

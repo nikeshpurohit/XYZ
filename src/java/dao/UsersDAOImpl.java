@@ -52,13 +52,14 @@ public class UsersDAOImpl {
 
     public static ArrayList listAllUsers(){
         ArrayList<model.User> users = new ArrayList<model.User>();
-        String query = "SELECT XYZ.\"Users\".\"id\" FROM XYZ.\"Users\"";
+        String query = "SELECT * FROM XYZ.\"Users\"";
         try {
             ResultSet rs = model.DBConnectionProvider.executeQuery(query);
 
             while (rs.next()){
                 model.User u = new model.User();
                 u.setUsername(rs.getString("id"));
+                u.setStatus(rs.getString("status"));
                 users.add(u);
             }
         } catch(SQLException e){
