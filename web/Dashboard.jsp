@@ -38,7 +38,7 @@
     <% request.getSession().setAttribute("LoginError", "none"); %>
     <% model.LoginSession login_session = (model.LoginSession) request.getSession().getAttribute("login_session"); %>
     <% String uname = login_session.getUsername();%>
-    <% request.getAttribute("listOfUserClaims");%>
+    <%=request.getAttribute("listOfUserClaims")%>
 
     <div class="header">
         <h1 id="logo-text">XYZ</h1>

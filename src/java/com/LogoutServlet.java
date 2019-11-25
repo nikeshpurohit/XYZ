@@ -33,13 +33,13 @@ public class LogoutServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         HttpSession session = request.getSession(false);
-
+        System.out.println("logout servlet called");
         if (session != null)
         {
             session.invalidate();
-            request.setAttribute("LoginError", "none");
-            request.setAttribute("login_session", null);
-            request.getRequestDispatcher("/XYZ/index.jsp").forward(request, response);
+            //session.setAttribute("LoginError", "none");
+            //session.setAttribute("login_session", null);
+            response.sendRedirect("/XYZ/index.jsp");
             
             
         }

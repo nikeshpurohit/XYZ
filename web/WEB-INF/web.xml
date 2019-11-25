@@ -96,6 +96,10 @@
         <servlet-name>AdminDashServlet</servlet-name>
         <url-pattern>/AdminDashServlet</url-pattern>
     </servlet-mapping>
+   <servlet>
+        <servlet-name>DashboardAdmin</servlet-name>
+        <jsp-file>/Dashboard_Admin.jsp</jsp-file>
+    </servlet>
     <session-config>
         <session-timeout>20</session-timeout>
     </session-config>

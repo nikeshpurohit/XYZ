@@ -34,13 +34,13 @@ public class AdminDashServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             HttpSession session = request.getSession();
-            
+            System.out.println("ADMIN DASH SERVLET WORKING");
+
             //================Get Claims for this user=========================
             ArrayList<model.Claims> claims = new ArrayList<model.Claims>();
             claims = dao.ClaimsDAOImpl.listAllClaims();
             //model.Claims[] claimsArray = claims.toArray(new model.Claims[claims.size()]);
             session.setAttribute("listOfAllClaims", claims);
-            System.out.println("ADMIN DASH SERVLET WORKING");
             request.getRequestDispatcher("Dashboard_Admin.jsp").forward(request, response);
             
         }

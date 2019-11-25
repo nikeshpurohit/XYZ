@@ -64,15 +64,16 @@ public class LoginServlet extends HttpServlet {
 
                         
 
-                        if (login_session.validateUser(username, password));{
+                        if (login_session.validateUser(username, password)){
                                 session.setAttribute("login_session", login_session);
                                 if (user.getStatus().equals("ADMIN")) {
                                     System.out.println("This user is admin");
-                                    request.getRequestDispatcher("AdminDashServlet");
+                                    request.getRequestDispatcher("/AdminDashServlet").forward(request, response);
                                 }
                                 else if (user.getStatus().equals("APPLIED")) {
                                     System.out.println("This user is applied");
-                                    request.getRequestDispatcher("AdminDashServlet");
+                                    request.getRequestDispatcher("/UserDashServlet").forward(request, response);
+                                    
                                 }
                     }
   
