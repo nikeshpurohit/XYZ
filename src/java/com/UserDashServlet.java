@@ -40,7 +40,7 @@ public class UserDashServlet extends HttpServlet {
             ArrayList<model.Claims> claims = new ArrayList<model.Claims>();
             claims = dao.ClaimsDAOImpl.listAllClaimsForUser(username);
             //model.Claims[] claimsArray = claims.toArray(new model.Claims[claims.size()]);
-            session.setAttribute("listOfUserClaims", claims);
+            request.setAttribute("listOfUserClaims", claims);
             
             request.getRequestDispatcher("Dashboard.jsp").forward(request, response);
             

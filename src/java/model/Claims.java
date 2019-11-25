@@ -11,16 +11,17 @@ import java.util.Date;
  * @author tobys
  */
 public class Claims {
-    private int id;
-    private int amount;
-    private Date date = new Date();
-    private String username;
+    public int id;
+    public int amount;
+    public Date date = new Date();
+    public String username;
     public String rationale;
     public String status;
     
     public Claims(){}
     
-    public Claims(String username, int amount, Date date, String rationale, String status){
+    public Claims(int id, String username, int amount, Date date, String rationale, String status){
+        this.id = id;
         this.username = username;
         this.amount = amount;
         this.date = date;
@@ -38,6 +39,8 @@ public class Claims {
     
     public Date getDate(){return this.date;}
     
+    public int getID() {return this.id;}
+    
     public void setUsername(String username){this.username = username;}
     
     public void setAmount(int amount){this.amount = amount;}
@@ -47,5 +50,7 @@ public class Claims {
     public void setRationale(String rationale){this.rationale = rationale;}
     
     public void setDate(Date date){this.date = date;}
+    
+    public void setID(int id){this.id = id;}
        
 }
