@@ -41,6 +41,7 @@ public class RegisterServlet extends HttpServlet {
             String RUserName = request.getParameter("rUsernameInput");
             String RPassword = request.getParameter("rPasswordInput");
             String RPassword2 = request.getParameter("rPasswordInput2");
+            String Status = "APPLIED";
             
             model.User user = new model.User();
             dao.UsersDAOImpl userDAO = new dao.UsersDAOImpl();
@@ -59,7 +60,7 @@ public class RegisterServlet extends HttpServlet {
                     
                     else if (user != null){
                         out.println("Username Already Exsits");
-                        session.setAttribute("RegisterError", "user");
+                        session.setAttribute("RegisterError", "RUser");
                         response.sendRedirect(request.getContextPath() + "/Register.jsp");
                     }
    
@@ -73,15 +74,11 @@ public class RegisterServlet extends HttpServlet {
                     {
                         out.println("username and password is added to the database and direct you to the members dashboard");
                         request.getSession().setAttribute("RegisterError", "none");
-                        request.getRequestDispatcher("/XYZ/Login.jsp").forward(request, response);
-                        
-                        
-                        
-                        model.LoginSession login_session = new model.LoginSession(user, session, response);
+                        model.User AddUser = new model.User(RUserName, RPassword, Status);
+                        dao.UsersDAOImpl.createNewUser(AddUser);
+                        request.getRequestDispatcher("/XYZ/Login.jsp").forward(request, response);  
+                       
 
-                        session.setAttribute("login_session", login_session);
-
-                        if (login_session.validateUser(RUserName, RPassword));{request.getRequestDispatcher("Dashboard.jsp");} 
                     } 
                     }
                     /*else {
