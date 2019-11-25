@@ -50,8 +50,7 @@
         </div>
         <div>
             <form action="Logout.do" method="POST"><input type="submit" value="Logout"/></form>
-            <form action="ListClaims" method="GET"><input type="submit" value="List claims"/></form>
-
+            
             <table>
                 <thead>
                 <tr>
