@@ -63,7 +63,7 @@
                         <input class="u-full-width" type="text" placeholder="£0 - x " name="ClaimsAmount" required>
 
 
-                        <input class="button-primary" type="submit" value="Claim" name="claimButton"/>
+                        <input class="button-primary" type="submit" value="Make Claim" name="claimButton"/>
                         </form>
                     <form method="POST" action="UserDashServlet"><input class="button" type="submit" value="Go back to dashboard"/></form>
                 </div>
