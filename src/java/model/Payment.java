@@ -11,11 +11,11 @@ import java.util.Date;
  * @author tobys
  */
 public class Payment {
-    private int id;
-    private int amount;
-    private Date date = new Date();
-    private String username;
-    private String typeOfPayment;
+    public int id;
+    public int amount;
+    public Date date = new Date();
+    public String username;
+    public String typeOfPayment;
     
     public Payment(){}
     

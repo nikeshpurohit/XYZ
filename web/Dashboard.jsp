@@ -79,6 +79,29 @@
                 </c:forEach>
                 </tbody>
             </table>
+            
+            <table>
+                <thead>
+                <tr>
+                    <th>Transaction ID</th>
+                    <th>Transaction Date</th>
+                    <th>Amount</th>
+                    <th>Payment Method</th>
+                </tr>
+                </thead>
+                <tbody>
+                <c:forEach items="${listOfUserPayments}" var="payment">
+                    
+                    <tr>
+                        <td>#</td>
+                        <td>${payment.date}</td>
+                        <td>${payment.amount}</td>
+                        <td>${payment.typeOfPayment}</td>
+                    </tr>
+                    
+                </c:forEach>
+                </tbody>
+            </table>
         </div>
     </div>
 
