@@ -40,7 +40,9 @@
     <% String uname = login_session.getUsername();%>
 
     <div class="header">
+        <form action="Logout.do" method="POST" ><input style="float: right;" type="submit" value="Logout"/></form>
         <h1 id="logo-text">XYZ</h1>
+        
     </div>
     <div class="container">
         <h1>Welcome to the dashboard!</h1>
@@ -49,7 +51,7 @@
             <h2>You are an admin and your username is: <%out.print(uname);%></h2>
         </div>
         <div>
-            <form action="Logout.do" method="POST"><input type="submit" value="Logout"/></form>
+            
             
             <table>
                 <thead>
