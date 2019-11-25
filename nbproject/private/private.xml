@@ -5,15 +5,20 @@
         <group>
             <file>file:/C:/Users/nik_3/Documents/NetBeansProjects/XYZ/src/java/com/AdminDashServlet.java</file>
             <file>file:/C:/Users/nik_3/Documents/NetBeansProjects/XYZ/src/java/com/UserDashServlet.java</file>
-            <file>file:/C:/Users/nik_3/Documents/NetBeansProjects/XYZ/src/java/model/DBConnectionProvider.java</file>
+            <file>file:/C:/Users/nik_3/Documents/NetBeansProjects/XYZ/web/Register.jsp</file>
+            <file>file:/C:/Users/nik_3/Documents/NetBeansProjects/XYZ/web/Dashboard.jsp</file>
+            <file>file:/C:/Users/nik_3/Documents/NetBeansProjects/XYZ/src/java/com/ListClaimsServlet.java</file>
+            <file>file:/C:/Users/nik_3/Documents/NetBeansProjects/XYZ/src/java/com/LoginServlet.java</file>
+            <file>file:/C:/Users/nik_3/Documents/NetBeansProjects/XYZ/src/java/com/RegisterServlet.java</file>
+            <file>file:/C:/Users/nik_3/Documents/NetBeansProjects/XYZ/src/java/com/LogoutServlet.java</file>
             <file>file:/C:/Users/nik_3/Documents/NetBeansProjects/XYZ/web/Login.jsp</file>
             <file>file:/C:/Users/nik_3/Documents/NetBeansProjects/XYZ/web/WEB-INF/web.xml</file>
-            <file>file:/C:/Users/nik_3/Documents/NetBeansProjects/XYZ/web/Dashboard.jsp</file>
+            <file>file:/C:/Users/nik_3/Documents/NetBeansProjects/XYZ/web/index.jsp</file>
             <file>file:/C:/Users/nik_3/Documents/NetBeansProjects/XYZ/web/Dashboard_Admin.jsp</file>
+            <file>file:/C:/Users/nik_3/Documents/NetBeansProjects/XYZ/src/java/model/LoginSession.java</file>
             <file>file:/C:/Users/nik_3/Documents/NetBeansProjects/XYZ/src/java/dao/ClaimsDAOImpl.java</file>
             <file>file:/C:/Users/nik_3/Documents/NetBeansProjects/XYZ/src/java/model/Claims.java</file>
-            <file>file:/C:/Users/nik_3/Documents/NetBeansProjects/XYZ/src/java/dao/UsersDAOImpl.java</file>
-            <file>file:/C:/Users/nik_3/Documents/NetBeansProjects/XYZ/src/java/com/RegisterServlet.java</file>
+            <file>file:/C:/Users/nik_3/Documents/NetBeansProjects/XYZ/src/java/model/User.java</file>
         </group>
     </open-files>
 </project-private>
