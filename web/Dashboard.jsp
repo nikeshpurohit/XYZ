@@ -38,9 +38,10 @@
     <% request.getSession().setAttribute("LoginError", "none"); %>
     <% model.LoginSession login_session = (model.LoginSession) request.getSession().getAttribute("login_session"); %>
     <% String uname = login_session.getUsername();%>
-    <%=request.getAttribute("listOfUserClaims")%>
+    
 
     <div class="header">
+        <form action="Logout.do" method="POST" ><input style="float: right;" type="submit" value="Logout"/></form>
         <h1 id="logo-text">XYZ</h1>
     </div>
     <div class="container">
@@ -50,8 +51,6 @@
             <h2>Your username is: <%out.print(uname);%></h2>
         </div>
         <div>
-            <form action="Logout.do" method="POST"><input type="submit" value="Logout"/></form>
-            <form action="ListClaims" method="GET"><input type="submit" value="List claims"/></form>
 
             <table>
                 <thead>

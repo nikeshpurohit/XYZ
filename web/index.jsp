@@ -35,6 +35,7 @@
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
   <% request.getSession().setAttribute("LoginError", "none"); %>
   <% request.getSession().setAttribute("RegisterError", "none"); %>
+  <% request.getSession().setAttribute("RegisterSuccess", "none"); %>
   <!--<div class="header">
     <h1 id="logo-text">XYZ</h1>
   </div>--->
