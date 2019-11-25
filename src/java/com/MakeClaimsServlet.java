@@ -8,6 +8,7 @@ package com;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.logging.Level;
@@ -18,6 +19,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.swing.text.DateFormatter;
 
 /**
  *
@@ -40,11 +42,11 @@ public class MakeClaimsServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             HttpSession session = request.getSession();
-
+            System.out.println("IT worked");
             String ClaimsID = (String)session.getAttribute("username");
-            Date ClaimsDate = new Date();
+            Date ClaimsDate = new Date();            
             String ClaimsDesc = request.getParameter("ClaimsRationale");
-            String ClaimsStatus = "Open";
+            String ClaimsStatus = "open";
             String ClaimsAmount = request.getParameter("ClaimsAmount");
                                
             if (ClaimsDesc.isEmpty()|| ClaimsAmount.isEmpty()){
@@ -54,7 +56,7 @@ public class MakeClaimsServlet extends HttpServlet {
             }else{
                 model.Claims claim = new model.Claims(ClaimsID, Integer.parseInt(ClaimsAmount), ClaimsDate, ClaimsDesc, ClaimsStatus );
                 dao.ClaimsDAOImpl.MakeNewClaims(claim);
-                request.getRequestDispatcher("/XYZ/Dashboard.jsp").forward(request, response);                          
+                response.sendRedirect(request.getContextPath() + "/MakeClaims.jsp");                       
             } 
         } 
     } 

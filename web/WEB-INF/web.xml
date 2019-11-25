@@ -100,6 +100,24 @@
         <servlet-name>DashboardAdmin</servlet-name>
         <jsp-file>/Dashboard_Admin.jsp</jsp-file>
     </servlet>
+    
+    <servlet>
+        <servlet-name>MakeClaimsServ</servlet-name>
+        <servlet-class>com.MakeClaimsServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>MakeClaimsServ</servlet-name>
+        <url-pattern>/MakeClaims.do</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>MakeClaims</servlet-name>
+        <jsp-file>/MakeClaims.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>MakeClaims</servlet-name>
+        <url-pattern>/MakeClaims</url-pattern>
+    </servlet-mapping>
+    
     <session-config>
         <session-timeout>20</session-timeout>
     </session-config>

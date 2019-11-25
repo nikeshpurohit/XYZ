@@ -20,8 +20,8 @@ public class Claims {
     
     public Claims(){}
     
-    public Claims(int id, String username, int amount, Date date, String rationale, String status){
-        this.id = id;
+    public Claims(String username, int amount, Date date, String rationale, String status){
+        //this.id = id;
         this.username = username;
         this.amount = amount;
         this.date = date;

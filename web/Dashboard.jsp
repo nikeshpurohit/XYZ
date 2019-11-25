@@ -50,6 +50,9 @@
         <div class="row">
             <h2>Your username is: <%out.print(uname);%></h2>
         </div>
+        
+        <form action="/XYZ/MakeClaims.jsp" method="POST"><input style="float: right;" type="submit" value="Make a Claim!"/></form>
+        <h1 id="logo-text">XYZ</h1>
         <div>
 
             <table>
