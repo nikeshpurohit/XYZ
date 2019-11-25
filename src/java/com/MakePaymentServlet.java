@@ -7,9 +7,6 @@ package com;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -21,8 +18,8 @@ import javax.servlet.http.HttpSession;
  *
  * @author Ralph Sartorio
  */
-//WebServlet(name = "RegisterServlet", urlPatterns = {"/Register.do"})
-public class RegisterServlet extends HttpServlet {
+@WebServlet(name = "MakePaymentServlet", urlPatterns = {"/MakePaymentServlet"})
+public class MakePaymentServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -35,60 +32,57 @@ public class RegisterServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-
-            String RUserName = request.getParameter("rUsernameInput");
-            String RPassword = request.getParameter("rPasswordInput");
-            String RPassword2 = request.getParameter("rPasswordInput2");
-            String Status = "APPLIED";
-
+            /* TODO output your page here. You may use following sample code. 
+            String ClaimsID = request.getParameter("ClaimsID");
+            String ClaimsDate = request.getParameter("ClaimsDate");
+            String ClaimsDesc = request.getParameter("ClaimsDesc");
+            String ClaimsStatus = request.getParameter("ClaimsStatus");
+            String ClaimsAmount = request.getParameter("ClaimsAmount");
+            
+            model.Claims claims = new model.Claims();
+            dao.ClaimsDAOImpl claimsDAO = new dao.ClaimsDAOImpl();
+            
             model.User user = new model.User();
             dao.UsersDAOImpl userDAO = new dao.UsersDAOImpl();
+            
             HttpSession session = request.getSession();
-             //if(request.getParameter("Register") != null){
-                try {
-                    user = dao.UsersDAOImpl.findByUsername(RUserName);// this goes to the DB to check if there is a user with the same user name
+ 
+            //if(request.getParameter("MakeClaims") != null){
+               try {
+                    // this goes to the DB to check if there is a user with the same user name
+                    user = dao.UsersDAOImpl.findByUsername(ClaimsID);
 
-
-                    if (RUserName.isEmpty()|| RPassword.isEmpty() || RPassword2.isEmpty()){
+                    if (ClaimsID.isEmpty()|| ClaimsDate.isEmpty() || ClaimsDesc.isEmpty()|| ClaimsStatus.isEmpty() || ClaimsAmount.isEmpty()){
                         out.println("All fields are empty!");
-                        session.setAttribute("RegisterError", "REmpty");
+                        session.setAttribute("MakeClaimsError", "errEmpty");
+                        response.sendRedirect(request.getContextPath() + "/MakeClaims.jsp");
+                    }
+                    
+                    else if (user == null){
+                        out.println("userID incorrect! please re-type the username");
+                        session.setAttribute("MakeClaimsError", "errMakeID");
                         response.sendRedirect(request.getContextPath() + "/Register.jsp");
                     }
-
-                    else if (user != null){
-                        out.println("Username Already Exsits");
-                        session.setAttribute("RegisterError", "RUser");
-                        response.sendRedirect(request.getContextPath() + "/Register.jsp");
-                    }
-
+   
                     else if (!RPassword.equals(RPassword2)) {
                         out.println("your pssswords does not match");
                         session.setAttribute("RegisterError", "RPassword");
                         response.sendRedirect(request.getContextPath() + "/Register.jsp");
                     }
-
+                            
                     else if (user == null && RPassword.equals(RPassword2))
                     {
                         out.println("username and password is added to the database and direct you to the members dashboard");
                         request.getSession().setAttribute("RegisterError", "none");
-                        request.getSession().setAttribute("LoginError", "RSuccess");
                         model.User AddUser = new model.User(RUserName, RPassword, Status);
                         dao.UsersDAOImpl.createNewUser(AddUser);
-                        request.getRequestDispatcher("/Login.jsp").forward(request, response);
+                        request.getRequestDispatcher("/XYZ/Login.jsp").forward(request, response);  
+                        
 
-
-                    }
-                    }
-                    /*else {
-                        out.println("theres a problem with your validation....");
-                    }*/ catch (SQLException ex) {
-                Logger.getLogger(LoginServlet.class.getName()).log(Level.SEVERE, null, ex);
-                out.println(ex);
-            }
-
+                    } 
+                    } */
         }
     }
 
