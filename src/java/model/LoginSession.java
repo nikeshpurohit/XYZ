@@ -24,12 +24,11 @@ public class LoginSession {
         this.user = user;
         
         session.setAttribute("user",user);
-        try
-        {
-            response.sendRedirect("/XYZ/Dashboard.jsp");
-        } catch (IOException ex)
-        {
-            Logger.getLogger(LoginSession.class.getName()).log(Level.SEVERE, null, ex);
+        if (this.user.getStatus().equals("APPLIED")){
+            session.setAttribute("userType", "applied");
+        }
+        else if (this.user.getStatus().equals("ADMIN")) {
+            session.setAttribute("userType", "admin");
         }
     }
     
