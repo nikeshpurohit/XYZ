@@ -124,6 +124,22 @@
         <servlet-name>MakeClaims</servlet-name>
         <url-pattern>/MakeClaims</url-pattern>
     </servlet-mapping>
+     <servlet>
+        <servlet-name>MakePaymentServ</servlet-name>
+        <servlet-class>com.MakePaymentServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>MakePaymentServ</servlet-name>
+        <url-pattern>/MakePayment.do</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>MakePayment</servlet-name>
+        <jsp-file>/MakePayment.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>MakePayment</servlet-name>
+        <url-pattern>/MakePayment</url-pattern>
+    </servlet-mapping>
     <session-config>
         <session-timeout>20</session-timeout>
     </session-config>
