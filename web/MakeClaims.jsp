@@ -63,9 +63,9 @@
                         <input class="u-full-width" type="text" placeholder="£0 - x " name="ClaimsAmount" required>
 
 
-                        <input class="button-primary" type="submit" value="Claim" name="claimButton">
+                        <input class="button-primary" type="submit" value="Claim" name="claimButton"/>
                         </form>
-                    <p> The current date over there is: <%= new java.util.Date()%> </p>
+                    <form method="POST" action="UserDashServlet"><input class="button" type="submit" value="Go back to dashboard"/></form>
                 </div>
             </div>
         </div>

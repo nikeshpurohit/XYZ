@@ -38,10 +38,8 @@
     <% request.getSession().setAttribute("LoginError", "none"); %>
     <% model.LoginSession login_session = (model.LoginSession) request.getSession().getAttribute("login_session"); %>
     <% String uname = login_session.getUsername();%>
-    
-
     <div class="header">
-        <form action="Logout.do" method="POST" ><input style="float: right;" type="submit" value="Logout"/></form>
+        <form action="Logout.do" method="POST" ><input style="float: right;" id="logo-text" type="submit" value="Logout"/></form>
         <h1 id="logo-text">XYZ</h1>
     </div>
     <div class="container">
