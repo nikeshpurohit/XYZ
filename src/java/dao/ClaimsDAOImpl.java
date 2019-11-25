@@ -5,12 +5,17 @@
  */
 package dao;
 
+import java.util.Date;
 import model.DBConnectionProvider;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+<<<<<<< HEAD
 import java.util.Date;
 import java.util.HashSet;
+=======
+import model.Claims;
+>>>>>>> master
 /**
  *
  * @author tobys
@@ -60,5 +65,24 @@ public class ClaimsDAOImpl {
         } catch(SQLException e){;}
         
         return claims;
+    }
+        
+    public static void MakeNewClaims(model.Claims claims)
+    {
+        //Attributes of the new user
+         String ClaimsID = claims.getUsername();
+         Date ClaimsDate = claims.getDate();
+         String ClaimsRationale= claims.getRationale();
+         String ClaimsStatus = claims.getStatus();
+         int ClaimsAmount = claims.getAmount();
+
+        //DB Query
+        //String query = "INSERT INTO XYZ.\"Claims\" (\"mem_id\",\"date\",\"rationale\",\"status\",\"amount\") VALUES ('" + ClaimsID + "', '" + ClaimsDate + "', '" + ClaimsRationale + ", " + ClaimsStatus + ", " + ClaimsAmount + "')" ;
+        String query = "INSERT INTO XYZ.\"Claims\" (\"mem_id\",\"date\",\"rationale\",\"status\",\"amount\") VALUES ('" + ClaimsID + "', CURRENT_DATE ,'" + ClaimsRationale + "', '" + ClaimsStatus + "', " + ClaimsAmount + ")" ;
+          //              INSERT INTO XYZ.\"Claims\" (\"mem_id\",\"date\",\"rationale\",\"status\",\"amount\") VALUES ('me-aydin', CURRENT_DATE, 'crash', 'open', 5000.0)"
+        //String query = "INSERT INTO XYZ.\"Users\" (\"id\",\"password\",\"status\") VALUES ('" + id + "', '" + password + "', '" + status + "')" ;
+        System.out.println(query);
+        model.DBConnectionProvider.commitQuery(query);
+        
     }
 }

@@ -3,11 +3,23 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+<<<<<<< HEAD
             <file>file:/C:/Users/tobys/Documents/NetBeansProjects/XYZ/src/java/model/Claims.java</file>
             <file>file:/C:/Users/tobys/Documents/NetBeansProjects/XYZ/src/java/model/DBConnectionProvider.java</file>
             <file>file:/C:/Users/tobys/Documents/NetBeansProjects/XYZ/src/java/dao/ClaimsDAOImpl.java</file>
             <file>file:/C:/Users/tobys/Documents/NetBeansProjects/XYZ/src/java/com/ListAllClaims.java</file>
             <file>file:/C:/Users/tobys/Documents/NetBeansProjects/XYZ/web/WEB-INF/web.xml</file>
+=======
+            <file>file:/C:/Users/Ralph%20Sartorio/Documents/GitHub/XYZ/src/java/com/RegisterServlet.java</file>
+            <file>file:/C:/Users/Ralph%20Sartorio/Documents/GitHub/XYZ/src/java/com/LoginServlet.java</file>
+            <file>file:/C:/Users/Ralph%20Sartorio/Documents/GitHub/XYZ/web/WEB-INF/web.xml</file>
+            <file>file:/C:/Users/Ralph%20Sartorio/Documents/GitHub/XYZ/src/java/com/MakePaymentServlet.java</file>
+            <file>file:/C:/Users/Ralph%20Sartorio/Documents/GitHub/XYZ/web/MakeClaims.jsp</file>
+            <file>file:/C:/Users/Ralph%20Sartorio/Documents/GitHub/XYZ/src/java/com/MakeClaimsServlet.java</file>
+            <file>file:/C:/Users/Ralph%20Sartorio/Documents/GitHub/XYZ/src/java/dao/UsersDAOImpl.java</file>
+            <file>file:/C:/Users/Ralph%20Sartorio/Documents/GitHub/XYZ/src/java/model/Claims.java</file>
+            <file>file:/C:/Users/Ralph%20Sartorio/Documents/GitHub/XYZ/src/java/dao/ClaimsDAOImpl.java</file>
+>>>>>>> master
         </group>
     </open-files>
 </project-private>
