@@ -53,8 +53,8 @@
                         <% } %>--->
                     <form method="POST" action="MakeClaims.do">
 
-                        <label for="ClaimsDate">Date of incident</label>
-                        <input class="u-full-width" type="datetime-loc" placeholder="00/00/0000 " name="ClaimDate" required>
+                        <!--<label for="ClaimsDate">Date of incident</label>
+                        <input class="u-full-width" type="datetime-loc" placeholder="00/00/0000 " name="ClaimDate" required>-->
 
 			<label for="ClaimsDesc">Description</label>
                         <input class="u-full-width" type="text" placeholder="What happend " name="ClaimsRationale" required>
