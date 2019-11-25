@@ -7,7 +7,7 @@ package com;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import javax.servlet.RequestDispatcher;
+import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -18,7 +18,7 @@ import javax.servlet.http.HttpSession;
  *
  * @author nik_3
  */
-public class LogoutServlet extends HttpServlet {
+public class AdminDashServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -32,18 +32,18 @@ public class LogoutServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        HttpSession session = request.getSession(false);
-        System.out.println("logout servlet called");
-        if (session != null)
-        {
-            session.invalidate();
-            //session.setAttribute("LoginError", "none");
-            //session.setAttribute("login_session", null);
-            response.sendRedirect("/XYZ/index.jsp");
-            
+        try (PrintWriter out = response.getWriter()) {
+            HttpSession session = request.getSession();
+            System.out.println("ADMIN DASH SERVLET WORKING");
+
+            //================Get Claims for this user=========================
+            ArrayList<model.Claims> claims = new ArrayList<model.Claims>();
+            claims = dao.ClaimsDAOImpl.listAllClaims();
+            //model.Claims[] claimsArray = claims.toArray(new model.Claims[claims.size()]);
+            session.setAttribute("listOfAllClaims", claims);
+            request.getRequestDispatcher("Dashboard_Admin.jsp").forward(request, response);
             
         }
-        else {response.sendRedirect("/XYZ/index.jsp");}
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

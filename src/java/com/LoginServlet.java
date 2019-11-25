@@ -62,9 +62,21 @@ public class LoginServlet extends HttpServlet {
                         request.getSession().setAttribute("LoginError", "none");
                         model.LoginSession login_session = new model.LoginSession(user, session, response);
 
-                        session.setAttribute("login_session", login_session);
+                        
 
-                        if (login_session.validateUser(username, password));{request.getRequestDispatcher("Dashboard.jsp");} 
+                        if (login_session.validateUser(username, password)){
+                                session.setAttribute("login_session", login_session);
+                                if (user.getStatus().equals("ADMIN")) {
+                                    System.out.println("This user is admin");
+                                    request.getRequestDispatcher("/AdminDashServlet").forward(request, response);
+                                }
+                                else if (user.getStatus().equals("APPLIED")) {
+                                    System.out.println("This user is applied");
+                                    request.getRequestDispatcher("/UserDashServlet").forward(request, response);
+                                    
+                                }
+                    }
+  
                     } 
                     else {
                         out.println("incorrect password");

@@ -23,6 +23,8 @@
     <servlet>
         <servlet-name>ListAllClaims</servlet-name>
         <servlet-class>com.ListAllClaims</servlet-class>
+        <servlet-name>UserDashServlet</servlet-name>
+        <servlet-class>com.UserDashServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>LogoutServ</servlet-name>
@@ -48,6 +50,10 @@
         <servlet-name>Login</servlet-name>
         <jsp-file>Login.jsp</jsp-file>
     </servlet>
+    <servlet>
+        <servlet-name>AdminDashServlet</servlet-name>
+        <servlet-class>com.AdminDashServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Login</servlet-name>
         <url-pattern>/Login</url-pattern>
@@ -67,6 +73,10 @@
     <servlet-mapping>
         <servlet-name>ListPaymentsServlet</servlet-name>
         <url-pattern>/ListPaymentsServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UserDashServlet</servlet-name>
+        <url-pattern>/UserDashServlet</url-pattern>
     </servlet-mapping>
     <servlet>
         <servlet-name>RegisterServ</servlet-name>
@@ -88,6 +98,13 @@
         <servlet-name>ListAllClaims</servlet-name>
         <url-pattern>/ListAllClaims</url-pattern>
     </servlet-mapping>
+        <servlet-name>AdminDashServlet</servlet-name>
+        <url-pattern>/AdminDashServlet</url-pattern>
+    </servlet-mapping>
+   <servlet>
+        <servlet-name>DashboardAdmin</servlet-name>
+        <jsp-file>/Dashboard_Admin.jsp</jsp-file>
+    </servlet>
     <session-config>
         <session-timeout>20</session-timeout>
     </session-config>

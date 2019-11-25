@@ -35,12 +35,13 @@
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
   <% request.getSession().setAttribute("LoginError", "none"); %>
   <% request.getSession().setAttribute("RegisterError", "none"); %>
+  <% request.getSession().setAttribute("RegisterSuccess", "none"); %>
   <!--<div class="header">
     <h1 id="logo-text">XYZ</h1>
   </div>--->
   <center><div class="container">
 	<div class="row">
-		<h1 align="center"	>XYZ Drivers Association</h1>
+		<h1 align="center">XYZ Drivers Association</h1>
 		</div>
   </div></center>
 

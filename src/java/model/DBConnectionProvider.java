@@ -4,7 +4,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package model;
 
 import java.sql.Connection;
@@ -18,23 +17,44 @@ import javax.servlet.ServletContext;
  * @author nik_3
  */
 public class DBConnectionProvider {
-    Connection con = null;
+
+    private static String dbUser = "xyz";
+    private static String dbPassword = "password";
+
 
     private static ResultSet rs;
-    public static ResultSet executeQuery(String query){
+
+    public static ResultSet executeQuery(String query) {
         try {
             //ServletContext sc = sce.getServletContext();
-            String dbUser = "xyz";//sc.getInitParameter("dbName");
-            String dbPassword = "password";//sc.getInitParameter("dbPassword");
-            Connection con = DriverManager.getConnection("jdbc:derby://localhost:1527/XYZ", dbUser, dbPassword);
-            Statement stmt =con.createStatement();
+            //sc.getInitParameter("dbName");
+            //sc.getInitParameter("dbPassword");
+            Connection con = DriverManager.getConnection("jdbc:derby://localhost:1527/XYZ", DBConnectionProvider.dbUser, DBConnectionProvider.dbPassword);
+            Statement stmt = con.createStatement();
             DBConnectionProvider.rs = stmt.executeQuery(query);
+        } catch (Exception e) {
+            System.out.println(e);
         }
-        catch(Exception e){ System.out.println(e);}
         System.out.println(rs);
         return rs;
     }
+
+    public Connection getConnection() {
+        try{
+            Connection con = DriverManager.getConnection("jdbc:derby://localhost:1527/XYZ", dbUser, dbPassword);
+            return con;
+        }
+        catch (Exception e) {System.out.println(e);
+        return null;}
+    }
     
-    public Connection getConnection() {return this.con;}
-       
+    public static void commitQuery(String query) {
+        try {
+             Connection con = DriverManager.getConnection("jdbc:derby://localhost:1527/XYZ", dbUser, dbPassword);
+             Statement stmt = con.createStatement();
+             stmt.executeUpdate(query);
+        
+        } catch (Exception e) {System.out.println(e);}
+    }
+
 }

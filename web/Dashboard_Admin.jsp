@@ -8,7 +8,7 @@
         <!-- Basic Page Needs
         ?????????????????????????????????????????????????? -->
         <meta charset="utf-8">
-        <title>XYZ Login</title>
+        <title>XYZ Administration</title>
         <meta name="description" content="">
         <meta name="author" content="">
 
@@ -38,24 +38,26 @@
     <% request.getSession().setAttribute("LoginError", "none"); %>
     <% model.LoginSession login_session = (model.LoginSession) request.getSession().getAttribute("login_session"); %>
     <% String uname = login_session.getUsername();%>
-    
 
     <div class="header">
         <form action="Logout.do" method="POST" ><input style="float: right;" type="submit" value="Logout"/></form>
         <h1 id="logo-text">XYZ</h1>
+        
     </div>
     <div class="container">
         <h1>Welcome to the dashboard!</h1>
 
         <div class="row">
-            <h2>Your username is: <%out.print(uname);%></h2>
+            <h2>You are an admin and your username is: <%out.print(uname);%></h2>
         </div>
         <div>
-
+            
+            
             <table>
                 <thead>
                 <tr>
                     <th>Claim ID</th>
+                    <th>Member Name</th>
                     <th>Date Created</th>
                     <th>Description</th>
                     <th>Amount</th>
@@ -63,10 +65,11 @@
                 </tr>
                 </thead>
                 <tbody>
-                <c:forEach items="${listOfUserClaims}" var="item">
+                <c:forEach items="${listOfAllClaims}" var="item">
                     
                     <tr>
                         <td>#</td>
+                        <td>${item.username}</td>
                         <td>${item.date}</td>
                         <td>${item.rationale}</td>
                         <td>${item.amount}</td>
