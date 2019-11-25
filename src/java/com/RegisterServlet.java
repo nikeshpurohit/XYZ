@@ -23,6 +23,7 @@ import javax.servlet.http.HttpSession;
  */
 //WebServlet(name = "RegisterServlet", urlPatterns = {"/Register.do"})
 public class RegisterServlet extends HttpServlet {
+
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -37,7 +38,7 @@ public class RegisterServlet extends HttpServlet {
         
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-          
+            
             String RUserName = request.getParameter("rUsernameInput");
             String RPassword = request.getParameter("rPasswordInput");
             String RPassword2 = request.getParameter("rPasswordInput2");
@@ -45,58 +46,40 @@ public class RegisterServlet extends HttpServlet {
             model.User user = new model.User();
             dao.UsersDAOImpl userDAO = new dao.UsersDAOImpl();
             HttpSession session = request.getSession();
-           
-             //if(request.getParameter("Register") != null){
-                try {
-                    user = dao.UsersDAOImpl.findByUsername(RUserName);// this goes to the DB to check if there is a user with the same user name
 
+            //if(request.getParameter("Register") != null){
+            try {
+                user = dao.UsersDAOImpl.findByUsername(RUserName);// this goes to the DB to check if there is a user with the same user name
 
-                    if (RUserName.isEmpty()|| RPassword.isEmpty() || RPassword2.isEmpty()){
-                        out.println("All fields are empty!");
-                        session.setAttribute("RegisterError", "REmpty");
-                        response.sendRedirect(request.getContextPath() + "/Register.jsp");
-                    }
-                    
-                    else if (user != null){
-                        out.println("Username Already Exsits");
-                        session.setAttribute("RegisterError", "user");
-                        response.sendRedirect(request.getContextPath() + "/Register.jsp");
-                    }
-   
-                    else if (!RPassword.equals(RPassword2)) {
-                        out.println("your pssswords does not match");
-                        session.setAttribute("RegisterError", "RPassword");
-                        response.sendRedirect(request.getContextPath() + "/Register.jsp");
-                    }
-                            
-                    else if (user == null && RPassword.equals(RPassword2))
-                    {
-                        out.println("username and password is added to the database and direct you to the members dashboard");
-                        request.getSession().setAttribute("RegisterError", "none");
-                        request.getRequestDispatcher("/XYZ/Login.jsp").forward(request, response);
-                        
-                        
-                        
-                        model.LoginSession login_session = new model.LoginSession(user, session, response);
-
-                        session.setAttribute("login_session", login_session);
-
-                        if (login_session.validateUser(RUserName, RPassword));{request.getRequestDispatcher("Dashboard.jsp");} 
-                    } 
-                    }
-                    /*else {
+                if (RUserName.isEmpty() || RPassword.isEmpty() || RPassword2.isEmpty()) {
+                    out.println("All fields are empty!");
+                    session.setAttribute("RegisterError", "REmpty");
+                    response.sendRedirect(request.getContextPath() + "/Register.jsp");
+                } else if (user != null) {
+                    out.println("Username Already Exsits");
+                    session.setAttribute("RegisterError", "user");
+                    response.sendRedirect(request.getContextPath() + "/Register.jsp");
+                } else if (!RPassword.equals(RPassword2)) {
+                    out.println("your pssswords does not match");
+                    session.setAttribute("RegisterError", "RPassword");
+                    response.sendRedirect(request.getContextPath() + "/Register.jsp");
+                } else if (user == null && RPassword.equals(RPassword2)) {
+                    request.getSession().setAttribute("RegisterError", "none");
+                    request.getSession().setAttribute("RegisterSuccess", "true");
+                    user = new model.User(RUserName, RPassword, "APPLIED");
+                    dao.UsersDAOImpl.createNewUser(user);
+                    request.getRequestDispatcher("/Register.jsp").forward(request, response);                   
+                }                
+            } /*else {
                         out.println("theres a problem with your validation....");
-                    }*/
-                        
-                    
-                    catch (SQLException ex) {
-                        Logger.getLogger(LoginServlet.class.getName()).log(Level.SEVERE, null, ex);
-                        out.println(ex);
-                } 
-           
-            }
+                    }*/ catch (SQLException ex) {
+                Logger.getLogger(LoginServlet.class.getName()).log(Level.SEVERE, null, ex);
+                out.println(ex);
+            }            
+            
         }
-             
+    }
+
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.

@@ -43,14 +43,19 @@
                 <div class="one-half column" style="margin-top: 25%">
                     <h4>XYZ Driver Association</h4>
                         <%! String errString = ""; %>
+                        <%! String successString = "";%>
                         <% errString  = (String) session.getAttribute("RegisterError");%>
+                        <% successString = (String) session.getAttribute("RegisterSuccess"); %>
                         <% if(errString.equals("RUser")){ %>
                         <div style="color : red">A user with this username already exists! Try making up a new one!</div>
                         <% }else if(errString.equals("REmpty")){%>
                         <div style="color : red">Please input your username and password to continue!</div>
                         <% }else if(errString.equals("RPassword")){ %>
-                        <div style="color : red"> The Password given does not match! re-type both of your passwords. </div>
-                        <% } %>
+                        <div style="color : red">The Password given does not match! re-type both of your passwords. </div>
+                        <% }else if((errString.equals("none")) && (successString.equals("true"))){ %>
+                        <div style="color : green">User created successfully</div>
+                        <%} %>
+                       
                     <form method="POST" action="Register.do">
                         <label for="rUsernameInput">Username</label>
                         <input class="u-full-width" type="text" placeholder=" " name="rUsernameInput" required>

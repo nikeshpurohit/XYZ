@@ -32,6 +32,9 @@
         <!-- Favicon
         –––––––––––––––––––––––––––––––––––––––––––––––––– -->
         <link rel="icon" type="image/png" href="images/favicon.png">
+        
+        <% request.getSession().setAttribute("RegisterSuccess", "none"); %>
+
 
     </head>
     <body>
