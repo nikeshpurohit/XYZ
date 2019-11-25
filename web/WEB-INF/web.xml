@@ -23,6 +23,8 @@
     <servlet>
         <servlet-name>ListAllClaims</servlet-name>
         <servlet-class>com.ListAllClaims</servlet-class>
+    </servlet>
+    <servlet>
         <servlet-name>UserDashServlet</servlet-name>
         <servlet-class>com.UserDashServlet</servlet-class>
     </servlet>
@@ -98,6 +100,7 @@
         <servlet-name>ListAllClaims</servlet-name>
         <url-pattern>/ListAllClaims</url-pattern>
     </servlet-mapping>
+    <servlet-mapping>
         <servlet-name>AdminDashServlet</servlet-name>
         <url-pattern>/AdminDashServlet</url-pattern>
     </servlet-mapping>

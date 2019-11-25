@@ -10,12 +10,9 @@ import model.DBConnectionProvider;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-<<<<<<< HEAD
 import java.util.Date;
 import java.util.HashSet;
-=======
 import model.Claims;
->>>>>>> master
 /**
  *
  * @author tobys
