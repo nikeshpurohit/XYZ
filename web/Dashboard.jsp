@@ -52,6 +52,8 @@
         </div>
         
         <form action="/XYZ/MakeClaims.jsp" method="POST"><input style="float: right;" type="submit" value="Make a Claim!"/></form>
+        <form action="/XYZ/MakePayment.jsp" method="POST"><input style="float: left;" type="submit" value="Make a Payment!"/></form>
+
         <h1 id="logo-text">XYZ</h1>
         <div>
 

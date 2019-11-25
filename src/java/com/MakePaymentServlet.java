@@ -7,6 +7,7 @@ package com;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Date;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -34,58 +35,26 @@ public class MakePaymentServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. 
-            String ClaimsID = request.getParameter("ClaimsID");
-            String ClaimsDate = request.getParameter("ClaimsDate");
-            String ClaimsDesc = request.getParameter("ClaimsDesc");
-            String ClaimsStatus = request.getParameter("ClaimsStatus");
-            String ClaimsAmount = request.getParameter("ClaimsAmount");
+         HttpSession session = request.getSession();
+            //System.out.println("IT worked");
+            String PaymentType = request.getParameter("PaymentMethod");
+            Date PaymentDate = new Date();          
+            String PaymentAmount = request.getParameter("PaymentAmount");
+            String PaymentID = (String)session.getAttribute("username");
+                               
+            if (PaymentType.isEmpty()|| PaymentAmount.isEmpty()){
+                out.println("Not All fields are full!");
+                session.setAttribute("Payment", "errEmpty");
+                response.sendRedirect(request.getContextPath() + "/MakePayment.jsp");
+            }else{
+                model.Payment payment = new model.Payment(PaymentID, Integer.parseInt(PaymentAmount), PaymentDate, PaymentType);
+                dao.PaymentsDAOImpl.MakeNewPayment(payment);
+                response.sendRedirect(request.getContextPath() + "/MakePayment.jsp");
             
-            model.Claims claims = new model.Claims();
-            dao.ClaimsDAOImpl claimsDAO = new dao.ClaimsDAOImpl();
-            
-            model.User user = new model.User();
-            dao.UsersDAOImpl userDAO = new dao.UsersDAOImpl();
-            
-            HttpSession session = request.getSession();
- 
-            //if(request.getParameter("MakeClaims") != null){
-               try {
-                    // this goes to the DB to check if there is a user with the same user name
-                    user = dao.UsersDAOImpl.findByUsername(ClaimsID);
-
-                    if (ClaimsID.isEmpty()|| ClaimsDate.isEmpty() || ClaimsDesc.isEmpty()|| ClaimsStatus.isEmpty() || ClaimsAmount.isEmpty()){
-                        out.println("All fields are empty!");
-                        session.setAttribute("MakeClaimsError", "errEmpty");
-                        response.sendRedirect(request.getContextPath() + "/MakeClaims.jsp");
-                    }
-                    
-                    else if (user == null){
-                        out.println("userID incorrect! please re-type the username");
-                        session.setAttribute("MakeClaimsError", "errMakeID");
-                        response.sendRedirect(request.getContextPath() + "/Register.jsp");
-                    }
-   
-                    else if (!RPassword.equals(RPassword2)) {
-                        out.println("your pssswords does not match");
-                        session.setAttribute("RegisterError", "RPassword");
-                        response.sendRedirect(request.getContextPath() + "/Register.jsp");
-                    }
-                            
-                    else if (user == null && RPassword.equals(RPassword2))
-                    {
-                        out.println("username and password is added to the database and direct you to the members dashboard");
-                        request.getSession().setAttribute("RegisterError", "none");
-                        model.User AddUser = new model.User(RUserName, RPassword, Status);
-                        dao.UsersDAOImpl.createNewUser(AddUser);
-                        request.getRequestDispatcher("/XYZ/Login.jsp").forward(request, response);  
-                        
-
                     } 
-                    } */
+                    } 
         }
-    }
-
+    
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
