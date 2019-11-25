@@ -23,7 +23,8 @@ public class ClaimsDAOImpl {
             
             while (rs.next()){
                 model.Claims c = new model.Claims();
-                c.setID(6);
+                c.setID(rs.getInt("id"));
+                c.setUsername(rs.getString("mem_id"));
                 c.setAmount(rs.getInt("amount"));
                 c.setRationale(rs.getString("rationale"));
                 c.setStatus(rs.getString("status"));
@@ -44,7 +45,8 @@ public class ClaimsDAOImpl {
             
             while (rs.next()){
                 model.Claims c = new model.Claims();
-                c.setID(6);
+                c.setID(rs.getInt("id"));
+                c.setUsername(rs.getString("mem_id"));
                 c.setAmount(rs.getInt("amount"));
                 c.setRationale(rs.getString("rationale"));
                 c.setStatus(rs.getString("status"));

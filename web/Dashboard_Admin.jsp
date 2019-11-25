@@ -57,7 +57,9 @@
                 <tr>
                     <th>Claim ID</th>
                     <th>Member Name</th>
+                    <th>Date Created</th>
                     <th>Description</th>
+                    <th>Amount</th>
                     <th>Status</th>
                 </tr>
                 </thead>
@@ -67,7 +69,9 @@
                     <tr>
                         <td>#</td>
                         <td>${item.username}</td>
+                        <td>${item.date}</td>
                         <td>${item.rationale}</td>
+                        <td>${item.amount}</td>
                         <td>${item.status}</td>
                     </tr>
                     
