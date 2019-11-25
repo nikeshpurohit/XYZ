@@ -25,10 +25,6 @@
         <servlet-class>com.UserDashServlet</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>UserDashServlet</servlet-name>
-        <url-pattern>/UserDashboard.goto</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
         <servlet-name>LogoutServ</servlet-name>
         <url-pattern>/Logout.do</url-pattern>
     </servlet-mapping>
@@ -51,6 +47,10 @@
     <servlet>
         <servlet-name>Login</servlet-name>
         <jsp-file>Login.jsp</jsp-file>
+    </servlet>
+    <servlet>
+        <servlet-name>AdminDashServlet</servlet-name>
+        <servlet-class>com.AdminDashServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>Login</servlet-name>
@@ -83,7 +83,7 @@
     <servlet-mapping>
         <servlet-name>RegisterServ</servlet-name>
         <url-pattern>/Register.do</url-pattern>
-    </servlet-mapping>  
+    </servlet-mapping>
     <servlet>
         <servlet-name>Register</servlet-name>
         <jsp-file>/Register.jsp</jsp-file>
@@ -92,8 +92,15 @@
         <servlet-name>Register</servlet-name>
         <url-pattern>/Register</url-pattern>
     </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AdminDashServlet</servlet-name>
+        <url-pattern>/AdminDashServlet</url-pattern>
+    </servlet-mapping>
+   <servlet>
+        <servlet-name>DashboardAdmin</servlet-name>
+        <jsp-file>/Dashboard_Admin.jsp</jsp-file>
+    </servlet>
     <session-config>
-        
         <session-timeout>20</session-timeout>
     </session-config>
 </web-app>

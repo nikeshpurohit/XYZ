@@ -24,13 +24,7 @@ public class LoginSession {
         this.user = user;
         
         session.setAttribute("user",user);
-        try
-        {
-            response.sendRedirect("/XYZ/Dashboard.jsp");
-        } catch (IOException ex)
-        {
-            Logger.getLogger(LoginSession.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        session.setAttribute("userStatus",user.getStatus());
     }
     
     public boolean validateUser(String username, String password)

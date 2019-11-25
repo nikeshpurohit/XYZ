@@ -8,7 +8,7 @@
         <!-- Basic Page Needs
         ?????????????????????????????????????????????????? -->
         <meta charset="utf-8">
-        <title>XYZ Login</title>
+        <title>XYZ Administration</title>
         <meta name="description" content="">
         <meta name="author" content="">
 
@@ -46,7 +46,7 @@
         <h1>Welcome to the dashboard!</h1>
 
         <div class="row">
-            <h2>Your username is: <%out.print(uname);%></h2>
+            <h2>You are an admin and your username is: <%out.print(uname);%></h2>
         </div>
         <div>
             <form action="Logout.do" method="POST"><input type="submit" value="Logout"/></form>
@@ -56,15 +56,17 @@
                 <thead>
                 <tr>
                     <th>Claim ID</th>
+                    <th>Member Name</th>
                     <th>Description</th>
                     <th>Status</th>
                 </tr>
                 </thead>
                 <tbody>
-                <c:forEach items="${listOfUserClaims}" var="item">
+                <c:forEach items="${listOfAllClaims}" var="item">
                     
                     <tr>
-                        <td>#<td>
+                        <td>#</td>
+                        <td>${item.username}</td>
                         <td>${item.rationale}</td>
                         <td>${item.status}</td>
                     </tr>
