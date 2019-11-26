@@ -35,6 +35,27 @@ public class PaymentsDAOImpl {
         return payment;
           
     }
+    
+    public static ArrayList listAllPayments(){
+        ArrayList<model.Payment> payments = new ArrayList<model.Payment>();
+        String query = "SELECT * FROM XYZ.\"Payments\"";
+        try{
+            ResultSet rs = model.DBConnectionProvider.executeQuery(query);
+            
+            while (rs.next()){
+                model.Payment p = new model.Payment();
+                p.setAmount(rs.getInt("amount"));
+                p.setUsername(rs.getString("mem_id"));
+                p.setTypeOfPayment(rs.getString("type_of_payment"));
+                p.setDate(rs.getDate("date"));
+                
+                payments.add(p);
+            }
+        } catch(SQLException e){;}
+        
+        return payments;
+    }
+    
      public static void MakeNewPayment(model.Payment payment){
         //Attributes of the new user
          String PaymentID = payment.getUsername();
