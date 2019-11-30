@@ -57,9 +57,9 @@
         <div>
             <div class="dash-card-half-right">
                 <!--<div class="dash-card-image" style="background-image: url(images/thumb-project-tRAYce.png);"></div>-->
-                <a href="#" class="dash-card-title" target="_blank">Your Account Balance</a>
+                <div class="dash-card-title" target="_blank">Your Account Balance</div>
                 <div class="dash-card-content">
-                    <h1>ï¿½0.00</h1>
+                    <h1>£0.00</h1>
                 </div>
             </div>
         </div>
