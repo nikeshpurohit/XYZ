@@ -43,7 +43,7 @@
                     <h4>Make a payment</h4>
                     <form method="POST" action="MakePayment.do">
 
-                        <label for="PaymentMethod">Type of Payment</label>
+                        <label for="PaymentMethod">Payment method</label>
                         <input class="u-full-width" type="Text" placeholder="How are you gonna pay?" name="PaymentMethod" required>
 
 			<label for="PaymentAmount">Amount in (£)</label>
