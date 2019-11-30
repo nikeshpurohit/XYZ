@@ -43,69 +43,96 @@
         <h1 id="logo-text">XYZ</h1>
     </div>
     <div class="container">
-        <h1>Welcome to the dashboard!</h1>
-
-        <div class="row">
-            <h2>Your username is: <%out.print(uname);%></h2>
-        </div>
-        
-        <form action="/XYZ/MakeClaims.jsp" method="POST"><input style="float: right;" type="submit" value="Make a Claim!"/></form>
-        <form action="/XYZ/MakePayment.jsp" method="POST"><input style="float: left;" type="submit" value="Make a Payment!"/></form>
-
-        <h1 id="logo-text">XYZ</h1>
+        <h1>${name}'s Dashboard</h1>
         <div>
-
-            <table>
-                <thead>
-                <tr>
-                    <th>Claim ID</th>
-                    <th>Date Created</th>
-                    <th>Description</th>
-                    <th>Amount</th>
-                    <th>Status</th>
-                </tr>
-                </thead>
-                <tbody>
-                <c:forEach items="${listOfUserClaims}" var="item">
-                    
-                    <tr>
-                        <td>#</td>
-                        <td>${item.date}</td>
-                        <td>${item.rationale}</td>
-                        <td>${item.amount}</td>
-                        <td>${item.status}</td>
-                    </tr>
-                    
-                </c:forEach>
-                </tbody>
-            </table>
-            
-            <table>
-                <thead>
-                <tr>
-                    <th>Transaction ID</th>
-                    <th>Transaction Date</th>
-                    <th>Amount</th>
-                    <th>Payment Method</th>
-                </tr>
-                </thead>
-                <tbody>
-                <c:forEach items="${listOfUserPayments}" var="payment">
-                    
-                    <tr>
-                        <td>#</td>
-                        <td>${payment.date}</td>
-                        <td>${payment.amount}</td>
-                        <td>${payment.typeOfPayment}</td>
-                    </tr>
-                    
-                </c:forEach>
-                </tbody>
-            </table>
+                <div class="dash-card-half">
+                    <!--<div class="dash-card-image" style="background-image: url(images/thumb-project-tRAYce.png);"></div>-->
+                    <a href="#" class="dash-card-title" target="_blank">Your Profile</a>
+                    <div class="dash-card-content">
+                        content for this card goes here :)
+                        <form action="" method="POST"><input class="button-primary" style="float: right;" type="submit" value="Edit Details"/></form>
+                    </div>
+                </div>
         </div>
-    </div>
+        <div>
+            <div class="dash-card-half-right">
+                <!--<div class="dash-card-image" style="background-image: url(images/thumb-project-tRAYce.png);"></div>-->
+                <a href="#" class="dash-card-title" target="_blank">Your Account Balance</a>
+                <div class="dash-card-content">
+                    <h1>�0.00</h1>
+                </div>
+            </div>
+        </div>
 
-    <!-- End Document
-      ?????????????????????????????????????????????????? -->
+
+
+
+        <div class="dash-card">
+            <!--<div class="dash-card-image" style="background-image: url(images/thumb-project-tRAYce.png);"></div>-->
+            <a href="#" class="dash-card-title" target="_blank">Your Claims History</a>
+            <div class="dash-card-content">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Claim ID</th>
+                            <th>Date Created</th>
+                            <th>Description</th>
+                            <th>Amount</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <c:forEach items="${listOfUserClaims}" var="item">      
+                            <tr>
+                                <td>#</td>
+                                <td>${item.date}</td>
+                                <td>${item.rationale}</td>
+                                <td>${item.amount}</td>
+                                <td>${item.status}</td>
+                            </tr>                 
+                        </c:forEach>
+                    </tbody>
+                </table>
+                <form action="/XYZ/MakeClaims.jsp" method="POST"><input class="button-primary" style="float: right;" type="submit" value="New Claim"/></form>
+            </div>
+        </div>
+
+        <div class="dash-card">
+            <!--<div class="dash-card-image" style="background-image: url(images/thumb-project-tRAYce.png);"></div>-->
+            <a href="#" class="dash-card-title" target="_blank">Your Transaction History</a>
+            <div class="dash-card-content">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Transaction ID</th>
+                            <th>Transaction Date</th>
+                            <th>Amount</th>
+                            <th>Payment Method</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <c:forEach items="${listOfUserPayments}" var="payment">
+                            <tr>
+                                <td>#</td>
+                                <td>${payment.date}</td>
+                                <td>${payment.amount}</td>
+                                <td>${payment.typeOfPayment}</td>
+                            </tr>
+
+                        </c:forEach>
+                    </tbody>
+                </table>
+                <form action="/XYZ/MakePayment.jsp" method="POST"><input class="button-primary" style="float: right;" type="submit" value="Make payment"/></form>
+
+            </div>
+        </div>
+	</div>
+
+
+</div>
+</div>
+
+<!-- End Document
+  ?????????????????????????????????????????????????? -->
 
 </html>
