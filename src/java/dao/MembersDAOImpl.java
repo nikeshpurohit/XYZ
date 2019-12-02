@@ -23,7 +23,7 @@ public class MembersDAOImpl {
 
     public static model.Member findByUsername(String username) throws SQLException {
         model.Member entity = null;
-        String query = ("SELECT * FROM XYZ.\"Members\" WHERE XYZ.\"Users\".\"id\" = " + "'" + username + "'");
+        String query = ("SELECT * FROM XYZ.\"Members\" WHERE XYZ.\"Members\".\"id\" = " + "'" + username + "'");
         //System.out.println(query);
         ResultSet rs = com.DBConnectionProvider.executeQuery(query);
 

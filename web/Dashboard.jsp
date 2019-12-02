@@ -66,6 +66,10 @@
                                 <th>Date of birth:</th>
                                 <td>${item.dob}</td>
                             </tr>
+                            <tr>
+                                <th>Bal: delete</th>
+                                <td>${item.balance}</td>
+                            </tr>
                         </table>
                     </c:forEach>
                     <form action="" method="POST"><input class="button-primary" style="float: right;" type="submit" value="Edit Details"/></form>
@@ -77,7 +81,9 @@
                     <!--<div class="dash-card-image" style="background-image: url(images/thumb-project-tRAYce.png);"></div>-->
                     <div class="dash-card-title" target="_blank">Your Account Balance</div>
                     <div class="dash-card-content">
-                        <h1>£0.00</h1>
+                        <c:forEach items="${memberDetails}" var="item">
+                        <h1>£${item.balance}</h1>
+                        </c:forEach>
                     </div>
                 </div>
             </div>
