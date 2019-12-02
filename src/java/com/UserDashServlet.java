@@ -7,7 +7,10 @@ package com;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -18,7 +21,7 @@ import javax.servlet.http.HttpSession;
  *
  * @author nik_3
  */
-public class UserDashServlet extends HttpServlet {
+public class UserDashServlet extends HttpServlet{
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -28,9 +31,10 @@ public class UserDashServlet extends HttpServlet {
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
+     * @throws java.sql.SQLException
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+            throws ServletException, IOException, SQLException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             HttpSession session = request.getSession();
@@ -41,6 +45,21 @@ public class UserDashServlet extends HttpServlet {
             claims = dao.ClaimsDAOImpl.listAllClaimsForUser(username);
             //model.Claims[] claimsArray = claims.toArray(new model.Claims[claims.size()]);
             request.setAttribute("listOfUserClaims", claims);
+            
+            
+            //===================Get payments for this user=====================
+            ArrayList<model.Payment> payments = new ArrayList<model.Payment>();
+            payments = dao.PaymentsDAOImpl.listAllPaymentsMadeForUser(username);
+            request.setAttribute("listOfUserPayments", payments);
+            
+            //===================Get Member details=============================
+            ArrayList<model.Member> selfmember = new ArrayList<model.Member>();
+            model.Member m = new model.Member();
+            //try {selfmember = dao.MembersDAOImpl.findByUsername(username);} catch(SQLException e) {System.out.println("member does not exist for this user" + e);}
+            m = dao.MembersDAOImpl.findByUsername(username);
+            selfmember.add(m);
+            request.setAttribute("memberDetails", selfmember);
+            
             
             request.getRequestDispatcher("Dashboard.jsp").forward(request, response);
             
@@ -59,7 +78,11 @@ public class UserDashServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (SQLException ex) {
+            Logger.getLogger(UserDashServlet.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -73,7 +96,11 @@ public class UserDashServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (SQLException ex) {
+            Logger.getLogger(UserDashServlet.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**

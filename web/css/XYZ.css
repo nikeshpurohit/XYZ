@@ -1,5 +1,15 @@
 .header {
-    background-color: #33C3F0;
+    background-color: #33C3F0;   
+}
+
+.frow {
+    display: flex; /* equal height of the children */
+}
+
+.fcol {
+    flex: 1; /* additionally, equal width */
+    padding: 1em;
+    border: solid;
 }
 
 #logo-text {
@@ -8,3 +18,142 @@
     padding-bottom: 10px;
     padding-top: 10px;
 }
+
+#centered-h1 {
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    text-align: center;
+}
+
+#centered-h3 {
+    position: fixed;
+    left: 50%;
+    top: 65%;
+    transform: translateX(-50%) translateY(-65%);
+    text-align: center;
+    color: #33C3F0;
+}
+
+.logout {
+    position: inherit;
+    top: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    text-align: center;
+    float: right;
+}
+
+
+.dash-card {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    height: inherit;
+    max-height: 100%;
+    max-width: 100%;
+    min-width: 70%;
+    background: #ffffff;
+    overflow: hidden;
+    position: static;
+    margin: 4px;
+    border-radius: 15px;
+    border: 1px solid #bbb;
+    grid-column: span 2;
+}
+
+.dash-card-half {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    height: auto;
+    max-height: 100%;
+    max-width: 100%;
+    min-width: 50%;
+    background: #ffffff;
+    overflow: hidden;
+    position: static;
+    margin: 4px;
+    border-radius: 15px;
+    border: 1px solid #bbb;
+}
+
+.dash-card-half-right {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    height: auto;
+    max-height: 100%;
+    min-height: 100px;
+    max-width: 100%;
+    min-width: 30%;
+    background: #ffffff;
+    overflow: hidden;
+    position: static;
+    margin: 4px;
+    border-radius: 15px;
+    border: 1px solid #bbb;
+    grid-column: 2;
+}
+
+.dash-card-image {
+    flex-grow: 1;
+    background-size: cover;
+    background-position: center;
+    box-shadow: 0 -5px 30px rgba(0, 0, 0, 0.1);
+}
+
+.dash-card-title {
+    transition: background-color 200ms ease;
+    position: relative;
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-top: 20px;
+    padding-bottom: 5px;
+    color: black;
+    font-size: large;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.dash-card-content {
+    padding: 0px 30px 0px 30px;
+    overflow-y: auto;
+    text-align: center;
+
+}
+
+.dash-card-date {
+    font-style: italic;
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+.dash-card-video-con {
+    flex-grow: 1;
+    overflow: hidden;
+}
+
+.dash-card-video {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+.section-grid {
+    height: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    flex-direction: row;
+    grid-gap: 8px;
+    /* grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); 350px min width of grid item*/
+    
+    line-grid:create;
+    /*justify-content: center;*/
+}
+
+    

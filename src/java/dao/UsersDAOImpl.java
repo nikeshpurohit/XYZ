@@ -7,7 +7,7 @@ package dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
-import model.DBConnectionProvider;
+import com.DBConnectionProvider;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -25,7 +25,7 @@ public class UsersDAOImpl {
         model.User entity = null;
         String query = ("SELECT * FROM XYZ.\"Users\" WHERE XYZ.\"Users\".\"id\" = " + "'" + username + "'");
         //System.out.println(query);
-        ResultSet rs = model.DBConnectionProvider.executeQuery(query);
+        ResultSet rs = com.DBConnectionProvider.executeQuery(query);
 
         if (rs.next() == false) {
             entity = null;
@@ -52,13 +52,14 @@ public class UsersDAOImpl {
 
     public static ArrayList listAllUsers(){
         ArrayList<model.User> users = new ArrayList<model.User>();
-        String query = "SELECT XYZ.\"Users\".\"id\" FROM XYZ.\"Users\"";
+        String query = "SELECT * FROM XYZ.\"Users\"";
         try {
-            ResultSet rs = model.DBConnectionProvider.executeQuery(query);
+            ResultSet rs = com.DBConnectionProvider.executeQuery(query);
 
             while (rs.next()){
                 model.User u = new model.User();
                 u.setUsername(rs.getString("id"));
+                u.setStatus(rs.getString("status"));
                 users.add(u);
             }
         } catch(SQLException e){
@@ -76,9 +77,9 @@ public class UsersDAOImpl {
 
         //DB Query
         String query = "INSERT INTO XYZ.\"Users\" (\"id\",\"password\",\"status\") VALUES ('" + id + "', '" + password + "', '" + status + "')" ;
-        model.DBConnectionProvider.commitQuery(query);
+        com.DBConnectionProvider.commitQuery(query);
         
-                
+        // this should call the members dao            
     }
 
 }

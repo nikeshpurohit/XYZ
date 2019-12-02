@@ -30,7 +30,7 @@
 
         <!-- Favicon
         –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-        <link rel="icon" type="image/png" href="images/favicon.png">
+        <link rel="icon" type="image/png" href="images/favicon.ico">
 
     </head>
     <body>
@@ -40,18 +40,18 @@
         <div class="container">
             <div class="row">
                 <div class="one-half column" style="margin-top: 25%">
-                    <h4>XYZ Driver Association -  Claims</h4>
+                    <h4>Make a payment</h4>
                     <form method="POST" action="MakePayment.do">
 
-                        <label for="ClaimsDate">Type of Payment</label>
+                        <label for="PaymentMethod">Payment method</label>
                         <input class="u-full-width" type="Text" placeholder="How are you gonna pay?" name="PaymentMethod" required>
 
-			<label for="ClaimsDesc">Amount in (£)</label>
+			<label for="PaymentAmount">Amount in (£)</label>
                         <input class="u-full-width" type="number" placeholder="£££££" name="PaymentAmount" required>
 
                         <input class="button-primary" type="submit" value="Payment" name="paymentButton">
                         </form>
-                    <p> The current date over there is: <%= new java.util.Date()%> </p>
+                    <form method="POST" action="UserDashServlet"><input class="button" type="submit" value="Go back to dashboard"/></form>
                 </div>
             </div>
         </div>

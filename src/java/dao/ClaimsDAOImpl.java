@@ -6,10 +6,12 @@
 package dao;
 
 import java.util.Date;
-import model.DBConnectionProvider;
+import com.DBConnectionProvider;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.HashSet;
 import model.Claims;
 /**
  *
@@ -21,7 +23,7 @@ public class ClaimsDAOImpl {
         ArrayList<model.Claims> claims = new ArrayList<model.Claims>();
         String query = "SELECT * FROM XYZ.\"Claims\" WHERE XYZ.\"Claims\".\"mem_id\" = " + "'" + username + "'";
         try{
-            ResultSet rs = model.DBConnectionProvider.executeQuery(query);
+            ResultSet rs = com.DBConnectionProvider.executeQuery(query);
             
             while (rs.next()){
                 model.Claims c = new model.Claims();
@@ -43,7 +45,7 @@ public class ClaimsDAOImpl {
         ArrayList<model.Claims> claims = new ArrayList<model.Claims>();
         String query = "SELECT * FROM XYZ.\"Claims\"";
         try{
-            ResultSet rs = model.DBConnectionProvider.executeQuery(query);
+            ResultSet rs = com.DBConnectionProvider.executeQuery(query);
             
             while (rs.next()){
                 model.Claims c = new model.Claims();
@@ -53,7 +55,8 @@ public class ClaimsDAOImpl {
                 c.setRationale(rs.getString("rationale"));
                 c.setStatus(rs.getString("status"));
                 c.setDate(rs.getDate("date"));
-                
+                c.setUsername(rs.getString("mem_id"));
+                                
                 claims.add(c);
             }
         } catch(SQLException e){;}
@@ -76,7 +79,21 @@ public class ClaimsDAOImpl {
           //              INSERT INTO XYZ.\"Claims\" (\"mem_id\",\"date\",\"rationale\",\"status\",\"amount\") VALUES ('me-aydin', CURRENT_DATE, 'crash', 'open', 5000.0)"
         //String query = "INSERT INTO XYZ.\"Users\" (\"id\",\"password\",\"status\") VALUES ('" + id + "', '" + password + "', '" + status + "')" ;
         System.out.println(query);
-        model.DBConnectionProvider.commitQuery(query);
+        com.DBConnectionProvider.commitQuery(query);
         
+    }
+    
+    public static float totalClaimAmount(){
+        float total = 0;
+        String query = "SELECT XYZ.\"Claims\".\"amount\" FROM XYZ.\"Claims\"";
+        try{
+            ResultSet rs = com.DBConnectionProvider.executeQuery(query);            
+            while (rs.next()){
+                total += rs.getFloat("amount");
+            }
+        } catch(SQLException e){;}        
+        
+        System.out.println(total);
+        return total;
     }
 }

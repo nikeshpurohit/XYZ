@@ -31,7 +31,7 @@
 
         <!-- Favicon
         –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-        <link rel="icon" type="image/png" href="images/favicon.png">
+        <link rel="icon" type="image/png" href="images/favicon.ico">
 
     </head>
     <body>
@@ -41,7 +41,7 @@
         <div class="container">
             <div class="row">
                 <div class="one-half column" style="margin-top: 25%">
-                    <h4>XYZ Driver Association - Making Claims</h4>
+                    <h4>Make a new claim</h4>
                         <!---<%! String errString = ""; %>
                         <% errString  = (String) session.getAttribute("username");%>
                         <% if(errString.equals("errMemID")){ %>
@@ -53,19 +53,19 @@
                         <% } %>--->
                     <form method="POST" action="MakeClaims.do">
 
-                        <label for="ClaimsDate">Date of incident</label>
-                        <input class="u-full-width" type="datetime-loc" placeholder="00/00/0000 " name="ClaimDate" required>
+                        <!--<label for="ClaimsDate">Date of incident</label>
+                        <input class="u-full-width" type="datetime-loc" placeholder="00/00/0000 " name="ClaimDate" required>-->
 
 			<label for="ClaimsDesc">Description</label>
                         <input class="u-full-width" type="text" placeholder="What happend " name="ClaimsRationale" required>
 
-			<label for="ClaimsAmount">Amount in (£)</label>
+			<label for="ClaimsAmount">Amount (£)</label>
                         <input class="u-full-width" type="text" placeholder="£0 - x " name="ClaimsAmount" required>
 
 
-                        <input class="button-primary" type="submit" value="Claim" name="claimButton">
+                        <input class="button-primary" type="submit" value="Make Claim" name="claimButton"/>
                         </form>
-                    <p> The current date over there is: <%= new java.util.Date()%> </p>
+                    <form method="POST" action="UserDashServlet"><input class="button" type="submit" value="Go back to dashboard"/></form>
                 </div>
             </div>
         </div>

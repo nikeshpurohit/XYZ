@@ -14,9 +14,9 @@ import javax.persistence.Table;
 
 public class User {
     private int id;
-    private String username;
+    public String username;
     private String password;
-    private String status;
+    public String status;
     
     public User() {}
     
@@ -43,5 +43,5 @@ public class User {
     
     public void setPassword(String password){this.username = password;}
     
-    public void setStatus(String username){this.username = status;}
+    public void setStatus(String status){this.status = status;}
 }
