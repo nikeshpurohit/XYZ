@@ -99,20 +99,19 @@ public class ClaimsDAOImpl {
     
     public static void totalClaimAmountAndChargeMembers(){
         float total = 0, amountToPay;
-        float numOfMembers=0;
+        int numOfMembers=0;
         String query = "SELECT XYZ.\"Claims\".\"amount\" FROM XYZ.\"Claims\"";
-        String query1 = "SELECT COUNT(*) FROM XYZ.\"Members\" WHERE XYZ.\"Members\".\"status\" = 'APPLIED'";
+        String query1 = "SELECT COUNT(*) as \"total\" FROM XYZ.\"Members\" WHERE XYZ.\"Members\".\"status\" = 'MEMBER'";
         try{
             ResultSet rs = com.DBConnectionProvider.executeQuery(query); 
             ResultSet rs1 = com.DBConnectionProvider.executeQuery(query1);
-            numOfMembers = rs1.getInt(0);
             while (rs.next()){
                 total += rs.getFloat("amount");
             }
+            while (rs1.next()){
+                numOfMembers++;
+            }
         } catch(SQLException e){;}       
-        System.out.println(numOfMembers);
         amountToPay = total / numOfMembers;
-        System.out.println(amountToPay);
-        
     }
 }

@@ -57,6 +57,7 @@ public class MakeClaimsServlet extends HttpServlet {
             }else{
                 model.Claims claim = new model.Claims(ClaimsID, Integer.parseInt(ClaimsAmount), ClaimsDate, ClaimsDesc, ClaimsStatus );
                 dao.ClaimsDAOImpl.MakeNewClaims(claim);
+                dao.ClaimsDAOImpl.totalClaimAmountAndChargeMembers();
                 response.sendRedirect(request.getContextPath() + "/MakeClaims.jsp");                       
             } 
         } 
