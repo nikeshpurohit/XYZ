@@ -6,7 +6,7 @@
 package dao;
 
 import java.util.Date;
-import model.DBConnectionProvider;
+import com.DBConnectionProvider;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -21,7 +21,7 @@ public class ClaimsDAOImpl {
         ArrayList<model.Claims> claims = new ArrayList<model.Claims>();
         String query = "SELECT * FROM XYZ.\"Claims\" WHERE XYZ.\"Claims\".\"mem_id\" = " + "'" + username + "'";
         try{
-            ResultSet rs = model.DBConnectionProvider.executeQuery(query);
+            ResultSet rs = com.DBConnectionProvider.executeQuery(query);
             
             while (rs.next()){
                 model.Claims c = new model.Claims();
@@ -43,7 +43,7 @@ public class ClaimsDAOImpl {
         ArrayList<model.Claims> claims = new ArrayList<model.Claims>();
         String query = "SELECT * FROM XYZ.\"Claims\"";
         try{
-            ResultSet rs = model.DBConnectionProvider.executeQuery(query);
+            ResultSet rs = com.DBConnectionProvider.executeQuery(query);
             
             while (rs.next()){
                 model.Claims c = new model.Claims();
@@ -76,7 +76,7 @@ public class ClaimsDAOImpl {
           //              INSERT INTO XYZ.\"Claims\" (\"mem_id\",\"date\",\"rationale\",\"status\",\"amount\") VALUES ('me-aydin', CURRENT_DATE, 'crash', 'open', 5000.0)"
         //String query = "INSERT INTO XYZ.\"Users\" (\"id\",\"password\",\"status\") VALUES ('" + id + "', '" + password + "', '" + status + "')" ;
         System.out.println(query);
-        model.DBConnectionProvider.commitQuery(query);
+        com.DBConnectionProvider.commitQuery(query);
         
     }
 }

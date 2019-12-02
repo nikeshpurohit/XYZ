@@ -36,14 +36,14 @@
     <!-- Primary Page Layout
     ?????????????????????????????????????????????????? -->
     <% request.getSession().setAttribute("LoginError", "none"); %>
-    <% model.LoginSession login_session = (model.LoginSession) request.getSession().getAttribute("login_session"); %>
+    <% com.LoginSession login_session = (com.LoginSession) request.getSession().getAttribute("login_session"); %>
     <% String uname = login_session.getUsername();%>
     <div class="header">
         <form action="Logout.do" method="POST" ><input style="float: right;" id="logo-text" type="submit" value="Logout"/></form>
         <h1 id="logo-text">XYZ</h1>
     </div>
     <div class="container">
-        <h1>${name}'s Dashboard</h1>
+        <h1><%out.print(uname);%>'s Dashboard</h1>
         <div>
                 <div class="dash-card-half">
                     <!--<div class="dash-card-image" style="background-image: url(images/thumb-project-tRAYce.png);"></div>-->

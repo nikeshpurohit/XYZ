@@ -5,7 +5,7 @@
  */
 package dao;
 
-import model.DBConnectionProvider;
+import com.DBConnectionProvider;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -20,7 +20,7 @@ public class PaymentsDAOImpl {
         ArrayList<model.Payment> payment = new ArrayList<model.Payment>();
         String query = "SELECT * FROM XYZ.\"Payments\" WHERE XYZ.\"Payments\".\"mem_id\" = " + "'" + username + "'";
         try{
-            ResultSet rs = model.DBConnectionProvider.executeQuery(query);
+            ResultSet rs = com.DBConnectionProvider.executeQuery(query);
             
             while (rs.next()){
                 model.Payment p = new model.Payment();
@@ -40,7 +40,7 @@ public class PaymentsDAOImpl {
         ArrayList<model.Payment> payments = new ArrayList<model.Payment>();
         String query = "SELECT * FROM XYZ.\"Payments\"";
         try{
-            ResultSet rs = model.DBConnectionProvider.executeQuery(query);
+            ResultSet rs = com.DBConnectionProvider.executeQuery(query);
             
             while (rs.next()){
                 model.Payment p = new model.Payment();
@@ -66,7 +66,7 @@ public class PaymentsDAOImpl {
         //DB Query
         String query = "INSERT INTO XYZ.\"Payments\" (\"mem_id\",\"date\",\"type_of_payment\",\"amount\") VALUES ('" + PaymentID + "', CURRENT_DATE ,'" + PaymentType + "', " + PaymentAmount + ")" ;
         System.out.println(query);
-        model.DBConnectionProvider.commitQuery(query);
+        com.DBConnectionProvider.commitQuery(query);
         
     }
 }

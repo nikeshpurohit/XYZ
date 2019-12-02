@@ -34,7 +34,7 @@ public class TestServlet extends HttpServlet {
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
             HttpSession session = request.getSession();
-            model.LoginSession login_session = (model.LoginSession)session.getAttribute("login_session");
+            com.LoginSession login_session = (com.LoginSession)session.getAttribute("login_session");
             out.println(login_session.getUsername());
             out.println("<html>");
             out.println("<head>");
