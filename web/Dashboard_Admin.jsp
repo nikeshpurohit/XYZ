@@ -46,7 +46,7 @@
     </div>
     <div class="container">
         <h1><%out.print(uname);%>'s dashboard</h1>
-        <div>
+        <div class="section-grid">
 
             <div class="dash-card">
                 <!--<div class="dash-card-image" style="background-image: url(images/thumb-project-tRAYce.png);"></div>-->
@@ -113,12 +113,6 @@
                     </table>
                 </div>
             </div>
-
-
-
-
-
-
 
         </div>
     </div>
