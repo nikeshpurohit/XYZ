@@ -96,4 +96,23 @@ public class ClaimsDAOImpl {
         System.out.println(total);
         return total;
     }
+    
+    public static void totalClaimAmountAndChargeMembers(){
+        float total = 0, amountToPay;
+        float numOfMembers=0;
+        String query = "SELECT XYZ.\"Claims\".\"amount\" FROM XYZ.\"Claims\"";
+        String query1 = "SELECT COUNT(*) FROM XYZ.\"Members\" WHERE XYZ.\"Members\".\"status\" = 'APPLIED'";
+        try{
+            ResultSet rs = com.DBConnectionProvider.executeQuery(query); 
+            ResultSet rs1 = com.DBConnectionProvider.executeQuery(query1);
+            numOfMembers = rs1.getInt(0);
+            while (rs.next()){
+                total += rs.getFloat("amount");
+            }
+        } catch(SQLException e){;}       
+        System.out.println(numOfMembers);
+        amountToPay = total / numOfMembers;
+        System.out.println(amountToPay);
+        
+    }
 }
