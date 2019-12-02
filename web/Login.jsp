@@ -12,7 +12,7 @@
         <!-- Basic Page Needs
         –––––––––––––––––––––––––––––––––––––––––––––––––– -->
         <meta charset="utf-8">
-        <title>XYZ Login</title>
+        <title>XYZ Drivers Association</title>
         <meta name="description" content="">
         <meta name="author" content="">
 
@@ -31,7 +31,7 @@
 
         <!-- Favicon
         –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-        <link rel="icon" type="image/png" href="images/favicon.png">
+        <link rel="icon" type="image/png" href="images/favicon.ico">
         
         <% request.getSession().setAttribute("RegisterSuccess", "none"); %>
 

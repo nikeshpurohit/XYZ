@@ -28,7 +28,7 @@
 
         <!-- Favicon
         ?????????????????????????????????????????????????? -->
-        <link rel="icon" type="image/png" href="images/favicon.png">
+        <link rel="icon" type="image/png" href="images/favicon.ico">
 
     </head>
 
@@ -41,12 +41,12 @@
 
     <div class="header">
         <form action="Logout.do" method="POST" ><input style="float: right;" type="submit" value="Logout"/></form>
-        <h1 id="logo-text">XYZ</h1>
+        <h1 id="logo-text">XYZ Drivers Association</h1>
 
     </div>
     <div class="container">
         <h1><%out.print(uname);%>'s dashboard</h1>
-        <div>
+        <div class="section-grid">
 
             <div class="dash-card">
                 <!--<div class="dash-card-image" style="background-image: url(images/thumb-project-tRAYce.png);"></div>-->
@@ -113,12 +113,6 @@
                     </table>
                 </div>
             </div>
-
-
-
-
-
-
 
         </div>
     </div>

@@ -79,9 +79,7 @@ public class UsersDAOImpl {
         String query = "INSERT INTO XYZ.\"Users\" (\"id\",\"password\",\"status\") VALUES ('" + id + "', '" + password + "', '" + status + "')" ;
         com.DBConnectionProvider.commitQuery(query);
         
-        // this should call the members dao
-        
-                
+        // this should call the members dao            
     }
 
 }
