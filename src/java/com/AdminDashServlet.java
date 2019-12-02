@@ -5,6 +5,7 @@
  */
 package com;
 
+import dao.MembersDAOImpl;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
@@ -52,6 +53,10 @@ public class AdminDashServlet extends HttpServlet {
             members = dao.MembersDAOImpl.listAllMembers();
             request.setAttribute("listOfAllMembers", members);
             
+            //-----------------List applied members=============================
+            ArrayList<model.Member> appliedMembers = new ArrayList<model.Member>();
+            members = MembersDAOImpl.listAllAppliedMembers();
+            request.setAttribute("listOfAppliedUsers", members);
             
             request.getRequestDispatcher("Dashboard_Admin.jsp").forward(request, response);
         }

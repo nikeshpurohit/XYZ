@@ -92,6 +92,15 @@
                         </c:forEach>
                     </div>
                 </div>
+
+
+                <div class="dash-card-half-right">
+                    <!--<div class="dash-card-image" style="background-image: url(images/thumb-project-tRAYce.png);"></div>-->
+                    <div class="dash-card-title" target="_blank">Your Account Status</div>
+                    <div class="dash-card-content">
+                        <h1><c:out value='${user.status}'/> </h1>       
+                    </div>
+                </div>
             </div>
 
 

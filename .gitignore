@@ -8,3 +8,5 @@ nbbuild/
 dist/
 nbdist/
 .nb-gradle/
+*.properties
+nbproject/private/private.properties
