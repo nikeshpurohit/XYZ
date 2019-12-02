@@ -10,6 +10,8 @@ import com.DBConnectionProvider;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.HashSet;
 import model.Claims;
 /**
  *
@@ -53,7 +55,8 @@ public class ClaimsDAOImpl {
                 c.setRationale(rs.getString("rationale"));
                 c.setStatus(rs.getString("status"));
                 c.setDate(rs.getDate("date"));
-                
+                c.setUsername(rs.getString("mem_id"));
+                                
                 claims.add(c);
             }
         } catch(SQLException e){;}
@@ -78,5 +81,19 @@ public class ClaimsDAOImpl {
         System.out.println(query);
         com.DBConnectionProvider.commitQuery(query);
         
+    }
+    
+    public static float totalClaimAmount(){
+        float total = 0;
+        String query = "SELECT XYZ.\"Claims\".\"amount\" FROM XYZ.\"Claims\"";
+        try{
+            ResultSet rs = com.DBConnectionProvider.executeQuery(query);            
+            while (rs.next()){
+                total += rs.getFloat("amount");
+            }
+        } catch(SQLException e){;}        
+        
+        System.out.println(total);
+        return total;
     }
 }

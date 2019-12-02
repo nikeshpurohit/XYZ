@@ -8,26 +8,18 @@ package com;
 import dao.ClaimsDAOImpl;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.SQLException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.HashSet;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import java.util.ArrayList;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import javax.swing.text.DateFormatter;
 
 /**
  *
- * @author Ralph Sartorio
+ * @author tobys
  */
-@WebServlet(name = "MakeClaimsServlet", urlPatterns = {"/MakeClaimsServlet.do"})
-public class MakeClaimsServlet extends HttpServlet {
+public class ListAllClaims extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -43,24 +35,11 @@ public class MakeClaimsServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             HttpSession session = request.getSession();
-            //System.out.println("IT worked");
-            String ClaimsID = (String)session.getAttribute("username");
-            Date ClaimsDate = new Date();            
-            String ClaimsDesc = request.getParameter("ClaimsRationale");
-            String ClaimsStatus = "open";
-            String ClaimsAmount = request.getParameter("ClaimsAmount");
-                               
-            if (ClaimsDesc.isEmpty()|| ClaimsAmount.isEmpty()){
-                out.println("Not All fields are full!");
-                session.setAttribute("MakeClaimsError", "errEmpty");
-                response.sendRedirect(request.getContextPath() + "/MakeClaims.jsp");
-            }else{
-                model.Claims claim = new model.Claims(ClaimsID, Integer.parseInt(ClaimsAmount), ClaimsDate, ClaimsDesc, ClaimsStatus );
-                dao.ClaimsDAOImpl.MakeNewClaims(claim);
-                response.sendRedirect(request.getContextPath() + "/MakeClaims.jsp");                       
-            } 
-        } 
-    } 
+            ArrayList<model.Claims> claims = new ArrayList<model.Claims>();
+            claims = ClaimsDAOImpl.listAllClaims();
+            session.setAttribute("listOfAllClaims", claims);
+        }
+    }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
