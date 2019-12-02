@@ -1,5 +1,5 @@
 .header {
-    background-color: #33C3F0;
+    background-color: #33C3F0;   
 }
 
 .frow {
@@ -20,20 +20,28 @@
 }
 
 #centered-h1 {
-        position: fixed;
-        left: 50%;
-        top: 50%;
-        transform: translateX(-50%) translateY(-50%);
-        text-align: center;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    text-align: center;
 }
 
 #centered-h3 {
-        position: fixed;
-        left: 50%;
-        top: 65%;
-        transform: translateX(-50%) translateY(-65%);
-        text-align: center;
-        color: #33C3F0;
+    position: fixed;
+    left: 50%;
+    top: 65%;
+    transform: translateX(-50%) translateY(-65%);
+    text-align: center;
+    color: #33C3F0;
+}
+
+.logout {
+    position: inherit;
+    top: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    text-align: center;
+    float: right;
 }
 
 
@@ -52,6 +60,7 @@
     margin: 4px;
     border-radius: 15px;
     border: 1px solid #bbb;
+    grid-column: span 2;
 }
 
 .dash-card-half {
@@ -60,8 +69,8 @@
     flex-grow: 1;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
     height: auto;
-    max-height: 50%;
-    max-width: 50%;
+    max-height: 100%;
+    max-width: 100%;
     min-width: 50%;
     background: #ffffff;
     overflow: hidden;
@@ -69,7 +78,6 @@
     margin: 4px;
     border-radius: 15px;
     border: 1px solid #bbb;
-    float: left;
 }
 
 .dash-card-half-right {
@@ -78,8 +86,9 @@
     flex-grow: 1;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
     height: auto;
-    max-height: 50%;
-    max-width: 50%;
+    max-height: 100%;
+    min-height: 100px;
+    max-width: 100%;
     min-width: 30%;
     background: #ffffff;
     overflow: hidden;
@@ -87,6 +96,7 @@
     margin: 4px;
     border-radius: 15px;
     border: 1px solid #bbb;
+    grid-column: 2;
 }
 
 .dash-card-image {
@@ -134,3 +144,16 @@
     object-position: center;
 }
 
+.section-grid {
+    height: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    flex-direction: row;
+    grid-gap: 8px;
+    /* grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); 350px min width of grid item*/
+    
+    line-grid:create;
+    /*justify-content: center;*/
+}
+
+    
