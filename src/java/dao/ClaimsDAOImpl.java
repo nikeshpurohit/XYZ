@@ -10,6 +10,8 @@ import com.DBConnectionProvider;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.HashSet;
 import model.Claims;
 /**
  *
@@ -53,7 +55,8 @@ public class ClaimsDAOImpl {
                 c.setRationale(rs.getString("rationale"));
                 c.setStatus(rs.getString("status"));
                 c.setDate(rs.getDate("date"));
-                
+                c.setUsername(rs.getString("mem_id"));
+                                
                 claims.add(c);
             }
         } catch(SQLException e){;}

@@ -29,8 +29,16 @@
         <servlet-class>com.LogoutServlet</servlet-class>
     </servlet>
     <servlet>
+        <servlet-name>ListAllClaims</servlet-name>
+        <servlet-class>com.ListAllClaims</servlet-class>
+    </servlet>
+    <servlet>
         <servlet-name>UserDashServlet</servlet-name>
         <servlet-class>com.UserDashServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ListAllApplied</servlet-name>
+        <servlet-class>com.ListAllApplied</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>LogoutServ</servlet-name>
@@ -101,6 +109,10 @@
         <url-pattern>/Register</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
+        <servlet-name>ListAllClaims</servlet-name>
+        <url-pattern>/ListAllClaims</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
         <servlet-name>AdminDashServlet</servlet-name>
         <url-pattern>/AdminDashServlet</url-pattern>
     </servlet-mapping>
@@ -124,7 +136,7 @@
         <servlet-name>MakeClaims</servlet-name>
         <url-pattern>/MakeClaims</url-pattern>
     </servlet-mapping>
-     <servlet>
+    <servlet>
         <servlet-name>MakePaymentServ</servlet-name>
         <servlet-class>com.MakePaymentServlet</servlet-class>
     </servlet>
@@ -139,6 +151,10 @@
     <servlet-mapping>
         <servlet-name>MakePayment</servlet-name>
         <url-pattern>/MakePayment</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ListAllApplied</servlet-name>
+        <url-pattern>/ListAllApplied</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>20</session-timeout>
