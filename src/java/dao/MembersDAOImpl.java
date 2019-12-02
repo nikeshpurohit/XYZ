@@ -21,8 +21,8 @@ import model.User;
  */
 public class MembersDAOImpl {
 
-    public static model.User findByUsername(String username) throws SQLException {
-        model.User entity = null;
+    public static model.Member findByUsername(String username) throws SQLException {
+        model.Member entity = null;
         String query = ("SELECT * FROM XYZ.\"Members\" WHERE XYZ.\"Users\".\"id\" = " + "'" + username + "'");
         //System.out.println(query);
         ResultSet rs = com.DBConnectionProvider.executeQuery(query);
@@ -32,22 +32,16 @@ public class MembersDAOImpl {
         } else {
 
             do {
-                entity = new model.User(rs.getString("id"), rs.getString("password"), rs.getString("status"));
+                entity = new model.Member();
+                entity.setAddress(rs.getString("address"));
+                entity.setDOB(rs.getString("dob"));
+                entity.setDOR(rs.getString("dor"));
+                entity.setName(rs.getString("name"));
+                entity.setBalance(rs.getFloat("balance"));
             } while (rs.next());
         }
 
-        /*if(rs.isBeforeFirst()){return null;}
-
-        //rs.beforeFirst();
-
-        while (rs.next()) {
-            entity = new Classes.User(rs.getString("id"), rs.getString("password"), rs.getString("status"));
-        } */
         return entity;
-        /*while (rs.next()) {
-            entity = new Classes.User(rs.getString("id"), rs.getString("password"), rs.getString("status"));
-            //System.out.println(entity.getUsername() + entity.getPassword() + entity.getStatus());
-        }*/
     }
 
     public static ArrayList listAllMembers(){

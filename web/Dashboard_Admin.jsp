@@ -41,7 +41,7 @@
 
     <div class="header">
         <form action="Logout.do" method="POST" ><input style="float: right;" type="submit" value="Logout"/></form>
-        <h1 id="logo-text">XYZ</h1>
+        <h1 id="logo-text">XYZ Drivers Association</h1>
 
     </div>
     <div class="container">

@@ -49,20 +49,25 @@
                 <!--<div class="dash-card-image" style="background-image: url(images/thumb-project-tRAYce.png);"></div>-->
                 <a href="#" class="dash-card-title" target="_blank">Your Profile</a>
                 <div class="dash-card-content">
-                    <table style="width:100%">
-                        <tr>
-                            <th>Name:</th>
-                            <td>Nikesh</td>
-                        </tr>
-                        <tr>
-                            <th>Address:</th>
-                            <td>345 Downend Road, Bristol</td>
-                        </tr>
-                        <tr>
-                            <th>Date of birth:</th>
-                            <td>34/05/39</td>
-                        </tr>
-                    </table>
+                    <c:if test="${memberDetails} == null">
+                        <p> Your registration is incomplete!
+                        </c:if>
+                        <c:forEach items="${memberDetails}" var="item">
+                        <table style="width:100%">
+                            <tr>
+                                <th>Name:</th>
+                                <td>${item.name}</td>
+                            </tr>
+                            <tr>
+                                <th>Address:</th>
+                                <td>${item.address}</td>
+                            </tr>
+                            <tr>
+                                <th>Date of birth:</th>
+                                <td>${item.dob}</td>
+                            </tr>
+                        </table>
+                    </c:forEach>
                     <form action="" method="POST"><input class="button-primary" style="float: right;" type="submit" value="Edit Details"/></form>
                 </div>
             </div>
