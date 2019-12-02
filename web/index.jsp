@@ -5,7 +5,7 @@
         <!-- Basic Page Needs
         –––––––––––––––––––––––––––––––––––––––––––––––––– -->
         <meta charset="utf-8">
-        <title>XYZ Login</title>
+        <title>XYZ Drivers Association</title>
         <meta name="description" content="">
         <meta name="author" content="">
 
@@ -36,11 +36,10 @@
         <% request.getSession().setAttribute("LoginError", "none"); %>
         <% request.getSession().setAttribute("RegisterError", "none"); %>
         <% request.getSession().setAttribute("RegisterSuccess", "none");%>
-        <!--<div class="header">
-          <h1 id="logo-text">XYZ</h1>
-        </div>--->
+        
         <div>
             <h1 id="centered-h1">XYZ Drivers Association</h1>
+            <h3 id="centered-h3">please wait while you are directed to the login page</h3>
         </div>
 
         <!-- End Document
