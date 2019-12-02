@@ -82,4 +82,18 @@ public class ClaimsDAOImpl {
         com.DBConnectionProvider.commitQuery(query);
         
     }
+    
+    public static float totalClaimAmount(){
+        float total = 0;
+        String query = "SELECT XYZ.\"Claims\".\"amount\" FROM XYZ.\"Claims\"";
+        try{
+            ResultSet rs = com.DBConnectionProvider.executeQuery(query);            
+            while (rs.next()){
+                total += rs.getFloat("amount");
+            }
+        } catch(SQLException e){;}        
+        
+        System.out.println(total);
+        return total;
+    }
 }
