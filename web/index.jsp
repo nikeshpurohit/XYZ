@@ -39,11 +39,9 @@
   <!--<div class="header">
     <h1 id="logo-text">XYZ</h1>
   </div>--->
-  <center><div class="container">
-	<div class="row">
-		<h1 align="center">XYZ Drivers Association</h1>
-		</div>
-  </div></center>
+  <div style="position: absolute;  left: 50%; top: 50%;">
+		<h1>XYZ Drivers Association</h1>
+  </div>
 
 <!-- End Document
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->

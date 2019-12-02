@@ -42,7 +42,7 @@ public class MakeClaimsServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             HttpSession session = request.getSession();
-            System.out.println("IT worked");
+            //System.out.println("IT worked");
             String ClaimsID = (String)session.getAttribute("username");
             Date ClaimsDate = new Date();            
             String ClaimsDesc = request.getParameter("ClaimsRationale");

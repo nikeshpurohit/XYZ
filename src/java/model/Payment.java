@@ -19,7 +19,7 @@ public class Payment {
     
     public Payment(){}
     
-    public Payment(String username, int amount, Date date, String typeOfPayment, String status){
+    public Payment(String username, int amount, Date date, String typeOfPayment){
         this.username = username;
         this.amount = amount;
         this.date = date;
