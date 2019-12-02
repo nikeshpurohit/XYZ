@@ -88,16 +88,24 @@
                     <table>
                         <thead>
                             <tr>
-                                <th>User ID</th>
+                                <th>Member Name</th>
+                                <th>Address</th>
+                                <th>Date of birth</th>
+                                <th>Registration date</th>
+                                <th>Account balance</th>
                                 <th>Status</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <c:forEach items="${listOfAllUsers}" var="user">
+                            <c:forEach items="${listOfAllMembers}" var="member">
 
                                 <tr>
-                                    <td>${user.username}</td>
-                                    <td>${user.status}</td>
+                                    <td>${member.name}</td>
+                                    <td>${member.address}</td>
+                                    <td>${member.dob}</td>
+                                    <td>${member.dor}</td>
+                                    <td>${member.balance}</td>
+                                    <td>${member.status}</td>
                                 </tr>
 
                             </c:forEach>

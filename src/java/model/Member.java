@@ -70,5 +70,7 @@ public class Member {
 
     public float getBalance() {return balance;}
     
+    public String getUsername() {return user.getUsername();}
+    
     
 }
