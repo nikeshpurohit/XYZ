@@ -5,19 +5,20 @@
  */
 package com;
 
+import dao.MembersDAOImpl;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author nik_3
+ * @author tobys
  */
-public class TestServlet extends HttpServlet {
+public class ListAllApplied extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -32,18 +33,10 @@ public class TestServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            HttpSession session = request.getSession();
-            com.LoginSession login_session = (com.LoginSession)session.getAttribute("login_session");
-            out.println(login_session.getUsername());
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet TestServlet</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet TestServlet at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
+            ArrayList<model.Member> members = new ArrayList<model.Member>();
+            members = MembersDAOImpl.listAllAppliedMembers();
+            
+            request.setAttribute("listOfAppliedUsers", members);
         }
     }
 
