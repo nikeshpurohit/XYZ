@@ -1,6 +1,7 @@
 <%@page import="java.util.Iterator"%>
 <%@page import="java.util.ArrayList"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -49,29 +50,27 @@
                 <!--<div class="dash-card-image" style="background-image: url(images/thumb-project-tRAYce.png);"></div>-->
                 <a href="#" class="dash-card-title" target="_blank">Your Profile</a>
                 <div class="dash-card-content">
-                    <c:if test="${memberDetails} == null">
+                    <c:if test="${memberDetails == null}">
                         <p> Your registration is incomplete!
                         </c:if>
-                        <c:forEach items="${memberDetails}" var="item">
-                        <table style="width:100%">
-                            <tr>
-                                <th>Name:</th>
-                                <td>${item.name}</td>
-                            </tr>
-                            <tr>
-                                <th>Address:</th>
-                                <td>${item.address}</td>
-                            </tr>
-                            <tr>
-                                <th>Date of birth:</th>
-                                <td>${item.dob}</td>
-                            </tr>
-                            <tr>
-                                <th>Bal: delete</th>
-                                <td>${item.balance}</td>
-                            </tr>
-                        </table>
-                    </c:forEach>
+                        <c:if test="${memberDetails != null}">
+                            <c:forEach items="${memberDetails}" var="item">
+                            <table style="width:100%">
+                                <tr>
+                                    <th>Name:</th>
+                                    <td>${item.name}</td>
+                                </tr>
+                                <tr>
+                                    <th>Address:</th>
+                                    <td>${item.address}</td>
+                                </tr>
+                                <tr>
+                                    <th>Date of birth:</th>
+                                    <td>${item.dob}</td>
+                                </tr>
+                            </table>
+                        </c:forEach>
+                    </c:if>
                     <form action="" method="POST"><input class="button-primary" style="float: right;" type="submit" value="Edit Details"/></form>
                 </div>
             </div>
@@ -82,7 +81,14 @@
                     <div class="dash-card-title" target="_blank">Your Account Balance</div>
                     <div class="dash-card-content">
                         <c:forEach items="${memberDetails}" var="item">
-                        <h1>£${item.balance}</h1>
+                            <c:if test="${item.balance < 0}">
+                                <h1 style="color: red;">£<fmt:formatNumber type="number" maxFractionDigits="2" minFractionDigits="2" value="${item.balance}"/></h1>
+                            </c:if>
+                            <c:if test="${item.balance >= 0}">
+                                <h1>£<fmt:formatNumber type="number" maxFractionDigits="2" minFractionDigits="2" value="${item.balance}"/></h1>  
+                            </c:if>
+
+
                         </c:forEach>
                     </div>
                 </div>

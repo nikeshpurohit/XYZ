@@ -22,7 +22,7 @@ import model.User;
 public class MembersDAOImpl {
 
     public static model.Member findByUsername(String username) throws SQLException {
-        model.Member entity = null;
+        model.Member entity = new model.Member();
         String query = ("SELECT * FROM XYZ.\"Members\" WHERE XYZ.\"Members\".\"id\" = " + "'" + username + "'");
         //System.out.println(query);
         ResultSet rs = com.DBConnectionProvider.executeQuery(query);
@@ -32,7 +32,6 @@ public class MembersDAOImpl {
         } else {
 
             do {
-                entity = new model.Member();
                 entity.setAddress(rs.getString("address"));
                 entity.setDOB(rs.getString("dob"));
                 entity.setDOR(rs.getString("dor"));

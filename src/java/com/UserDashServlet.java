@@ -57,7 +57,6 @@ public class UserDashServlet extends HttpServlet{
             model.Member m = new model.Member();
             //try {selfmember = dao.MembersDAOImpl.findByUsername(username);} catch(SQLException e) {System.out.println("member does not exist for this user" + e);}
             m = dao.MembersDAOImpl.findByUsername(username);
-            System.out.println(m.getAddress());
             selfmember.add(m);
             request.setAttribute("memberDetails", selfmember);
             
