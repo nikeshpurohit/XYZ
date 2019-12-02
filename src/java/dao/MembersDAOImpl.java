@@ -19,11 +19,11 @@ import model.User;
  *
  * @author nik_3
  */
-public class UsersDAOImpl {
+public class MembersDAOImpl {
 
     public static model.User findByUsername(String username) throws SQLException {
         model.User entity = null;
-        String query = ("SELECT * FROM XYZ.\"Users\" WHERE XYZ.\"Users\".\"id\" = " + "'" + username + "'");
+        String query = ("SELECT * FROM XYZ.\"Members\" WHERE XYZ.\"Users\".\"id\" = " + "'" + username + "'");
         //System.out.println(query);
         ResultSet rs = com.DBConnectionProvider.executeQuery(query);
 
@@ -50,23 +50,26 @@ public class UsersDAOImpl {
         }*/
     }
 
-    public static ArrayList listAllUsers(){
-        ArrayList<model.User> users = new ArrayList<model.User>();
-        String query = "SELECT * FROM XYZ.\"Users\"";
+    public static ArrayList listAllMembers(){
+        ArrayList<model.Member> members = new ArrayList<model.Member>();
+        String query = "SELECT * FROM XYZ.\"Members\"";
         try {
             ResultSet rs = com.DBConnectionProvider.executeQuery(query);
 
             while (rs.next()){
-                model.User u = new model.User();
-                u.setUsername(rs.getString("id"));
-                u.setStatus(rs.getString("status"));
-                users.add(u);
+                model.Member m = new model.Member();
+                m.setName(rs.getString("name"));
+                m.setAddress(rs.getString("address"));
+                m.setDOB(rs.getString("dob"));
+                m.setDOR(rs.getString("dor"));
+                m.setBalance(rs.getFloat("balance"));
+                members.add(m);
             }
         } catch(SQLException e){
             e.printStackTrace();
         }
 
-        return users;
+        return members;
     }
 
     public static void createNewUser(model.User user){

@@ -60,7 +60,7 @@ public class LoginServlet extends HttpServlet {
                         //HttpSession session = request.getSession();
                         session.setAttribute("username", username);
                         request.getSession().setAttribute("LoginError", "none");
-                        model.LoginSession login_session = new model.LoginSession(user, session, response);
+                        com.LoginSession login_session = new com.LoginSession(user, session, response);
 
                         
 

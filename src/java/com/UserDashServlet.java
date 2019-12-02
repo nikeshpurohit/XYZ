@@ -42,6 +42,13 @@ public class UserDashServlet extends HttpServlet {
             //model.Claims[] claimsArray = claims.toArray(new model.Claims[claims.size()]);
             request.setAttribute("listOfUserClaims", claims);
             
+            
+            //===================Get payments for this user=====================
+            ArrayList<model.Payment> payments = new ArrayList<model.Payment>();
+            payments = dao.PaymentsDAOImpl.listAllPaymentsMadeForUser(username);
+            request.setAttribute("listOfUserPayments", payments);
+            
+            
             request.getRequestDispatcher("Dashboard.jsp").forward(request, response);
             
         }
