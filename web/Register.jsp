@@ -54,17 +54,35 @@
                         <div style="color : red">The Password given does not match! re-type both of your passwords. </div>
                         <% }else if((errString.equals("none")) && (successString.equals("true"))){ %>
                         <div style="color : green">User created successfully</div>
+                        
                         <%} %>
                        
                     <form method="POST" action="Register.do">
+                        
                         <label for="rUsernameInput">Username</label>
-                        <input class="u-full-width" type="text" placeholder=" " name="rUsernameInput" required>
+                        <input class="u-full-width" type="text" placeholder=" " name="rFirstNameInput" required>
+                        
+                        <label for="rFirstNameInput">First Name</label>
+                        <input class="u-full-width" type="text" placeholder=" " name="rFirstNameInput" required>
+                        
+                        <label for="rSecondNaameInput">Second Name</label>
+                        <input class="u-full-width" type="text" placeholder=" " name="rSecondNameInput" required>
 
                         <label for="rPasswordInput">Password</label>
                         <input class="u-full-width" type="password" placeholder=" " name="rPasswordInput" required>
 
-			<label for="rPpasswordInput2">Re-Enter Password</label>
+			<label for="rPasswordInput2">Re-Enter Password</label>
                         <input class="u-full-width" type="password" placeholder=" " name="rPasswordInput2" required>
+                        
+			<label for="rE-mail">E-Mail Address</label>
+                        <input class="u-full-width" type="text" placeholder=" " name="rEmail" required>
+
+                        <label for="rDoB">Date of Birth</label>
+                        <input class="u-full-width" type="text" placeholder=" " name="rDoB" required>
+                        
+			<label for="rAddress">Address</label>
+                        <input class="u-full-width" type="text" placeholder=" " name="rAddress" required>
+                        
 
                         <input class="button-primary" type="submit" value="Register" name="registerButton">
                         </form>

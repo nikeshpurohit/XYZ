@@ -39,9 +39,14 @@ public class RegisterServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
 
-            String RUserName = request.getParameter("rUsernameInput");
+            String RUserName= request.getParameter("rUserNameInput");
+            String RFirstName = request.getParameter("rUsernameInput");
+            String RSecondName = request.getParameter("rSecondNameInput");
             String RPassword = request.getParameter("rPasswordInput");
             String RPassword2 = request.getParameter("rPasswordInput2");
+            String REmail = request.getParameter("rEmail");
+            String RDoB = request.getParameter("rDoB");
+            String RAddress = request.getParameter("rAddress");
             String Status = "APPLIED";
 
             model.User user = new model.User();
@@ -52,8 +57,9 @@ public class RegisterServlet extends HttpServlet {
                     user = dao.UsersDAOImpl.findByUsername(RUserName);// this goes to the DB to check if there is a user with the same user name
 
 
-                    if (RUserName.isEmpty()|| RPassword.isEmpty() || RPassword2.isEmpty()){
-                        out.println("All fields are empty!");
+                    if (RUserName.isEmpty()|| RFirstName.isEmpty() || RSecondName.isEmpty() || RPassword.isEmpty() || RPassword2.isEmpty() 
+                            || REmail.isEmpty() || RDoB.isEmpty() || RAddress.isEmpty()){
+                        out.println("A fields is empty! Please input data in all the ");
                         session.setAttribute("RegisterError", "REmpty");
                         response.sendRedirect(request.getContextPath() + "/Register.jsp");
                     }
