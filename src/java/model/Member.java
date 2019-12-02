@@ -5,19 +5,43 @@
  */
 package model;
 
+import javax.persistence.Table;
+
 /**
  *
  * @author nik_3
  */
+@Table(name = "Members")
+
 public class Member {
     public model.User user;
     public String name;
     public String address;
     public String dob;
     public String dor;
-    public String status = user.getStatus();
+    public String status;
     public float balance;
     
+    public Member() {}
+
+    public Member(Member m) {
+        this.user = m.getUser();
+        this.name = m.getName();
+        this.address = m.getAddress();
+        this.dob = m.getDob();
+        this.dor = m.getDor();
+        this.status = m.getStatus();
+    }
+
+    public Member(User user, String name, String address, String dob, String dor, float balance) {
+        this.user = user;
+        this.name = name;
+        this.address = address;
+        this.dob = dob;
+        this.dor = dor;
+        this.balance = balance;
+    }
+       
     public void setUser(model.User user) {this.user = user;}
     
     public void setName(String name) {this.name = name;}
