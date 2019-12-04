@@ -8,7 +8,6 @@ package com;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
-import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -85,16 +84,11 @@ public class RegisterServlet extends HttpServlet {
                         request.getSession().setAttribute("RegisterError", "none");
                         request.getSession().setAttribute("LoginError", "RSuccess");
                         
-                        //Date DoB = new SimpleDateFormat("ddMMyy").parse(request.getParameter("rDoB"));
-                        
-                        DateFormat dateFormat = new SimpleDateFormat("ddMMyy");
-
-                        //DateFormat dadteFormat = SimpleDateFormat("ddMMyy");
-                        String strDoB = dateFormat.format((request.getParameter("rDoB")));
+                        DoB = new SimpleDateFormat("ddMMyy").parse(request.getParameter("rDoB"));
                         String rPassword = "dob";
                    
                         model.User AddUser = new model.User(RUserName, rPassword, Status);
-                        model.Member AddMem = new model.Member(AddUser, RFullName, RAddress, strDoB , DoR, RBalance, Status);
+                        model.Member AddMem = new model.Member(AddUser, RFullName, RAddress, DoB , DoR, RBalance, Status);
                         
                         dao.UsersDAOImpl.createNewUser(AddUser);
                         dao.MembersDAOImpl.CreateNewMember(AddMem);
@@ -106,7 +100,7 @@ public class RegisterServlet extends HttpServlet {
                     }
                     /*else {
                         out.println("theres a problem with your validation....");
-                    }*/ catch (SQLException  ex) {
+                    }*/ catch (SQLException | ParseException ex) {
                 Logger.getLogger(LoginServlet.class.getName()).log(Level.SEVERE, null, ex);
                 out.println(ex);
             }
