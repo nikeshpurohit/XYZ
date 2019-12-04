@@ -79,7 +79,7 @@ public class MembersDAOImpl {
         
         
         //DB Query
-        String query = "INSERT INTO XYZ.\"Members\" (\"id\",\"name\",\"address\",\"dob\",\"dor\",\"status\",\"balance\") VALUES ('" + Username + "','" + FullName + "', '" + Address + "', " + DoB + " , CURRENT_DATE , '" + Status + "' , " + Balance + ")";
+        String query = "INSERT INTO XYZ.\"Members\" (\"id\",\"name\",\"address\",\"dob\",\"dor\",\"status\",\"balance\") VALUES ('" + Username + "','" + FullName + "', '" + Address + "', '" + DoB + "' , CURRENT_DATE , '" + Status + "' , " + Balance + ")";
         //String query = "INSERT INTO XYZ.\"Claims\" (\"mem_id\",\"date\",\"rationale\",\"status\",\"amount\") VALUES ('" + ClaimsID + "', CURRENT_DATE ,'" + ClaimsRationale + "', '" + ClaimsStatus + "', " + ClaimsAmount + ")" ;
 
         System.out.println(query);

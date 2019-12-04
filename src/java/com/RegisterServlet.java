@@ -84,8 +84,9 @@ public class RegisterServlet extends HttpServlet {
                         request.getSession().setAttribute("RegisterError", "none");
                         request.getSession().setAttribute("LoginError", "RSuccess");
                         
-                        DoB = new SimpleDateFormat("ddMMyy").parse(request.getParameter("rDoB"));
-                        String rPassword = "dob";
+                        String DoB = request.getParameter("rDoB");
+                        String tempPassword[] = DoB.split("-");
+                        String rPassword = tempPassword[2] + tempPassword[1] + tempPassword[0];
                    
                         model.User AddUser = new model.User(RUserName, rPassword, Status);
                         model.Member AddMem = new model.Member(AddUser, RFullName, RAddress, DoB , DoR, RBalance, Status);
@@ -100,7 +101,7 @@ public class RegisterServlet extends HttpServlet {
                     }
                     /*else {
                         out.println("theres a problem with your validation....");
-                    }*/ catch (SQLException | ParseException ex) {
+                    }*/ catch (SQLException ex) {
                 Logger.getLogger(LoginServlet.class.getName()).log(Level.SEVERE, null, ex);
                 out.println(ex);
             }
