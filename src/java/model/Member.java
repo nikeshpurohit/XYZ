@@ -5,7 +5,9 @@
  */
 package model;
 
+import java.util.Date;
 import javax.persistence.Table;
+import java.text.SimpleDateFormat;
 
 /**
  *
@@ -18,7 +20,7 @@ public class Member {
     public String name;
     public String address;
     public String dob;
-    public String dor;
+    public Date dor;
     public String status;
     public float balance;
     
@@ -33,13 +35,14 @@ public class Member {
         this.status = m.getStatus();
     }
 
-    public Member(User user, String name, String address, String dob, String dor, float balance) {
+    public Member(User user, String name, String address, String dob, Date dor, float balance, String status) {
         this.user = user;
         this.name = name;
         this.address = address;
         this.dob = dob;
         this.dor = dor;
         this.balance = balance;
+        this.status = status;
     }
        
     public void setUser(model.User user) {this.user = user;}
@@ -50,7 +53,7 @@ public class Member {
     
     public void setDOB(String dob) {this.dob = dob;}
     
-    public void setDOR(String dor) {this.dor = dor;}
+    public void setDOR(Date dor) {this.dor = dor;}
 
     public void setStatus(String status) {this.status = status;}
 
@@ -64,7 +67,7 @@ public class Member {
 
     public String getDob() {return dob;}
 
-    public String getDor() {return dor;}
+    public Date getDor() {return dor;}
 
     public String getStatus() {return status;}
 
@@ -72,5 +75,6 @@ public class Member {
     
     public String getUsername() {return user.getUsername();}
     
+
     
 }

@@ -74,10 +74,8 @@ public class ClaimsDAOImpl {
          int ClaimsAmount = claims.getAmount();
 
         //DB Query
-        //String query = "INSERT INTO XYZ.\"Claims\" (\"mem_id\",\"date\",\"rationale\",\"status\",\"amount\") VALUES ('" + ClaimsID + "', '" + ClaimsDate + "', '" + ClaimsRationale + ", " + ClaimsStatus + ", " + ClaimsAmount + "')" ;
         String query = "INSERT INTO XYZ.\"Claims\" (\"mem_id\",\"date\",\"rationale\",\"status\",\"amount\") VALUES ('" + ClaimsID + "', CURRENT_DATE ,'" + ClaimsRationale + "', '" + ClaimsStatus + "', " + ClaimsAmount + ")" ;
-          //              INSERT INTO XYZ.\"Claims\" (\"mem_id\",\"date\",\"rationale\",\"status\",\"amount\") VALUES ('me-aydin', CURRENT_DATE, 'crash', 'open', 5000.0)"
-        //String query = "INSERT INTO XYZ.\"Users\" (\"id\",\"password\",\"status\") VALUES ('" + id + "', '" + password + "', '" + status + "')" ;
+        
         System.out.println(query);
         com.DBConnectionProvider.commitQuery(query);
         
