@@ -9,6 +9,8 @@ import java.util.Date;
 import com.DBConnectionProvider;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashSet;
@@ -72,15 +74,45 @@ public class ClaimsDAOImpl {
          String ClaimsRationale= claims.getRationale();
          String ClaimsStatus = claims.getStatus();
          int ClaimsAmount = claims.getAmount();
-
+         
+         ArrayList<Date> dates = new ArrayList<Date>();
+         
         //DB Query
-        //String query = "INSERT INTO XYZ.\"Claims\" (\"mem_id\",\"date\",\"rationale\",\"status\",\"amount\") VALUES ('" + ClaimsID + "', '" + ClaimsDate + "', '" + ClaimsRationale + ", " + ClaimsStatus + ", " + ClaimsAmount + "')" ;
         String query = "INSERT INTO XYZ.\"Claims\" (\"mem_id\",\"date\",\"rationale\",\"status\",\"amount\") VALUES ('" + ClaimsID + "', CURRENT_DATE ,'" + ClaimsRationale + "', '" + ClaimsStatus + "', " + ClaimsAmount + ")" ;
-          //              INSERT INTO XYZ.\"Claims\" (\"mem_id\",\"date\",\"rationale\",\"status\",\"amount\") VALUES ('me-aydin', CURRENT_DATE, 'crash', 'open', 5000.0)"
-        //String query = "INSERT INTO XYZ.\"Users\" (\"id\",\"password\",\"status\") VALUES ('" + id + "', '" + password + "', '" + status + "')" ;
-        System.out.println(query);
-        com.DBConnectionProvider.commitQuery(query);
-        
+        String query1 = "SELECT * FROM XYZ.\"Claims\" WHERE XYZ.\"Claims\".\"mem_id\" = " + "'" + ClaimsID + "'";
+        ResultSet rs = com.DBConnectionProvider.executeQuery(query1);
+        try{
+            
+                System.out.println("hello1");
+                while(rs.next()){
+                    dates.add(rs.getDate("date"));
+                    System.out.println("hello2");
+                }
+                System.out.println(dates.size() + " dates size");
+                if (dates.size() < 2){
+                    com.DBConnectionProvider.commitQuery(query);
+                    System.out.println("hello3");
+                }else{
+                    SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+                    Date startOfYear = format.parse("2019-01-01"); 
+                    System.out.println(startOfYear + " start of ueardsgsg");
+                    System.out.println(dates.get(0) + " dates in db");
+                    int claimsThisYear = 0;
+                    System.out.println("hello4");
+                    for (int i = 0; i < dates.size();i++){
+                        if (dates.get(i).after(startOfYear)){
+                            claimsThisYear++;
+                            System.out.println("hello5");
+                        }
+                    }
+                    if (claimsThisYear < 2){
+                        com.DBConnectionProvider.commitQuery(query);
+                        System.out.println("hello6");
+                    }
+                    System.out.println(dates.size());
+                
+            }
+        }catch(SQLException | ParseException e){;}
     }
     
     public static float totalClaimAmount(){
@@ -113,5 +145,6 @@ public class ClaimsDAOImpl {
             }
         } catch(SQLException e){;}       
         amountToPay = total / numOfMembers;
+        //Loop through members database and minus amountToPay from balance of each member
     }
 }
