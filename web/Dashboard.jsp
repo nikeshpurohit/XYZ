@@ -9,7 +9,7 @@
         <!-- Basic Page Needs
         ?????????????????????????????????????????????????? -->
         <meta charset="utf-8">
-        <title>XYZ Login</title>
+        <title>XYZ Drivers Association</title>
         <meta name="description" content="">
         <meta name="author" content="">
 
@@ -40,7 +40,7 @@
     <% com.LoginSession login_session = (com.LoginSession) request.getSession().getAttribute("login_session"); %>
     <% String uname = login_session.getUsername();%>
     <div class="header">
-        <form action="Logout.do" method="POST" ><input class="logout" type="submit" value="Logout"/></form>
+        <form action="Logout.do" method="POST" ><input style="float: right;" type="submit" value="Logout"/></form>
         <h1 id="logo-text">XYZ</h1>
     </div>
     <div class="container">
@@ -98,7 +98,7 @@
                     <!--<div class="dash-card-image" style="background-image: url(images/thumb-project-tRAYce.png);"></div>-->
                     <div class="dash-card-title" target="_blank">Your Account Status</div>
                     <div class="dash-card-content">
-                        <h1><c:out value='${user.status}'/> </h1>       
+                        <h1><c:out value='${user.status}'/> </h1> 
                     </div>
                 </div>
             </div>
