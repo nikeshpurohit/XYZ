@@ -32,7 +32,27 @@
         <!-- Favicon
         –––––––––––––––––––––––––––––––––––––––––––––––––– -->
         <link rel="icon" type="image/png" href="images/favicon.ico">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=places&key=AIzaSyBcumNoMo3C2x2BjP2GbX8dX25JEDHoH1M"></script>
+<script>
+    var searchInput = 'search_input';
 
+$(document).ready(function () {
+    var autocomplete;
+    autocomplete = new google.maps.places.Autocomplete((document.getElementById(searchInput)), {
+        types: ['geocode'],
+    });
+	
+    google.maps.event.addListener(autocomplete, 'place_changed', function () {
+        var near_place = autocomplete.getPlace();
+        document.getElementById('loc_lat').value = near_place.geometry.location.lat();
+        document.getElementById('loc_long').value = near_place.geometry.location.lng();
+		
+        document.getElementById('latitude_view').innerHTML = near_place.geometry.location.lat();
+        document.getElementById('longitude_view').innerHTML = near_place.geometry.location.lng();
+    });
+});    
+</script>
     </head>
     <body>
 
@@ -54,17 +74,23 @@
                         <div style="color : red">The Password given does not match! re-type both of your passwords. </div>
                         <% }else if((errString.equals("none")) && (successString.equals("true"))){ %>
                         <div style="color : green">User created successfully</div>
+                        
                         <%} %>
                        
                     <form method="POST" action="Register.do">
-                        <label for="rUsernameInput">Username</label>
-                        <input class="u-full-width" type="text" placeholder=" " name="rUsernameInput" required>
+                                                
+                        <label for="rFirstNameInput">First Name</label>
+                        <input class="u-full-width" type="text" placeholder=" " name="rFirstNameInput" required>
+                        
+                        <label for="rSecondNaameInput">Second Name</label>
+                        <input class="u-full-width" type="text" placeholder=" " name="rSecondNameInput" required>
 
-                        <label for="rPasswordInput">Password</label>
-                        <input class="u-full-width" type="password" placeholder=" " name="rPasswordInput" required>
-
-			<label for="rPpasswordInput2">Re-Enter Password</label>
-                        <input class="u-full-width" type="password" placeholder=" " name="rPasswordInput2" required>
+                        <label for="rDoB">Date of Birth</label>
+                        <input class="datepicker" type="date" placeholder=" " name="rDoB" required>
+                        
+			<label for="rAddress">Address</label>
+                        <input class="u-full-width" type="text" id ="search_input" placeholder=" " name="rAddress" required>
+                        
 
                         <input class="button-primary" type="submit" value="Register" name="registerButton">
                         </form>

@@ -8,6 +8,9 @@ package com;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
@@ -38,22 +41,32 @@ public class RegisterServlet extends HttpServlet {
 
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-
-            String RUserName = request.getParameter("rUsernameInput");
-            String RPassword = request.getParameter("rPasswordInput");
-            String RPassword2 = request.getParameter("rPasswordInput2");
+            
+            
+            String RFirstName = (String)request.getParameter("rFirstNameInput");
+            String RSecondName = request.getParameter("rSecondNameInput");
+            String RFullName = RFirstName + " " + RSecondName; 
+            String RAddress = request.getParameter("rAddress");
+            float RBalance = -10;
             String Status = "APPLIED";
+            Date DoR = new Date();
+            
+            model.User u = new model.User(); 
+            String s[] = RFirstName.split("");
+            System.out.println(RFirstName);
+            System.out.println(s[0].split(""));
+            String RUserName = s[0] + "-" + RSecondName;
 
-            model.User user = new model.User();
+            model.User user;
             dao.UsersDAOImpl userDAO = new dao.UsersDAOImpl();
             HttpSession session = request.getSession();
              //if(request.getParameter("Register") != null){
                 try {
-                    user = dao.UsersDAOImpl.findByUsername(RUserName);// this goes to the DB to check if there is a user with the same user name
+                   user = dao.UsersDAOImpl.findByUsername(RUserName);// this goes to th+e DB to check if there is a user with the same user name
 
 
-                    if (RUserName.isEmpty()|| RPassword.isEmpty() || RPassword2.isEmpty()){
-                        out.println("All fields are empty!");
+                    if (RFirstName.isEmpty() || RSecondName.isEmpty() || RAddress.isEmpty()){
+                        out.println("A fields is empty! Please input data in all the ");
                         session.setAttribute("RegisterError", "REmpty");
                         response.sendRedirect(request.getContextPath() + "/Register.jsp");
                     }
@@ -64,19 +77,23 @@ public class RegisterServlet extends HttpServlet {
                         response.sendRedirect(request.getContextPath() + "/Register.jsp");
                     }
 
-                    else if (!RPassword.equals(RPassword2)) {
-                        out.println("your pssswords does not match");
-                        session.setAttribute("RegisterError", "RPassword");
-                        response.sendRedirect(request.getContextPath() + "/Register.jsp");
-                    }
 
-                    else if (user == null && RPassword.equals(RPassword2))
+                    else if (user == null)
                     {
                         out.println("username and password is added to the database and direct you to the members dashboard");
                         request.getSession().setAttribute("RegisterError", "none");
                         request.getSession().setAttribute("LoginError", "RSuccess");
-                        model.User AddUser = new model.User(RUserName, RPassword, Status);
+                        
+                        String DoB = request.getParameter("rDoB");
+                        String tempPassword[] = DoB.split("-");
+                        String rPassword = tempPassword[2] + tempPassword[1] + tempPassword[0];
+                   
+                        model.User AddUser = new model.User(RUserName, rPassword, Status);
+                        model.Member AddMem = new model.Member(AddUser, RFullName, RAddress, DoB , DoR, RBalance, Status);
+                        
                         dao.UsersDAOImpl.createNewUser(AddUser);
+                        dao.MembersDAOImpl.CreateNewMember(AddMem);
+                        
                         request.getRequestDispatcher("/Login.jsp").forward(request, response);
 
 
