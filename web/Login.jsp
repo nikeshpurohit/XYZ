@@ -52,7 +52,7 @@
                         <% }else if(errString.equals("password")){ %>
                         <div style="color : red">The password you have entered in incorrect.</div>
                         <% }else if(errString.equals("RSuccess")){ %>
-                        <div style="color : green">User created successfully! You can now Login</div>
+                        <div style="color : green">User created successfully! You can now Login.</div>
                         <% } %>
                     <form method="POST" action="Login.do">
                         <label for="usernameInput">Username</label>
