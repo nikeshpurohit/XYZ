@@ -11,6 +11,7 @@ import com.DBConnectionProvider;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import model.User;
@@ -34,7 +35,7 @@ public class MembersDAOImpl {
             do {
                 entity.setAddress(rs.getString("address"));
                 entity.setDOB(rs.getString("dob"));
-                entity.setDOR(rs.getString("dor"));
+                entity.setDOR(rs.getDate("dor"));
                 entity.setName(rs.getString("name"));
                 entity.setBalance(rs.getFloat("balance"));
             } while (rs.next());
@@ -54,7 +55,7 @@ public class MembersDAOImpl {
                 m.setName(rs.getString("name"));
                 m.setAddress(rs.getString("address"));
                 m.setDOB(rs.getString("dob"));
-                m.setDOR(rs.getString("dor"));
+                m.setDOR(rs.getDate("dor"));
                 m.setBalance(rs.getFloat("balance"));
                 members.add(m);
             }
@@ -64,20 +65,26 @@ public class MembersDAOImpl {
 
         return members;
     }
-
-    public static void createNewUser(model.User user){
-        //Attributes of the new user
-        String id = user.getUsername();
-        String password = user.getPassword();
-        String status = user.getStatus();
-
+    
+    public static void CreateNewMember(model.Member member){
+        
+        // the attributes of a new member
+        String Username =  member.getUsername();
+        String FullName = member.getName();
+        String Address = member.getAddress();
+        String DoB = member.getDob();
+        Date DoR = new Date();
+        String Status = member.getStatus();
+        float Balance = member.getBalance();
+        
+        
         //DB Query
-        String query = "INSERT INTO XYZ.\"Users\" (\"id\",\"password\",\"status\") VALUES ('" + id + "', '" + password + "', '" + status + "')" ;
+        String query = "INSERT INTO XYZ.\"Members\" (\"id\",\"name\",\"address\",\"dob\",\"dor\",\"status\",\"balance\") VALUES ('" + Username + "','" + FullName + "', '" + Address + "', '" + DoB + "' , CURRENT_DATE , '" + Status + "' , " + Balance + ")";
+        //String query = "INSERT INTO XYZ.\"Claims\" (\"mem_id\",\"date\",\"rationale\",\"status\",\"amount\") VALUES ('" + ClaimsID + "', CURRENT_DATE ,'" + ClaimsRationale + "', '" + ClaimsStatus + "', " + ClaimsAmount + ")" ;
+
+        System.out.println(query);
         com.DBConnectionProvider.commitQuery(query);
         
-        // this should call the members dao
-        
-                
     }
     
     public static ArrayList listAllAppliedMembers(){
@@ -92,7 +99,7 @@ public class MembersDAOImpl {
                 m.setName(rs.getString("name"));
                 m.setAddress(rs.getString("address"));
                 m.setDOB(rs.getString("dob"));
-                m.setDOR(rs.getString("dor"));
+                m.setDOR(rs.getDate("dor"));
                 m.setStatus(rs.getString("status"));
                 m.setBalance(rs.getFloat("balance"));
                 members.add(m);
