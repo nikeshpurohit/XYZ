@@ -78,9 +78,9 @@ public class PaymentsDAOImpl {
         
         // set the vars
         member.setBalance(newBalance);
-        String query = "UPDATE XYZ.\"Members\" SET \"balance\" = " + "'" + newBalance + "'" + " WHERE \"id\" = " + "'" + member.getUsername() + "'";
+        String query = "UPDATE XYZ.\"Members\" SET \"balance\" = " + newBalance + " WHERE \"id\" = " + "'" + member.getUser().getUsername() + "'";
         System.out.println("Add" + query);
-        //com.DBConnectionProvider.commitQuery(query);
+        com.DBConnectionProvider.commitQuery(query);
     }
     
     public static void removeBalance(model.Payment payment, model.Member member){
@@ -91,8 +91,8 @@ public class PaymentsDAOImpl {
         
         // set the vars
         member.setBalance(newBalance);
-        String query = "UPDATE XYZ.\"Members\" SET \"balance\" = " + "'" + newBalance + "'" + " WHERE \"id\" = " + "'" + member.getUser().getUsername() + "'";
+        String query = "UPDATE XYZ.\"Members\" SET \"balance\" = " + newBalance + " WHERE \"id\" = " + "'" + member.getUser().getUsername() + "'";
         System.out.println("remove" + query);
-        //com.DBConnectionProvider.commitQuery(query);
+        com.DBConnectionProvider.commitQuery(query);
     }
 }

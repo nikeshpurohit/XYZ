@@ -24,6 +24,7 @@ public class LoginSession {
     {
         this.user = user;
         this.member = member;
+        this.member.setUser(user);
 
         session.setAttribute("user",user);
         session.setAttribute("member",member);
