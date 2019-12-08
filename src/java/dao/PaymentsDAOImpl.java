@@ -24,6 +24,28 @@ public class PaymentsDAOImpl {
             
             while (rs.next()){
                 model.Payment p = new model.Payment();
+                p.setUsername(rs.getString("mem_id"));
+                p.setAmount(rs.getInt("amount"));
+                p.setTypeOfPayment(rs.getString("type_of_payment"));
+                p.setDate(rs.getDate("date"));
+                
+                payment.add(p);
+            }
+        } catch(SQLException e){;}
+        
+        return payment;
+          
+    }
+    
+    public static ArrayList listAllPaymentsMade(){
+        ArrayList<model.Payment> payment = new ArrayList<model.Payment>();
+        String query = "SELECT * FROM XYZ.\"Payments\"";
+        try{
+            ResultSet rs = com.DBConnectionProvider.executeQuery(query);
+            
+            while (rs.next()){
+                model.Payment p = new model.Payment();
+                p.setUsername(rs.getString("mem_id"));
                 p.setAmount(rs.getInt("amount"));
                 p.setTypeOfPayment(rs.getString("type_of_payment"));
                 p.setDate(rs.getDate("date"));
