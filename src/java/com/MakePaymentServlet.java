@@ -41,6 +41,7 @@ public class MakePaymentServlet extends HttpServlet {
             Date PaymentDate = new Date();          
             String PaymentAmount = request.getParameter("PaymentAmount");
             String PaymentID = (String)session.getAttribute("username");
+            model.Member member = (model.Member)session.getAttribute("member");
                                
             if (PaymentType.isEmpty()|| PaymentAmount.isEmpty()){
                 out.println("Not All fields are full!");
@@ -49,6 +50,7 @@ public class MakePaymentServlet extends HttpServlet {
             }else{
                 model.Payment payment = new model.Payment(PaymentID, Integer.parseInt(PaymentAmount), PaymentDate, PaymentType);
                 dao.PaymentsDAOImpl.MakeNewPayment(payment);
+                dao.PaymentsDAOImpl.addBalance(payment, member);
                 response.sendRedirect(request.getContextPath() + "/MakePayment.jsp");
             
                     } 

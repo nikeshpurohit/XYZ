@@ -49,7 +49,6 @@
         <div class="section-grid">
 
             <div class="dash-card">
-                <!--<div class="dash-card-image" style="background-image: url(images/thumb-project-tRAYce.png);"></div>-->
                 <a href="#" class="dash-card-title" target="_blank">All Claims</a>
                 <div class="dash-card-content">
                     <table>
@@ -64,15 +63,16 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <c:forEach items="${listOfAllClaims}" var="item">
+                            <c:forEach items="${listOfAllClaims}" var="item" varStatus="loop">
 
                                 <tr>
-                                    <td>#</td>
+                                    <td>${loop.index + 1}</td>
                                     <td>${item.username}</td>
                                     <td>${item.date}</td>
                                     <td>${item.rationale}</td>
                                     <td>${item.amount}</td>
                                     <td>${item.status}</td>
+                                    
                                 </tr>
 
                             </c:forEach>
@@ -82,8 +82,7 @@
             </div>
 
             <div class="dash-card">
-                <!--<div class="dash-card-image" style="background-image: url(images/thumb-project-tRAYce.png);"></div>-->
-                <a href="#" class="dash-card-title" target="_blank">All Members</a>
+                <a href="#" class="dash-card-title" target="_blank">Members Awaiting Approval</a>
                 <div class="dash-card-content">
                     <table>
                         <thead>
@@ -94,10 +93,12 @@
                                 <th>Registration date</th>
                                 <th>Account balance</th>
                                 <th>Status</th>
+                                <th>Approve</th>
+    
                             </tr>
                         </thead>
                         <tbody>
-                            <c:forEach items="${listOfAllMembers}" var="member">
+                            <c:forEach items="${listOfAppliedUsers}" var="member">
 
                                 <tr>
                                     <td>${member.name}</td>
@@ -106,7 +107,10 @@
                                     <td>${member.dor}</td>
                                     <td>${member.balance}</td>
                                     <td>${member.status}</td>
+                                    <td><button class="button" style="width: 20px; height: 20px; padding: 0px;" value="&#10004;">&#10004;</button></td>
                                 </tr>
+                                
+                                
 
                             </c:forEach>
                         </tbody>

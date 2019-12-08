@@ -69,4 +69,30 @@ public class PaymentsDAOImpl {
         com.DBConnectionProvider.commitQuery(query);
         
     }
+     
+    public static void addBalance(model.Payment payment, model.Member member){
+        // do the calculations
+        float newBalance;
+        float oldBalance = member.getBalance();
+        newBalance = oldBalance + payment.getAmount();
+        
+        // set the vars
+        member.setBalance(newBalance);
+        String query = "UPDATE XYZ.\"Members\" SET \"balance\" = " + newBalance + " WHERE \"id\" = " + "'" + member.getUser().getUsername() + "'";
+        System.out.println("Add" + query);
+        com.DBConnectionProvider.commitQuery(query);
+    }
+    
+    public static void removeBalance(model.Payment payment, model.Member member){
+         // do the calculations
+        float newBalance;
+        float oldBalance = member.getBalance();
+        newBalance = oldBalance - payment.getAmount();
+        
+        // set the vars
+        member.setBalance(newBalance);
+        String query = "UPDATE XYZ.\"Members\" SET \"balance\" = " + newBalance + " WHERE \"id\" = " + "'" + member.getUser().getUsername() + "'";
+        System.out.println("remove" + query);
+        com.DBConnectionProvider.commitQuery(query);
+    }
 }
