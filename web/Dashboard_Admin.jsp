@@ -118,6 +118,37 @@
                     </table>
                 </div>
             </div>
+            
+            <div class="dash-card">
+                <a href="#" class="dash-card-title" target="_blank">Transaction History</a>
+                <div class="dash-card-content">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Member Name</th>
+                                <th>Amount</th>
+                                <th>Payment Method</th>
+                                <th>Date</th>
+    
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <c:forEach items="${listOfAllPayments}" var="item">
+
+                                <tr>
+                                    <td>${item.username}</td>
+                                    <td>${item.amount}</td>
+                                    <td>${item.typeOfPayment}</td>
+                                    <td>${item.date}</td>
+                                </tr>
+                                
+                                
+
+                            </c:forEach>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
 
         </div>
     </div>
