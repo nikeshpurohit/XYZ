@@ -73,6 +73,7 @@
                                     <td>${item.amount}</td>
                                     <td>${item.status}</td>
                                     
+                                    
                                 </tr>
 
                             </c:forEach>
