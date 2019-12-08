@@ -86,7 +86,9 @@ public class RegisterServlet extends HttpServlet {
                         
                         String DoB = request.getParameter("rDoB");
                         String tempPassword[] = DoB.split("-");
-                        String rPassword = tempPassword[2] + tempPassword[1] + tempPassword[0];
+                        String year = tempPassword[0]; 
+                        year = year.substring(year.length() - 2);
+                        String rPassword = tempPassword[2] + tempPassword[1] + year;
                    
                         model.User AddUser = new model.User(RUserName, rPassword, Status);
                         model.Member AddMem = new model.Member(AddUser, RFullName, RAddress, DoB , DoR, RBalance, Status);
