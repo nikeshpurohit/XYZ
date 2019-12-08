@@ -18,12 +18,15 @@ import javax.servlet.http.HttpSession;
 public class LoginSession {
 
     private model.User user;
+    private model.Member member;
 
-    public LoginSession(model.User user, HttpSession session, HttpServletResponse response)
+    public LoginSession(model.User user, model.Member member, HttpSession session, HttpServletResponse response)
     {
         this.user = user;
+        this.member = member;
 
         session.setAttribute("user",user);
+        session.setAttribute("member",member);
         session.setAttribute("userStatus",user.getStatus());
     }
 

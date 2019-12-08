@@ -45,11 +45,13 @@ public class LoginServlet extends HttpServlet {
             //out.println(username);
             //out.println(password);
             model.User user;
+            model.Member member;
             HttpSession session = request.getSession();
             
             if(request.getParameter("loginButton") != null){
                 try {
                     user = dao.UsersDAOImpl.findByUsername(username);
+                    member = dao.MembersDAOImpl.findByUsername(username);
 
 
                     if (user == null){
@@ -60,7 +62,7 @@ public class LoginServlet extends HttpServlet {
                         //HttpSession session = request.getSession();
                         session.setAttribute("username", username);
                         request.getSession().setAttribute("LoginError", "none");
-                        com.LoginSession login_session = new com.LoginSession(user, session, response);
+                        com.LoginSession login_session = new com.LoginSession(user, member, session, response);
 
                         
 
