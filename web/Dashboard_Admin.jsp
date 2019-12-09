@@ -91,7 +91,6 @@
                                             <input type="hidden" name="closeClaimClick" value="${item.id}" ></form></td>
                                     <td><form method="POST" action="RejectClaim.do"><button class="button" style="width: 20px; height: 20px; padding: 0px;" value="${item.id}">&#10539;</button>
                                             <input type="hidden" name="rejectClaimClick" value="${item.id}" ></form></td>
-
                                 </tr>
 
                             </c:forEach>
