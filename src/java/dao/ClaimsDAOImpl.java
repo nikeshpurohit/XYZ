@@ -147,4 +147,10 @@ public class ClaimsDAOImpl {
         amountToPay = total / numOfMembers;
         //Loop through members database and minus amountToPay from balance of each member
     }
+    
+    public static void rejectClaim(String id){
+        String query = "UPDATE XYZ.\"Claims\" SET \"status\" = " + "'rejected'" + " WHERE \"id\" = " + id;
+        //System.out.println("reubge" + query);
+        com.DBConnectionProvider.commitQuery(query);
+    }
 }

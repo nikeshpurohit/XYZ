@@ -32,7 +32,9 @@ public class RejectClaimServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         String claimID = (String)request.getParameter("rejectClaimClick");
         
-        System.out.println("claim " + claimID);
+        dao.ClaimsDAOImpl.rejectClaim(claimID);
+        
+        request.getRequestDispatcher("/AdminDashServlet").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
