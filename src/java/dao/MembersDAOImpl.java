@@ -7,7 +7,6 @@ package dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
-import com.DBConnectionProvider;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -26,7 +25,7 @@ public class MembersDAOImpl {
         model.Member entity = new model.Member();
         String query = ("SELECT * FROM XYZ.\"Members\" WHERE XYZ.\"Members\".\"id\" = " + "'" + username + "'");
         //System.out.println(query);
-        ResultSet rs = com.DBConnectionProvider.executeQuery(query);
+        ResultSet rs = dao.DBConnectionProvider.executeQuery(query);
 
         if (rs.next() == false) {
             entity = null;
@@ -48,7 +47,7 @@ public class MembersDAOImpl {
         ArrayList<model.Member> members = new ArrayList<model.Member>();
         String query = "SELECT * FROM XYZ.\"Members\"";
         try {
-            ResultSet rs = com.DBConnectionProvider.executeQuery(query);
+            ResultSet rs = dao.DBConnectionProvider.executeQuery(query);
 
             while (rs.next()){
                 model.Member m = new model.Member();
@@ -83,7 +82,7 @@ public class MembersDAOImpl {
         //String query = "INSERT INTO XYZ.\"Claims\" (\"mem_id\",\"date\",\"rationale\",\"status\",\"amount\") VALUES ('" + ClaimsID + "', CURRENT_DATE ,'" + ClaimsRationale + "', '" + ClaimsStatus + "', " + ClaimsAmount + ")" ;
 
         System.out.println(query);
-        com.DBConnectionProvider.commitQuery(query);
+        dao.DBConnectionProvider.commitQuery(query);
         
     }
     
@@ -92,7 +91,7 @@ public class MembersDAOImpl {
         String query = "SELECT * FROM XYZ.\"Members\" WHERE XYZ.\"Members\".\"status\" = 'APPLIED'";
         
         try{
-            ResultSet rs = com.DBConnectionProvider.executeQuery(query);
+            ResultSet rs = dao.DBConnectionProvider.executeQuery(query);
 
             while (rs.next()){
                 model.Member m = new model.Member();
@@ -113,10 +112,10 @@ public class MembersDAOImpl {
     
     public static void approveMember(String id){
         String query1 = "UPDATE XYZ.\"Members\" SET \"status\" = " + "'MEMBER'" + " WHERE \"id\" = " + "'" + id + "'";
-        com.DBConnectionProvider.commitQuery(query1);
+        dao.DBConnectionProvider.commitQuery(query1);
         
         String query2 = "UPDATE XYZ.\"Users\" SET \"status\" = " + "'MEMBER'" + " WHERE \"id\" = " + "'" + id + "'";
-        com.DBConnectionProvider.commitQuery(query2);
+        dao.DBConnectionProvider.commitQuery(query2);
         
     }
 
@@ -125,7 +124,7 @@ public class MembersDAOImpl {
         String query = "SELECT * FROM XYZ.\"Members\" WHERE XYZ.\"Members\".\"status\" = 'MEMBER'";
         
         try{
-            ResultSet rs = com.DBConnectionProvider.executeQuery(query);
+            ResultSet rs = dao.DBConnectionProvider.executeQuery(query);
 
             while (rs.next()){
                 model.Member m = new model.Member();

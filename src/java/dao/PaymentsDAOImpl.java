@@ -5,7 +5,6 @@
  */
 package dao;
 
-import com.DBConnectionProvider;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -20,7 +19,7 @@ public class PaymentsDAOImpl {
         ArrayList<model.Payment> payment = new ArrayList<model.Payment>();
         String query = "SELECT * FROM XYZ.\"Payments\" WHERE XYZ.\"Payments\".\"mem_id\" = " + "'" + username + "'";
         try{
-            ResultSet rs = com.DBConnectionProvider.executeQuery(query);
+            ResultSet rs = dao.DBConnectionProvider.executeQuery(query);
             
             while (rs.next()){
                 model.Payment p = new model.Payment();
@@ -41,7 +40,7 @@ public class PaymentsDAOImpl {
         ArrayList<model.Payment> payment = new ArrayList<model.Payment>();
         String query = "SELECT * FROM XYZ.\"Payments\"";
         try{
-            ResultSet rs = com.DBConnectionProvider.executeQuery(query);
+            ResultSet rs = dao.DBConnectionProvider.executeQuery(query);
             
             while (rs.next()){
                 model.Payment p = new model.Payment();
@@ -62,7 +61,7 @@ public class PaymentsDAOImpl {
         ArrayList<model.Payment> payments = new ArrayList<model.Payment>();
         String query = "SELECT * FROM XYZ.\"Payments\"";
         try{
-            ResultSet rs = com.DBConnectionProvider.executeQuery(query);
+            ResultSet rs = dao.DBConnectionProvider.executeQuery(query);
             
             while (rs.next()){
                 model.Payment p = new model.Payment();
@@ -88,7 +87,7 @@ public class PaymentsDAOImpl {
         //DB Query
         String query = "INSERT INTO XYZ.\"Payments\" (\"mem_id\",\"date\",\"type_of_payment\",\"amount\") VALUES ('" + PaymentID + "', CURRENT_DATE ,'" + PaymentType + "', " + PaymentAmount + ")" ;
         System.out.println(query);
-        com.DBConnectionProvider.commitQuery(query);
+        dao.DBConnectionProvider.commitQuery(query);
         
     }
      
@@ -102,7 +101,7 @@ public class PaymentsDAOImpl {
         member.setBalance(newBalance);
         String query = "UPDATE XYZ.\"Members\" SET \"balance\" = " + newBalance + " WHERE \"id\" = " + "'" + member.getUser().getUsername() + "'";
         System.out.println("Add" + query);
-        com.DBConnectionProvider.commitQuery(query);
+        dao.DBConnectionProvider.commitQuery(query);
     }
     
     public static void removeBalance(model.Payment payment, model.Member member){
@@ -116,6 +115,6 @@ public class PaymentsDAOImpl {
         member.setBalance(newBalance);
         String query = "UPDATE XYZ.\"Members\" SET \"balance\" = " + newBalance + " WHERE \"id\" = " + "'" + member.getUser().getUsername() + "'";
         System.out.println("remove" + query);
-        com.DBConnectionProvider.commitQuery(query);
+        dao.DBConnectionProvider.commitQuery(query);
     }
 }
