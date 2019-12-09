@@ -2,6 +2,18 @@
 <%@page import="java.util.ArrayList"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
+
+<script>
+    function show_alert() {
+        if (!confirm("re you sure you want to charge all members the yearly fee? This should only be done once a year.")) {
+            return false;
+        }
+        this.form.submit();
+    }
+
+
+</script>
+
 <html lang="en">
     <head>
 
@@ -46,6 +58,7 @@
     </div>
     <div class="container">
         <h1><%out.print(uname);%>'s dashboard</h1>
+        <form method="POST" action="ChargeYearlyFee.do" onSubmit="if(!confirm('Are you sure you want to charge the yearly fee to all members? This should only be done once a year.')){return false;}""><button class="button-primary" type="submit">Charge yearly fee</button></form>
         <div class="section-grid">
 
             <div class="dash-card">
@@ -75,11 +88,9 @@
                                     <td>${item.amount}</td>
                                     <td>${item.status}</td>
                                     <td><form method="POST" action="CloseClaim.do"><button class="button" style="width: 20px; height: 20px; padding: 0px;" value="${item.id}">&#10004;</button>
-                                        <input type="hidden" name="closeClaimClick" value="${item.id}" ></form></td>
+                                            <input type="hidden" name="closeClaimClick" value="${item.id}" ></form></td>
                                     <td><form method="POST" action="RejectClaim.do"><button class="button" style="width: 20px; height: 20px; padding: 0px;" value="${item.id}">&#10539;</button>
-                                        <input type="hidden" name="rejectClaimClick" value="${item.id}" ></form></td>
-                                    
-                                    
+                                            <input type="hidden" name="rejectClaimClick" value="${item.id}" ></form></td>
                                 </tr>
 
                             </c:forEach>
@@ -101,7 +112,7 @@
                                 <th>Account balance</th>
                                 <th>Status</th>
                                 <th>Approve</th>
-    
+
                             </tr>
                         </thead>
                         <tbody>
@@ -115,17 +126,17 @@
                                     <td>${member.balance}</td>
                                     <td>${member.status}</td>
                                     <td><form method="POST" action="ApproveMember.do"><button class="button" style="width: 20px; height: 20px; padding: 0px;" value="${member.id}">&#10004;</button>
-                                        <input type="hidden" name="approveMemClick" value="${member.id}" ></form></td>
+                                            <input type="hidden" name="approveMemClick" value="${member.id}" ></form></td>
                                 </tr>
-                                
-                                
+
+
 
                             </c:forEach>
                         </tbody>
                     </table>
                 </div>
             </div>
-            
+
             <div class="dash-card">
                 <a class="dash-card-title">Transaction History</a>
                 <div class="dash-card-content">
@@ -136,7 +147,7 @@
                                 <th>Amount</th>
                                 <th>Payment Method</th>
                                 <th>Date</th>
-    
+
                             </tr>
                         </thead>
                         <tbody>
@@ -148,8 +159,8 @@
                                     <td>${item.typeOfPayment}</td>
                                     <td>${item.date}</td>
                                 </tr>
-                                
-                                
+
+
 
                             </c:forEach>
                         </tbody>
