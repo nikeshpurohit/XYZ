@@ -36,6 +36,9 @@
         <% request.getSession().setAttribute("LoginError", "none"); %>
         <% request.getSession().setAttribute("RegisterError", "none"); %>
         <% request.getSession().setAttribute("RegisterSuccess", "none");%>
+        <% request.getSession().setAttribute("MadeUsername", "none");%>
+        <% request.getSession().setAttribute("MadePassword", "none");%>
+
         
         <div>
             <h1 id="centered-h1">XYZ Drivers Association</h1>

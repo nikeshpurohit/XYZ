@@ -47,7 +47,7 @@
         <h1><%out.print(uname);%>'s Dashboard</h1>
         <div class="section-grid">
             <div class="dash-card-half">
-                <a href="#" class="dash-card-title" target="_blank">Your Profile</a>
+                <a class="dash-card-title">Your Profile</a>
                 <div class="dash-card-content">
                     <c:if test="${memberDetails == null}">
                         <p> Your registration is incomplete!
@@ -104,7 +104,7 @@
 
 
             <div class="dash-card">
-                <a href="#" class="dash-card-title" target="_blank">Your Claims History</a>
+                <a class="dash-card-title">Your Claims History</a>
                 <div class="dash-card-content">
                     <table>
                         <thead>
@@ -133,7 +133,7 @@
             </div>
 
             <div class="dash-card">
-                <a href="#" class="dash-card-title" target="_blank">Your Transaction History</a>
+                <a class="dash-card-title">Your Transaction History</a>
                 <div class="dash-card-content">
                     <table>
                         <thead>
