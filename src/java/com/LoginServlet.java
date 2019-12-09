@@ -74,7 +74,7 @@ public class LoginServlet extends HttpServlet {
                                 }
                                 else if (user.getStatus().equals("APPLIED")) {
                                     System.out.println("This user is applied");
-                                    request.getRequestDispatcher("/UserDashServlet").forward(request, response);
+                                    request.getRequestDispatcher("/NonMember.jsp").forward(request, response);
                                     
                                 }
                                 else if (user.getStatus().equals("MEMBER")){
