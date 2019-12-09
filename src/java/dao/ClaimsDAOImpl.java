@@ -81,38 +81,30 @@ public class ClaimsDAOImpl {
         String query = "INSERT INTO XYZ.\"Claims\" (\"mem_id\",\"date\",\"rationale\",\"status\",\"amount\") VALUES ('" + ClaimsID + "', CURRENT_DATE ,'" + ClaimsRationale + "', '" + ClaimsStatus + "', " + ClaimsAmount + ")" ;
         String query1 = "SELECT * FROM XYZ.\"Claims\" WHERE XYZ.\"Claims\".\"mem_id\" = " + "'" + ClaimsID + "'";
         ResultSet rs = com.DBConnectionProvider.executeQuery(query1);
-        try{
+        com.DBConnectionProvider.commitQuery(query);
+        /*try{
 
-                System.out.println("hello1");
                 while(rs.next()){
                     dates.add(rs.getDate("date"));
-                    System.out.println("hello2");
                 }
                 System.out.println(dates.size() + " dates size");
                 if (dates.size() < 2){
                     com.DBConnectionProvider.commitQuery(query);
-                    System.out.println("hello3");
                 }else{
                     SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
                     Date startOfYear = format.parse("2019-01-01");
-                    System.out.println(startOfYear + " start of ueardsgsg");
-                    System.out.println(dates.get(0) + " dates in db");
                     int claimsThisYear = 0;
-                    System.out.println("hello4");
                     for (int i = 0; i < dates.size();i++){
                         if (dates.get(i).after(startOfYear)){
                             claimsThisYear++;
-                            System.out.println("hello5");
                         }
                     }
                     if (claimsThisYear < 2){
                         com.DBConnectionProvider.commitQuery(query);
-                        System.out.println("hello6");
                     }
-                    System.out.println(dates.size());
 
             }
-        }catch(SQLException | ParseException e){;}
+        }catch(SQLException | ParseException e){;}*/
     }
 
     public static float totalClaimAmount(){
