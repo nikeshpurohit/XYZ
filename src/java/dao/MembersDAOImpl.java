@@ -120,4 +120,26 @@ public class MembersDAOImpl {
         
     }
 
+    public static ArrayList listAllApprovedMembers(){
+        ArrayList<model.Member> members = new ArrayList<model.Member>();
+        String query = "SELECT * FROM XYZ.\"Members\" WHERE XYZ.\"Members\".\"status\" = 'MEMBER'";
+        
+        try{
+            ResultSet rs = com.DBConnectionProvider.executeQuery(query);
+
+            while (rs.next()){
+                model.Member m = new model.Member();
+                m.setName(rs.getString("name"));
+                m.setAddress(rs.getString("address"));
+                m.setDOB(rs.getString("dob"));
+                m.setDOR(rs.getDate("dor"));
+                m.setStatus(rs.getString("status"));
+                m.setBalance(rs.getFloat("balance"));
+                members.add(m);
+            }
+        } catch(SQLException e){
+            e.printStackTrace();
+        }            
+        return members;
+    }
 }

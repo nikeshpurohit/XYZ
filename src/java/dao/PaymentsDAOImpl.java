@@ -110,6 +110,7 @@ public class PaymentsDAOImpl {
         float newBalance;
         float oldBalance = member.getBalance();
         newBalance = oldBalance - payment.getAmount();
+        System.out.println("old: " + oldBalance + " new: " + newBalance);
         
         // set the vars
         member.setBalance(newBalance);
