@@ -47,12 +47,21 @@
                     <h4>XYZ Driver Association</h4>
                         <%! String errString = ""; %> 
                         <% errString  = (String) session.getAttribute("LoginError");%>
+                        
+                        <%! String Uname = ""; %> 
+                        <% Uname  = (String) session.getAttribute("MadeUsername");%>
+                        
+                        <%! String Pword = ""; %> 
+                        <% Pword  = (String) session.getAttribute("MadePassword");%>
+                        
                         <% if(errString.equals("user")){ %>
                         <div style="color : red">A user with this username does not exist. Did you type it correctly?</div>
                         <% }else if(errString.equals("password")){ %>
                         <div style="color : red">The password you have entered in incorrect.</div>
                         <% }else if(errString.equals("RSuccess")){ %>
-                        <div style="color : green">User created successfully! You can now Login.</div>
+                        <div style="color : green">User created successfully! You can now Login. </div>
+                        <div style="color : green"> Your username is: <%out.print(Uname);%> </div>
+                        <div style="color : green"> Your password is: <%out.print(Pword);%> </div>
                         <% } %>
                     <form method="POST" action="Login.do">
                         <label for="usernameInput">Username</label>
