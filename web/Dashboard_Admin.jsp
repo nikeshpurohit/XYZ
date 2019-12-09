@@ -49,7 +49,7 @@
         <div class="section-grid">
 
             <div class="dash-card">
-                <a href="#" class="dash-card-title" target="_blank">All Claims</a>
+                <a class="dash-card-title">All Claims</a>
                 <div class="dash-card-content">
                     <table>
                         <thead>
@@ -88,7 +88,7 @@
             </div>
 
             <div class="dash-card">
-                <a href="#" class="dash-card-title" target="_blank">Members Awaiting Approval</a>
+                <a class="dash-card-title">Members Awaiting Approval</a>
                 <div class="dash-card-content">
                     <table>
                         <thead>
@@ -126,7 +126,7 @@
             </div>
             
             <div class="dash-card">
-                <a href="#" class="dash-card-title" target="_blank">Transaction History</a>
+                <a class="dash-card-title">Transaction History</a>
                 <div class="dash-card-content">
                     <table>
                         <thead>
