@@ -23,6 +23,7 @@ public class Member {
     public Date dor;
     public String status;
     public float balance;
+    public String id;
     
     public Member() {}
 
@@ -33,6 +34,7 @@ public class Member {
         this.dob = m.getDob();
         this.dor = m.getDor();
         this.status = m.getStatus();
+        this.id = m.getId();
     }
 
     public Member(User user, String name, String address, String dob, Date dor, float balance, String status) {
@@ -59,6 +61,8 @@ public class Member {
 
     public void setBalance(float balance) {this.balance = balance;}
 
+    public void setId(String id) {this.id = id;}
+
     public model.User getUser() {return user;}
 
     public String getName() {return name;}
@@ -74,6 +78,8 @@ public class Member {
     public float getBalance() {return balance;}
     
     public String getUsername() {return user.getUsername();}
+    
+    public String getId(){return this.id;}
     
 
     

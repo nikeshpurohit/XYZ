@@ -60,18 +60,24 @@
                                 <th>Description</th>
                                 <th>Amount</th>
                                 <th>Status</th>
+                                <th>Close</th>
+                                <th>Reject</th>
                             </tr>
                         </thead>
                         <tbody>
                             <c:forEach items="${listOfAllClaims}" var="item" varStatus="loop">
 
                                 <tr>
-                                    <td>${loop.index + 1}</td>
+                                    <td>${item.id}</td>
                                     <td>${item.username}</td>
                                     <td>${item.date}</td>
                                     <td>${item.rationale}</td>
                                     <td>${item.amount}</td>
                                     <td>${item.status}</td>
+                                    <td><form method="POST" action="CloseClaim.do"><button class="button" style="width: 20px; height: 20px; padding: 0px;" value="${item.id}">&#10004;</button>
+                                        <input type="hidden" name="closeClaimClick" value="${item.id}" ></form></td>
+                                    <td><form method="POST" action="RejectClaim.do"><button class="button" style="width: 20px; height: 20px; padding: 0px;" value="${item.id}">&#10539;</button>
+                                        <input type="hidden" name="rejectClaimClick" value="${item.id}" ></form></td>
                                     
                                 </tr>
 
@@ -107,7 +113,8 @@
                                     <td>${member.dor}</td>
                                     <td>${member.balance}</td>
                                     <td>${member.status}</td>
-                                    <td><button class="button" style="width: 20px; height: 20px; padding: 0px;" value="&#10004;">&#10004;</button></td>
+                                    <td><form method="POST" action="ApproveMember.do"><button class="button" style="width: 20px; height: 20px; padding: 0px;" value="${member.id}">&#10004;</button>
+                                        <input type="hidden" name="approveMemClick" value="${member.id}" ></form></td>
                                 </tr>
                                 
                                 
