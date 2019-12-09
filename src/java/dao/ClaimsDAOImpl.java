@@ -117,34 +117,39 @@ public class ClaimsDAOImpl {
 
     public static float totalClaimAmount(){
         float total = 0;
-        String query = "SELECT XYZ.\"Claims\".\"amount\" FROM XYZ.\"Claims\"";
+        String query = "SELECT XYZ.\"Claims\".\"amount\" FROM XYZ.\"Claims\" WHERE XYZ.\"Claims\".\"status\" = 'closed'";
         try{
             ResultSet rs = com.DBConnectionProvider.executeQuery(query);
             while (rs.next()){
                 total += rs.getFloat("amount");
             }
         } catch(SQLException e){;}
-
-        System.out.println(total);
         return total;
     }
 
     public static void totalClaimAmountAndChargeMembers(){
-        float total = 0, amountToPay;
+        float total = totalClaimAmount(), amountToPay;
         int numOfMembers=0;
-        String query = "SELECT XYZ.\"Claims\".\"amount\" FROM XYZ.\"Claims\"";
-        String query1 = "SELECT COUNT(*) as \"total\" FROM XYZ.\"Members\" WHERE XYZ.\"Members\".\"status\" = 'MEMBER'";
+        String query = "SELECT * FROM XYZ.\"Members\" WHERE XYZ.\"Members\".\"status\" = 'MEMBER'";
+        String query2 = "SELECT * FROM XYZ.\"Users\" WHERE XYZ.\"Users\".\"status\" = 'MEMBER'";
         try{
             ResultSet rs = com.DBConnectionProvider.executeQuery(query);
-            ResultSet rs1 = com.DBConnectionProvider.executeQuery(query1);
+            ResultSet rs2 = com.DBConnectionProvider.executeQuery(query2);
             while (rs.next()){
-                total += rs.getFloat("amount");
-            }
-            while (rs1.next()){
                 numOfMembers++;
             }
+            amountToPay = total / numOfMembers;           
+            while (rs2.next()){
+                model.User u = new model.User();
+                u.setUsername(rs2.getString("id"));
+                u.setPassword(rs2.getString("password"));
+                u.setStatus(rs2.getString("status"));
+                model.Member m = new model.Member();
+                m.setUser(u);
+                model.Payment p = new model.Payment();
+                p.setAmount(amountToPay);
+                dao.PaymentsDAOImpl.removeBalance(p, m);                
+            }
         } catch(SQLException e){;}
-        amountToPay = total / numOfMembers;
-        //Loop through members database and minus amountToPay from balance of each member
     }
 }
