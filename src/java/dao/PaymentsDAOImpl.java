@@ -83,7 +83,7 @@ public class PaymentsDAOImpl {
          String PaymentID = payment.getUsername();
          Date PaymentDate = payment.getDate();
          String PaymentType = payment.getTypeOfPayment();
-         int PaymentAmount = payment.getAmount();
+         float PaymentAmount = payment.getAmount();
 
         //DB Query
         String query = "INSERT INTO XYZ.\"Payments\" (\"mem_id\",\"date\",\"type_of_payment\",\"amount\") VALUES ('" + PaymentID + "', CURRENT_DATE ,'" + PaymentType + "', " + PaymentAmount + ")" ;
@@ -110,6 +110,7 @@ public class PaymentsDAOImpl {
         float newBalance;
         float oldBalance = member.getBalance();
         newBalance = oldBalance - payment.getAmount();
+        System.out.println("old: " + oldBalance + " new: " + newBalance);
         
         // set the vars
         member.setBalance(newBalance);

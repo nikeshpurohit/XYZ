@@ -77,6 +77,9 @@ public class LoginServlet extends HttpServlet {
                                     request.getRequestDispatcher("/UserDashServlet").forward(request, response);
                                     
                                 }
+                                else if (user.getStatus().equals("MEMBER")){
+                                    request.getRequestDispatcher("/UserDashServlet").forward(request, response);
+                                }
                     }
   
                     } 

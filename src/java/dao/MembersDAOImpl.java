@@ -96,6 +96,7 @@ public class MembersDAOImpl {
 
             while (rs.next()){
                 model.Member m = new model.Member();
+                m.setId(rs.getString("id"));
                 m.setName(rs.getString("name"));
                 m.setAddress(rs.getString("address"));
                 m.setDOB(rs.getString("dob"));
@@ -109,5 +110,36 @@ public class MembersDAOImpl {
         }            
         return members;
     }
+    
+    public static void approveMember(String id){
+        String query1 = "UPDATE XYZ.\"Members\" SET \"status\" = " + "'MEMBER'" + " WHERE \"id\" = " + "'" + id + "'";
+        com.DBConnectionProvider.commitQuery(query1);
+        
+        String query2 = "UPDATE XYZ.\"Users\" SET \"status\" = " + "'MEMBER'" + " WHERE \"id\" = " + "'" + id + "'";
+        com.DBConnectionProvider.commitQuery(query2);
+        
+    }
 
+    public static ArrayList listAllApprovedMembers(){
+        ArrayList<model.Member> members = new ArrayList<model.Member>();
+        String query = "SELECT * FROM XYZ.\"Members\" WHERE XYZ.\"Members\".\"status\" = 'MEMBER'";
+        
+        try{
+            ResultSet rs = com.DBConnectionProvider.executeQuery(query);
+
+            while (rs.next()){
+                model.Member m = new model.Member();
+                m.setName(rs.getString("name"));
+                m.setAddress(rs.getString("address"));
+                m.setDOB(rs.getString("dob"));
+                m.setDOR(rs.getDate("dor"));
+                m.setStatus(rs.getString("status"));
+                m.setBalance(rs.getFloat("balance"));
+                members.add(m);
+            }
+        } catch(SQLException e){
+            e.printStackTrace();
+        }            
+        return members;
+    }
 }
