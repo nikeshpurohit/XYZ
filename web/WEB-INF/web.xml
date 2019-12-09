@@ -48,6 +48,10 @@
         <servlet-name>RejectClaimServlet</servlet-name>
         <servlet-class>com.RejectClaimServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>CloseClaimServlet</servlet-name>
+        <servlet-class>com.CloseClaimServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LogoutServ</servlet-name>
         <url-pattern>/Logout.do</url-pattern>
@@ -171,6 +175,10 @@
     <servlet-mapping>
         <servlet-name>RejectClaimServlet</servlet-name>
         <url-pattern>/RejectClaim.do</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CloseClaimServlet</servlet-name>
+        <url-pattern>/CloseClaim.do</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>20</session-timeout>

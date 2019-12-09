@@ -153,4 +153,10 @@ public class ClaimsDAOImpl {
         //System.out.println("reubge" + query);
         com.DBConnectionProvider.commitQuery(query);
     }
+    
+    public static void closeClaim(String id){
+        String query = "UPDATE XYZ.\"Claims\" SET \"status\" = " + "'closed'" + " WHERE \"id\" = " + id;
+        //System.out.println("reubge" + query);
+        com.DBConnectionProvider.commitQuery(query);
+    }
 }

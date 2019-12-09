@@ -60,6 +60,7 @@
                                 <th>Description</th>
                                 <th>Amount</th>
                                 <th>Status</th>
+                                <th>Close</th>
                                 <th>Reject</th>
                             </tr>
                         </thead>
@@ -73,6 +74,8 @@
                                     <td>${item.rationale}</td>
                                     <td>${item.amount}</td>
                                     <td>${item.status}</td>
+                                    <td><form method="POST" action="CloseClaim.do"><button class="button" style="width: 20px; height: 20px; padding: 0px;" value="${item.id}">&#10004;</button>
+                                        <input type="hidden" name="closeClaimClick" value="${item.id}" ></form></td>
                                     <td><form method="POST" action="RejectClaim.do"><button class="button" style="width: 20px; height: 20px; padding: 0px;" value="${item.id}">&#10539;</button>
                                         <input type="hidden" name="rejectClaimClick" value="${item.id}" ></form></td>
                                     
