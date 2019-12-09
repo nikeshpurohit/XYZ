@@ -21,7 +21,7 @@ public class Claims {
     public Claims(){}
     
     public Claims(String username, int amount, Date date, String rationale, String status){
-        //this.id = id;
+        this.id = 0;
         this.username = username;
         this.amount = amount;
         this.date = date;
@@ -39,7 +39,7 @@ public class Claims {
     
     public Date getDate(){return this.date;}
     
-    public int getID() {return this.id;}
+    public int getId() {return this.id;}
     
     public void setUsername(String username){this.username = username;}
     
@@ -51,6 +51,6 @@ public class Claims {
     
     public void setDate(Date date){this.date = date;}
     
-    public void setID(int id){this.id = id;}
+    public void setId(int id){this.id = id;}
        
 }
