@@ -7,7 +7,6 @@ package dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
-import com.DBConnectionProvider;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -25,7 +24,7 @@ public class UsersDAOImpl {
         model.User entity = null;
         String query = ("SELECT * FROM XYZ.\"Users\" WHERE XYZ.\"Users\".\"id\" = " + "'" + username + "'");
         //System.out.println(query);
-        ResultSet rs = com.DBConnectionProvider.executeQuery(query);
+        ResultSet rs = dao.DBConnectionProvider.executeQuery(query);
 
         if (rs.next() == false) {
             entity = null;
@@ -54,7 +53,7 @@ public class UsersDAOImpl {
         ArrayList<model.User> users = new ArrayList<model.User>();
         String query = "SELECT * FROM XYZ.\"Users\"";
         try {
-            ResultSet rs = com.DBConnectionProvider.executeQuery(query);
+            ResultSet rs = dao.DBConnectionProvider.executeQuery(query);
 
             while (rs.next()){
                 model.User u = new model.User();
@@ -77,7 +76,7 @@ public class UsersDAOImpl {
 
         //DB Query
         String query = "INSERT INTO XYZ.\"Users\" (\"id\",\"password\",\"status\") VALUES ('" + id + "', '" + password + "', '" + status + "')" ;
-        com.DBConnectionProvider.commitQuery(query);
+        dao.DBConnectionProvider.commitQuery(query);
         
         // this should call the members dao            
     }

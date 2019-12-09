@@ -6,7 +6,6 @@
 package dao;
 
 import java.util.Date;
-import com.DBConnectionProvider;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.ParseException;
@@ -25,7 +24,7 @@ public class ClaimsDAOImpl {
         ArrayList<model.Claims> claims = new ArrayList<model.Claims>();
         String query = "SELECT * FROM XYZ.\"Claims\" WHERE XYZ.\"Claims\".\"mem_id\" = " + "'" + username + "'";
         try{
-            ResultSet rs = com.DBConnectionProvider.executeQuery(query);
+            ResultSet rs = dao.DBConnectionProvider.executeQuery(query);
 
             while (rs.next()){
                 model.Claims c = new model.Claims();
@@ -47,7 +46,7 @@ public class ClaimsDAOImpl {
         ArrayList<model.Claims> claims = new ArrayList<model.Claims>();
         String query = "SELECT * FROM XYZ.\"Claims\"";
         try{
-            ResultSet rs = com.DBConnectionProvider.executeQuery(query);
+            ResultSet rs = dao.DBConnectionProvider.executeQuery(query);
 
             while (rs.next()){
                 model.Claims c = new model.Claims();
@@ -80,46 +79,38 @@ public class ClaimsDAOImpl {
         //DB Query
         String query = "INSERT INTO XYZ.\"Claims\" (\"mem_id\",\"date\",\"rationale\",\"status\",\"amount\") VALUES ('" + ClaimsID + "', CURRENT_DATE ,'" + ClaimsRationale + "', '" + ClaimsStatus + "', " + ClaimsAmount + ")" ;
         String query1 = "SELECT * FROM XYZ.\"Claims\" WHERE XYZ.\"Claims\".\"mem_id\" = " + "'" + ClaimsID + "'";
-        ResultSet rs = com.DBConnectionProvider.executeQuery(query1);
-        try{
+        ResultSet rs = dao.DBConnectionProvider.executeQuery(query1);
+        dao.DBConnectionProvider.commitQuery(query);
+        /*try{
 
-                System.out.println("hello1");
                 while(rs.next()){
                     dates.add(rs.getDate("date"));
-                    System.out.println("hello2");
                 }
                 System.out.println(dates.size() + " dates size");
                 if (dates.size() < 2){
                     com.DBConnectionProvider.commitQuery(query);
-                    System.out.println("hello3");
                 }else{
                     SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
                     Date startOfYear = format.parse("2019-01-01");
-                    System.out.println(startOfYear + " start of ueardsgsg");
-                    System.out.println(dates.get(0) + " dates in db");
                     int claimsThisYear = 0;
-                    System.out.println("hello4");
                     for (int i = 0; i < dates.size();i++){
                         if (dates.get(i).after(startOfYear)){
                             claimsThisYear++;
-                            System.out.println("hello5");
                         }
                     }
                     if (claimsThisYear < 2){
                         com.DBConnectionProvider.commitQuery(query);
-                        System.out.println("hello6");
                     }
-                    System.out.println(dates.size());
 
             }
-        }catch(SQLException | ParseException e){;}
+        }catch(SQLException | ParseException e){;}*/
     }
 
     public static float totalClaimAmount(){
         float total = 0;
         String query = "SELECT XYZ.\"Claims\".\"amount\" FROM XYZ.\"Claims\" WHERE XYZ.\"Claims\".\"status\" = 'closed'";
         try{
-            ResultSet rs = com.DBConnectionProvider.executeQuery(query);
+            ResultSet rs = dao.DBConnectionProvider.executeQuery(query);
             while (rs.next()){
                 total += rs.getFloat("amount");
             }
@@ -133,8 +124,8 @@ public class ClaimsDAOImpl {
         String query = "SELECT * FROM XYZ.\"Members\" WHERE XYZ.\"Members\".\"status\" = 'MEMBER'";
         String query2 = "SELECT * FROM XYZ.\"Users\" WHERE XYZ.\"Users\".\"status\" = 'MEMBER'";
         try{
-            ResultSet rs = com.DBConnectionProvider.executeQuery(query);
-            ResultSet rs2 = com.DBConnectionProvider.executeQuery(query2);
+            ResultSet rs = dao.DBConnectionProvider.executeQuery(query);
+            ResultSet rs2 = dao.DBConnectionProvider.executeQuery(query2);
             while (rs.next()){
                 numOfMembers++;
             }
@@ -156,12 +147,12 @@ public class ClaimsDAOImpl {
     public static void rejectClaim(String id){
         String query = "UPDATE XYZ.\"Claims\" SET \"status\" = " + "'rejected'" + " WHERE \"id\" = " + id;
         //System.out.println("reubge" + query);
-        com.DBConnectionProvider.commitQuery(query);
+        dao.DBConnectionProvider.commitQuery(query);
     }
     
     public static void closeClaim(String id){
         String query = "UPDATE XYZ.\"Claims\" SET \"status\" = " + "'closed'" + " WHERE \"id\" = " + id;
         //System.out.println("reubge" + query);
-        com.DBConnectionProvider.commitQuery(query);
+        dao.DBConnectionProvider.commitQuery(query);
     }
 }
