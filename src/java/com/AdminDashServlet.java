@@ -62,6 +62,7 @@ public class AdminDashServlet extends HttpServlet {
             ArrayList<model.Payment> allPayments = new ArrayList<model.Payment>();
             allPayments = dao.PaymentsDAOImpl.listAllPaymentsMade();
             request.setAttribute("listOfAllPayments", allPayments);
+            //hi
             
             request.getRequestDispatcher("Dashboard_Admin.jsp").forward(request, response);
         }
