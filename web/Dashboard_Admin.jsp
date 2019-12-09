@@ -73,7 +73,7 @@
                                     <td>${item.rationale}</td>
                                     <td>${item.amount}</td>
                                     <td>${item.status}</td>
-                                    <td><form method="POST" action=""><button class="button" style="width: 20px; height: 20px; padding: 0px;" value="${member.id}">&#10539;</button>
+                                    <td><form method="POST" action="rejectClaim.do"><button class="button" style="width: 20px; height: 20px; padding: 0px;" value="${member.id}">&#10539;</button>
                                         <input type="hidden" name="rejectClaimClick" value="${item.id}" ></form></td>
                                     
                                 </tr>
