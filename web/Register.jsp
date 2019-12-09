@@ -32,7 +32,22 @@
         <!-- Favicon
         –––––––––––––––––––––––––––––––––––––––––––––––––– -->
         <link rel="icon" type="image/png" href="images/favicon.ico">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=places&key=AIzaSyA74DCezWLL8P1AgAHNqFvN4_2rm9FhPWI"></script>
+        <script>
+            var searchInput = 'search_input';
 
+            $(document).ready(function () {
+                var autocomplete;
+                autocomplete = new google.maps.places.Autocomplete((document.getElementById(searchInput)), {
+                    types: ['geocode'],
+                });
+
+                google.maps.event.addListener(autocomplete, 'place_changed', function () {
+                    var near_place = autocomplete.getPlace();
+                });
+            });
+        </script>
     </head>
     <body>
 
@@ -42,32 +57,38 @@
             <div class="row">
                 <div class="one-half column" style="margin-top: 25%">
                     <h4>XYZ Driver Association</h4>
-                        <%! String errString = ""; %>
-                        <%! String successString = "";%>
-                        <% errString  = (String) session.getAttribute("RegisterError");%>
-                        <% successString = (String) session.getAttribute("RegisterSuccess"); %>
-                        <% if(errString.equals("RUser")){ %>
-                        <div style="color : red">A user with this username already exists! Try making up a new one!</div>
-                        <% }else if(errString.equals("REmpty")){%>
-                        <div style="color : red">Please input your username and password to continue!</div>
-                        <% }else if(errString.equals("RPassword")){ %>
-                        <div style="color : red">The Password given does not match! re-type both of your passwords. </div>
-                        <% }else if((errString.equals("none")) && (successString.equals("true"))){ %>
-                        <div style="color : green">User created successfully</div>
-                        <%} %>
-                       
+                    <%! String errString = ""; %>
+                    <%! String successString = "";%>
+                    <% errString = (String) session.getAttribute("RegisterError");%>
+                    <% successString = (String) session.getAttribute("RegisterSuccess"); %>
+                    <% if (errString.equals("RUser")) { %>
+                    <div style="color : red">A user with this username already exists! Try making up a new one!</div>
+                    <% } else if (errString.equals("REmpty")) {%>
+                    <div style="color : red">Please input your username and password to continue!</div>
+                    <% } else if (errString.equals("RPassword")) { %>
+                    <div style="color : red">The Password given does not match! re-type both of your passwords. </div>
+                    <% } else if ((errString.equals("none")) && (successString.equals("true"))) { %>
+                    <div style="color : green">User created successfully</div>
+
+                    <%}%>
+
                     <form method="POST" action="Register.do">
-                        <label for="rUsernameInput">Username</label>
-                        <input class="u-full-width" type="text" placeholder=" " name="rUsernameInput" required>
 
-                        <label for="rPasswordInput">Password</label>
-                        <input class="u-full-width" type="password" placeholder=" " name="rPasswordInput" required>
+                        <label for="rFirstNameInput">First Name</label>
+                        <input class="u-full-width" type="text" placeholder=" " name="rFirstNameInput" required>
 
-			<label for="rPpasswordInput2">Re-Enter Password</label>
-                        <input class="u-full-width" type="password" placeholder=" " name="rPasswordInput2" required>
+                        <label for="rSecondNaameInput">Second Name</label>
+                        <input class="u-full-width" type="text" placeholder=" " name="rSecondNameInput" required>
+
+                        <label for="rDoB">Date of Birth</label>
+                        <input class="datepicker" type="date" placeholder=" " name="rDoB" required>
+
+                        <label for="rAddress">Address</label>
+                        <input class="u-full-width" type="text" id ="search_input" placeholder=" " name="rAddress" required>
+
 
                         <input class="button-primary" type="submit" value="Register" name="registerButton">
-                        </form>
+                    </form>
                     <p> The current date over there is: <%= new java.util.Date()%> </p>
                 </div>
             </div>

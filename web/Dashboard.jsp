@@ -9,7 +9,7 @@
         <!-- Basic Page Needs
         ?????????????????????????????????????????????????? -->
         <meta charset="utf-8">
-        <title>XYZ Login</title>
+        <title>XYZ Drivers Association</title>
         <meta name="description" content="">
         <meta name="author" content="">
 
@@ -40,14 +40,13 @@
     <% com.LoginSession login_session = (com.LoginSession) request.getSession().getAttribute("login_session"); %>
     <% String uname = login_session.getUsername();%>
     <div class="header">
-        <form action="Logout.do" method="POST" ><input class="logout" type="submit" value="Logout"/></form>
+        <form action="Logout.do" method="POST" ><input style="float: right;" type="submit" value="Logout"/></form>
         <h1 id="logo-text">XYZ</h1>
     </div>
     <div class="container">
         <h1><%out.print(uname);%>'s Dashboard</h1>
         <div class="section-grid">
             <div class="dash-card-half">
-                <!--<div class="dash-card-image" style="background-image: url(images/thumb-project-tRAYce.png);"></div>-->
                 <a href="#" class="dash-card-title" target="_blank">Your Profile</a>
                 <div class="dash-card-content">
                     <c:if test="${memberDetails == null}">
@@ -77,7 +76,6 @@
 
             <div>
                 <div class="dash-card-half-right">
-                    <!--<div class="dash-card-image" style="background-image: url(images/thumb-project-tRAYce.png);"></div>-->
                     <div class="dash-card-title" target="_blank">Your Account Balance</div>
                     <div class="dash-card-content">
                         <c:forEach items="${memberDetails}" var="item">
@@ -92,19 +90,26 @@
                         </c:forEach>
                     </div>
                 </div>
+
+
+                <div class="dash-card-half-right">
+                    <div class="dash-card-title" target="_blank">Your Account Status</div>
+                    <div class="dash-card-content">
+                        <h1><c:out value='${user.status}'/> </h1> 
+                    </div>
+                </div>
             </div>
 
 
 
 
             <div class="dash-card">
-                <!--<div class="dash-card-image" style="background-image: url(images/thumb-project-tRAYce.png);"></div>-->
                 <a href="#" class="dash-card-title" target="_blank">Your Claims History</a>
                 <div class="dash-card-content">
                     <table>
                         <thead>
                             <tr>
-                                <th>Claim ID</th>
+                                <th>#</th>
                                 <th>Date Created</th>
                                 <th>Description</th>
                                 <th>Amount</th>
@@ -112,9 +117,9 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <c:forEach items="${listOfUserClaims}" var="item">      
+                            <c:forEach items="${listOfUserClaims}" var="item" varStatus="loop">      
                                 <tr>
-                                    <td>#</td>
+                                    <td>${loop.index + 1}</td>
                                     <td>${item.date}</td>
                                     <td>${item.rationale}</td>
                                     <td>${item.amount}</td>
@@ -128,22 +133,21 @@
             </div>
 
             <div class="dash-card">
-                <!--<div class="dash-card-image" style="background-image: url(images/thumb-project-tRAYce.png);"></div>-->
                 <a href="#" class="dash-card-title" target="_blank">Your Transaction History</a>
                 <div class="dash-card-content">
                     <table>
                         <thead>
                             <tr>
-                                <th>Transaction ID</th>
+                                <th>#</th>
                                 <th>Transaction Date</th>
                                 <th>Amount</th>
                                 <th>Payment Method</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <c:forEach items="${listOfUserPayments}" var="payment">
+                            <c:forEach items="${listOfUserPayments}" var="payment" varStatus="loop">
                                 <tr>
-                                    <td>#</td>
+                                    <td>${loop.index + 1}</td>
                                     <td>${payment.date}</td>
                                     <td>${payment.amount}</td>
                                     <td>${payment.typeOfPayment}</td>
@@ -159,10 +163,4 @@
         </div>
 
     </div>
-</div>
-</div>
-
-<!-- End Document
-  ?????????????????????????????????????????????????? -->
-
 </html>

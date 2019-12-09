@@ -5,6 +5,7 @@
  */
 package com;
 
+import dao.MembersDAOImpl;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
@@ -34,8 +35,8 @@ public class AdminDashServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             HttpSession session = request.getSession();
-            System.out.println("ADMIN DASH SERVLET WORKING");
 
+            
             //================Get Claims for this user=========================
             ArrayList<model.Claims> claims = new ArrayList<model.Claims>();
             claims = dao.ClaimsDAOImpl.listAllClaims();
@@ -52,6 +53,16 @@ public class AdminDashServlet extends HttpServlet {
             members = dao.MembersDAOImpl.listAllMembers();
             request.setAttribute("listOfAllMembers", members);
             
+            //-----------------List applied members=============================
+            ArrayList<model.Member> appliedMembers = new ArrayList<model.Member>();
+            members = MembersDAOImpl.listAllAppliedMembers();
+            request.setAttribute("listOfAppliedUsers", members);
+            
+            //================List all payments=================================
+            ArrayList<model.Payment> allPayments = new ArrayList<model.Payment>();
+            allPayments = dao.PaymentsDAOImpl.listAllPaymentsMade();
+            request.setAttribute("listOfAllPayments", allPayments);
+            //hi
             
             request.getRequestDispatcher("Dashboard_Admin.jsp").forward(request, response);
         }

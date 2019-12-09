@@ -24,6 +24,28 @@ public class PaymentsDAOImpl {
             
             while (rs.next()){
                 model.Payment p = new model.Payment();
+                p.setUsername(rs.getString("mem_id"));
+                p.setAmount(rs.getInt("amount"));
+                p.setTypeOfPayment(rs.getString("type_of_payment"));
+                p.setDate(rs.getDate("date"));
+                
+                payment.add(p);
+            }
+        } catch(SQLException e){;}
+        
+        return payment;
+          
+    }
+    
+    public static ArrayList listAllPaymentsMade(){
+        ArrayList<model.Payment> payment = new ArrayList<model.Payment>();
+        String query = "SELECT * FROM XYZ.\"Payments\"";
+        try{
+            ResultSet rs = com.DBConnectionProvider.executeQuery(query);
+            
+            while (rs.next()){
+                model.Payment p = new model.Payment();
+                p.setUsername(rs.getString("mem_id"));
                 p.setAmount(rs.getInt("amount"));
                 p.setTypeOfPayment(rs.getString("type_of_payment"));
                 p.setDate(rs.getDate("date"));
@@ -68,5 +90,31 @@ public class PaymentsDAOImpl {
         System.out.println(query);
         com.DBConnectionProvider.commitQuery(query);
         
+    }
+     
+    public static void addBalance(model.Payment payment, model.Member member){
+        // do the calculations
+        float newBalance;
+        float oldBalance = member.getBalance();
+        newBalance = oldBalance + payment.getAmount();
+        
+        // set the vars
+        member.setBalance(newBalance);
+        String query = "UPDATE XYZ.\"Members\" SET \"balance\" = " + newBalance + " WHERE \"id\" = " + "'" + member.getUser().getUsername() + "'";
+        System.out.println("Add" + query);
+        com.DBConnectionProvider.commitQuery(query);
+    }
+    
+    public static void removeBalance(model.Payment payment, model.Member member){
+         // do the calculations
+        float newBalance;
+        float oldBalance = member.getBalance();
+        newBalance = oldBalance - payment.getAmount();
+        
+        // set the vars
+        member.setBalance(newBalance);
+        String query = "UPDATE XYZ.\"Members\" SET \"balance\" = " + newBalance + " WHERE \"id\" = " + "'" + member.getUser().getUsername() + "'";
+        System.out.println("remove" + query);
+        com.DBConnectionProvider.commitQuery(query);
     }
 }

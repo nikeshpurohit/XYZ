@@ -33,6 +33,21 @@
         <link rel="icon" type="image/png" href="images/favicon.ico">
 
     </head>
+
+    <!-- Load the required checkout.js script -->
+    <script src="https://www.paypalobjects.com/api/checkout.js" data-version-4></script>
+
+    <!-- Load the required Braintree components. -->
+    <script src="https://js.braintreegateway.com/web/3.39.0/js/client.min.js"></script>
+    <script src="https://js.braintreegateway.com/web/3.39.0/js/paypal-checkout.min.js"></script>
+
+    <script>
+        paypal.Button.render({
+            braintree: braintree,
+            // Other configuration
+        }, '#id-of-element-where-paypal-button-will-render');
+    </script>
+
     <body>
 
         <!-- Primary Page Layout
@@ -46,11 +61,11 @@
                         <label for="PaymentMethod">Payment method</label>
                         <input class="u-full-width" type="Text" placeholder="How are you gonna pay?" name="PaymentMethod" required>
 
-			<label for="PaymentAmount">Amount in (£)</label>
+                        <label for="PaymentAmount">Amount in (£)</label>
                         <input class="u-full-width" type="number" placeholder="£££££" name="PaymentAmount" required>
 
                         <input class="button-primary" type="submit" value="Payment" name="paymentButton">
-                        </form>
+                    </form>
                     <form method="POST" action="UserDashServlet"><input class="button" type="submit" value="Go back to dashboard"/></form>
                 </div>
             </div>
